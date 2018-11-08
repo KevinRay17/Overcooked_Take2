@@ -16,6 +16,8 @@ public class ContainerInventory : MonoBehaviour {
 
 	public string[] acceptedTag = new string[2];
 	
+	
+	
 	//sort objects by tag
 
 	void Start ()
