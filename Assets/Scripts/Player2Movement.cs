@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Timers;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class Player2Movement : MonoBehaviour {
 	public float movementSpeed = 0;
 
 	public float Timer = 0;
@@ -31,19 +29,19 @@ public class PlayerMovement : MonoBehaviour
 		}
 		//Move
 		//Initialize axis on button press
-		if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
+		if (Input.GetButton("Vertical2") || Input.GetButton("Horizontal2"))
 		{
-			float moveHorizontal = Input.GetAxisRaw("Horizontal");
-			float moveVertical = Input.GetAxisRaw("Vertical");
+			float moveHorizontal = Input.GetAxisRaw("Horizontal2");
+			float moveVertical = Input.GetAxisRaw("Vertical2");
 			//Slow diagnal movement so they don't feel faster/additive
-			if (Input.GetButton("Vertical") && Input.GetButton("Horizontal"))
+			if (Input.GetButton("Vertical2") && Input.GetButton("Horizontal2"))
 			{
 				moveHorizontal = moveHorizontal / 1.5f;
 				moveVertical = moveVertical / 1.5f;
 			}
 			
 			//Dash Initialization
-			if (Input.GetKeyDown("left shift") && Timer >= .5f)
+			if (Input.GetKeyDown("right shift") && Timer >= .5f)
 			{
 				dashMult = 5;
 				Timer = 0;
