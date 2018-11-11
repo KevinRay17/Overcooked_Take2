@@ -68,7 +68,7 @@ public class ContainerInventory : MonoBehaviour {
 	}
 
 	//tries to add the veggie to the pot and returns true if successful; if pot is full, returns false;
-	private bool addVegetable(int vegetable)
+	public bool addVegetable(int vegetable)
 	{
 		
 		for (int i = 0; i < objectsInContainerIntVersion.Length; i++)

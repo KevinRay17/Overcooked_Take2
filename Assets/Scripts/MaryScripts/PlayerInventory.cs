@@ -9,6 +9,7 @@ public class PlayerInventory : MonoBehaviour
 	private RaycastHit rayHit = new RaycastHit();
 	
 	public GameObject CurrentlyHeldObject;
+	public int CurrentlyHeldObjectCode;
 
 	public KeyCode takeObject;
 	
@@ -51,12 +52,35 @@ public class PlayerInventory : MonoBehaviour
 		
 	}
 
+	public void dropObjectCheck()
+	{
+		//1. raycast check to see if there is a pot in front of player
+		//2. if yes, check to see if pot is full
+		//3. If pot is not full, add vegetable to the array.
+		//4. Destroy object
+		
+		Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.magenta);
+		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 1f))
+		{
+			if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Pot")
+			{
+				Debug.Log("Hit " + rayHit);
+				//Set variable in container inventory with get/set to trigger 
+			}
+			else
+			{
+				Debug.Log("Can't pick up " + rayHit.transform.name);
+			}
+		}
+	}
 	public bool dropObject()
 	{
 		//1. set transform of CurrentlyHeldObject to be child of nothing
 		//2. Set other object as not kinematic and apply gravity
 		//3. set CurrentlyHeldObject as null
 
+	
+		
 		if (CurrentlyHeldObject != null)
 		{
 			CurrentlyHeldObject.transform.SetParent(null);
