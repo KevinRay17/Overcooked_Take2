@@ -17,15 +17,128 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="733984793">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.13" value="2" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="1192" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="1192" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/NewCamera.cs">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/SaminaScripts/NewCamera.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="651">
+              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+              <folding>
+                <marker date="1541777373069" expanded="false" signature="6:78" ph="..." />
+                <marker date="1541777373069" expanded="true" signature="118:1905" ph="{...}" />
+                <marker date="1541777373069" expanded="true" signature="362:1903" ph="{...}" />
+                <marker date="1541777373069" expanded="true" signature="937:992" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AISpawner.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="22" column="83" selection-start-line="22" selection-start-column="83" selection-end-line="22" selection-end-column="83" />
+              <folding>
+                <marker date="1541696686956" expanded="false" signature="6:78" ph="..." />
+                <marker date="1541696686956" expanded="true" signature="119:643" ph="{...}" />
+                <marker date="1541696686956" expanded="true" signature="245:313" ph="{...}" />
+                <marker date="1541696686956" expanded="true" signature="367:641" ph="{...}" />
+                <marker date="1541696686956" expanded="true" signature="519:638" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AI.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+              <folding>
+                <marker date="1541697307625" expanded="false" signature="6:78" ph="..." />
+                <marker date="1541697307625" expanded="true" signature="112:487" ph="{...}" />
+                <marker date="1541697307625" expanded="true" signature="229:236" ph="{...}" />
+                <marker date="1541697307625" expanded="true" signature="290:485" ph="{...}" />
+                <marker date="1541697307625" expanded="true" signature="450:482" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/PlayerMovement.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="467">
+              <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+              <folding>
+                <marker date="1541777292448" expanded="false" signature="6:99" ph="..." />
+                <marker date="1541777292448" expanded="true" signature="144:1573" ph="{...}" />
+                <marker date="1541777292448" expanded="true" signature="282:289" ph="{...}" />
+                <marker date="1541777292448" expanded="true" signature="344:374" ph="{...}" />
+                <marker date="1541777292448" expanded="true" signature="399:1571" ph="{...}" />
+                <marker date="1541777292448" expanded="true" signature="454:490" ph="{...}" />
+                <marker date="1541777292448" expanded="true" signature="493:535" ph="/* Move ... */" />
+                <marker date="1541777292448" expanded="true" signature="603:1568" ph="{...}" />
+                <marker date="1541777292448" expanded="true" signature="850:944" ph="{...}" />
+                <marker date="1541777292448" expanded="true" signature="1028:1071" ph="{...}" />
+                <marker date="1541777292448" expanded="true" signature="1217:1264" ph="{...}" />
+                <marker date="1541777292448" expanded="true" signature="1272:1300" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaminaScripts/NewCamera.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AISpawner.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/KevinScripts/AISpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/KevinScripts/AI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/KevinScripts/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaminaScripts/NewCamera.cs" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -34,13 +147,30 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="915" />
-    <option name="y" value="140" />
-    <option name="width" value="775" />
-    <option name="height" value="765" />
+    <option name="x" value="480" />
+    <option name="y" value="235" />
+    <option name="width" value="2880" />
+    <option name="height" value="1435" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="UnityExplorer">
+        <option name="show-hidden-items" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Kevin Ray/Desktop/Unity Folders/Overcooked_Take2/Assets/Scripts/KevinScripts/AI.cs" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
@@ -55,6 +185,25 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ebd3acbb-8efe-4cce-9430-2514617e1a68" name="Default Changelist" comment="" />
@@ -62,21 +211,29 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1541690503018</updated>
+      <workItem from="1541693584236" duration="3576000" />
+      <workItem from="1541774927648" duration="3112000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="6688000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25285044" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="NuGet" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unit Tests" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -84,16 +241,30 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Errors In Solution" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unity" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
     </layout>
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -105,8 +276,68 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/NewCamera.cs">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/Assets/NewCamera.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AISpawner.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" column="83" selection-start-line="22" selection-start-column="83" selection-end-line="22" selection-end-column="83" />
+          <folding>
+            <marker date="1541696686956" expanded="false" signature="6:78" ph="..." />
+            <marker date="1541696686956" expanded="true" signature="119:643" ph="{...}" />
+            <marker date="1541696686956" expanded="true" signature="245:313" ph="{...}" />
+            <marker date="1541696686956" expanded="true" signature="367:641" ph="{...}" />
+            <marker date="1541696686956" expanded="true" signature="519:638" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AI.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+          <folding>
+            <marker date="1541697307625" expanded="false" signature="6:78" ph="..." />
+            <marker date="1541697307625" expanded="true" signature="112:487" ph="{...}" />
+            <marker date="1541697307625" expanded="true" signature="229:236" ph="{...}" />
+            <marker date="1541697307625" expanded="true" signature="290:485" ph="{...}" />
+            <marker date="1541697307625" expanded="true" signature="450:482" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/PlayerMovement.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+          <folding>
+            <marker date="1541777292448" expanded="false" signature="6:99" ph="..." />
+            <marker date="1541777292448" expanded="true" signature="144:1573" ph="{...}" />
+            <marker date="1541777292448" expanded="true" signature="282:289" ph="{...}" />
+            <marker date="1541777292448" expanded="true" signature="344:374" ph="{...}" />
+            <marker date="1541777292448" expanded="true" signature="399:1571" ph="{...}" />
+            <marker date="1541777292448" expanded="true" signature="454:490" ph="{...}" />
+            <marker date="1541777292448" expanded="true" signature="493:535" ph="/* Move ... */" />
+            <marker date="1541777292448" expanded="true" signature="603:1568" ph="{...}" />
+            <marker date="1541777292448" expanded="true" signature="850:944" ph="{...}" />
+            <marker date="1541777292448" expanded="true" signature="1028:1071" ph="{...}" />
+            <marker date="1541777292448" expanded="true" signature="1217:1264" ph="{...}" />
+            <marker date="1541777292448" expanded="true" signature="1272:1300" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/SaminaScripts/NewCamera.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <marker date="1541777373069" expanded="false" signature="6:78" ph="..." />
+            <marker date="1541777373069" expanded="true" signature="118:1905" ph="{...}" />
+            <marker date="1541777373069" expanded="true" signature="362:1903" ph="{...}" />
+            <marker date="1541777373069" expanded="true" signature="937:992" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
