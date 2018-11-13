@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Kevin Ray\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Kevin Ray\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_Overcooked_Take2.1688914186.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Kevin Ray\Desktop\Unity Folders\Overcooked_Take2" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="KevinScripts" t="Include">
+            <e p="AI.cs" t="Include" />
+            <e p="AISpawner.cs" t="Include" />
+            <e p="Player2Movement.cs" t="Include" />
+            <e p="PlayerMovement.cs" t="Include" />
+          </e>
+          <e p="MaryScripts" t="Include">
+            <e p="ContainerInventory.cs" t="Include" />
+            <e p="PlayerInventory.cs" t="Include" />
+            <e p="TempPlayerMovement.cs" t="Include" />
+          </e>
+          <e p="SaminaScripts" t="Include">
+            <e p="NewCamera.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Overcooked_Take2.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
