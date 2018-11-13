@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba65544c-7e9c-4200-83f7-6155d971fd61" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MaryScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MaryScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OvercookedFinal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OvercookedFinal/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MaryScripts/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MaryScripts/PlayerInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MaryScripts/TempPlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MaryScripts/TempPlayerMovement.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,12 +25,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cs" value="1969" />
+          <entry key="cs" value="2009" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="C#" value="1969" />
+          <entry key="C#" value="2009" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -49,63 +47,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+            <state relative-caret-position="392">
+              <caret line="92" column="48" selection-start-line="92" selection-start-column="48" selection-end-line="92" selection-end-column="48" />
               <folding>
-                <marker date="1542083629000" expanded="false" signature="6:78" ph="..." />
-                <marker date="1542083629000" expanded="true" signature="128:2393" ph="{...}" />
-                <marker date="1542083629000" expanded="true" signature="492:545" ph="{...}" />
-                <marker date="1542083629000" expanded="true" signature="627:1327" ph="{...}" />
-                <marker date="1542083629000" expanded="true" signature="633:758" ph="/* switch system so that it goes thru an array of accepted string tags ... */" />
-                <marker date="1542083629000" expanded="true" signature="761:1323" ph="/* for(int i = 0; i &lt; tagList.length(); i++){ ... */" />
-                <marker date="1542083629000" expanded="true" signature="1470:1741" ph="{...}" />
-                <marker date="1542083629000" expanded="true" signature="1540:1669" ph="{...}" />
-                <marker date="1542083629000" expanded="true" signature="1589:1665" ph="{...}" />
-                <marker date="1542083629000" expanded="true" signature="1842:1960" ph="{...}" />
-                <marker date="1542083629000" expanded="true" signature="1909:1957" ph="{...}" />
-                <marker date="1542083629000" expanded="true" signature="1964:2391" ph="/* Further implementation ... */" />
+                <marker date="1542085636000" expanded="false" signature="6:78" ph="..." />
+                <marker date="1542085636000" expanded="true" signature="128:2515" ph="{...}" />
+                <marker date="1542085636000" expanded="true" signature="492:665" ph="{...}" />
+                <marker date="1542085636000" expanded="true" signature="747:1447" ph="{...}" />
+                <marker date="1542085636000" expanded="true" signature="753:878" ph="/* switch system so that it goes thru an array of accepted string tags ... */" />
+                <marker date="1542085636000" expanded="true" signature="881:1443" ph="/* for(int i = 0; i &lt; tagList.length(); i++){ ... */" />
+                <marker date="1542085636000" expanded="true" signature="1590:1862" ph="{...}" />
+                <marker date="1542085636000" expanded="true" signature="1660:1790" ph="{...}" />
+                <marker date="1542085636000" expanded="true" signature="1710:1786" ph="{...}" />
+                <marker date="1542085636000" expanded="true" signature="1963:2082" ph="{...}" />
+                <marker date="1542085636000" expanded="true" signature="2030:2079" ph="{...}" />
+                <marker date="1542085636000" expanded="true" signature="2086:2513" ph="/* Further implementation ... */" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/PlayerInventory.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="75" column="25" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
+            <state relative-caret-position="408">
+              <caret line="83" column="59" selection-start-line="83" selection-start-column="59" selection-end-line="83" selection-end-column="59" />
               <folding>
-                <marker date="1542085115000" expanded="false" signature="6:92" ph="..." />
-                <marker date="1542085115000" expanded="true" signature="138:3945" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="465:645" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="506:641" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="546:576" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="584:637" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="687:1046" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="693:835" ph="/* 1. set currently held object as other ... */" />
-                <marker date="1542085115000" expanded="true" signature="870:1040" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="1078:2499" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="1084:1266" ph="/* 1. raycast check to see if there is a pot in front of player ... */" />
-                <marker date="1542085115000" expanded="true" signature="1474:2496" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="1591:2397" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="1638:2392" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="1850:2386" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="1973:2379" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="2208:2371" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="2405:2492" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="2525:3068" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="2531:2693" ph="/* 1. set transform of CurrentlyHeldObject to be child of nothing ... */" />
-                <marker date="1542085115000" expanded="true" signature="2731:3049" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="3097:3759" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="3235:3739" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="3346:3735" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="3422:3632" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="3641:3730" ph="{...}" />
-                <marker date="1542085115000" expanded="true" signature="3765:3888" ph="/* For now: if you run into ab object, you pick it up ... */" />
-                <marker date="1542085115000" expanded="true" signature="3937:3943" ph="{...}" />
+                <marker date="1542085259000" expanded="false" signature="6:92" ph="..." />
+                <marker date="1542085259000" expanded="true" signature="138:3980" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="465:645" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="506:641" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="546:576" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="584:637" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="687:1046" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="693:835" ph="/* 1. set currently held object as other ... */" />
+                <marker date="1542085259000" expanded="true" signature="870:1040" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="1078:2534" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="1084:1266" ph="/* 1. raycast check to see if there is a pot in front of player ... */" />
+                <marker date="1542085259000" expanded="true" signature="1474:2531" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="1591:2432" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="1638:2427" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="1850:2421" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="1973:2414" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="2208:2406" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="2440:2527" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="2560:3103" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="2566:2728" ph="/* 1. set transform of CurrentlyHeldObject to be child of nothing ... */" />
+                <marker date="1542085259000" expanded="true" signature="2766:3084" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="3132:3794" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="3270:3774" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="3381:3770" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="3457:3667" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="3676:3765" ph="{...}" />
+                <marker date="1542085259000" expanded="true" signature="3800:3923" ph="/* For now: if you run into ab object, you pick it up ... */" />
+                <marker date="1542085259000" expanded="true" signature="3972:3978" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -143,9 +141,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MaryScripts/TempPlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MaryScripts/PlayerInventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs" />
       </list>
     </option>
   </component>
@@ -241,12 +239,12 @@
       <workItem from="1541694881733" duration="134000" />
       <workItem from="1541696191100" duration="2147000" />
       <workItem from="1541952141220" duration="1470000" />
-      <workItem from="1542080221033" duration="2704000" />
+      <workItem from="1542080221033" duration="3221000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6455000" />
+    <option name="totallyTimeSpent" value="6972000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -305,27 +303,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
-          <folding>
-            <marker date="1542083629000" expanded="false" signature="6:78" ph="..." />
-            <marker date="1542083629000" expanded="true" signature="128:2393" ph="{...}" />
-            <marker date="1542083629000" expanded="true" signature="492:545" ph="{...}" />
-            <marker date="1542083629000" expanded="true" signature="627:1327" ph="{...}" />
-            <marker date="1542083629000" expanded="true" signature="633:758" ph="/* switch system so that it goes thru an array of accepted string tags ... */" />
-            <marker date="1542083629000" expanded="true" signature="761:1323" ph="/* for(int i = 0; i &lt; tagList.length(); i++){ ... */" />
-            <marker date="1542083629000" expanded="true" signature="1470:1741" ph="{...}" />
-            <marker date="1542083629000" expanded="true" signature="1540:1669" ph="{...}" />
-            <marker date="1542083629000" expanded="true" signature="1589:1665" ph="{...}" />
-            <marker date="1542083629000" expanded="true" signature="1842:1960" ph="{...}" />
-            <marker date="1542083629000" expanded="true" signature="1909:1957" ph="{...}" />
-            <marker date="1542083629000" expanded="true" signature="1964:2391" ph="/* Further implementation ... */" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/TempPlayerMovement.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -345,37 +322,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/PlayerInventory.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="75" column="25" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
+        <state relative-caret-position="408">
+          <caret line="83" column="59" selection-start-line="83" selection-start-column="59" selection-end-line="83" selection-end-column="59" />
           <folding>
-            <marker date="1542085115000" expanded="false" signature="6:92" ph="..." />
-            <marker date="1542085115000" expanded="true" signature="138:3945" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="465:645" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="506:641" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="546:576" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="584:637" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="687:1046" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="693:835" ph="/* 1. set currently held object as other ... */" />
-            <marker date="1542085115000" expanded="true" signature="870:1040" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="1078:2499" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="1084:1266" ph="/* 1. raycast check to see if there is a pot in front of player ... */" />
-            <marker date="1542085115000" expanded="true" signature="1474:2496" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="1591:2397" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="1638:2392" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="1850:2386" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="1973:2379" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="2208:2371" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="2405:2492" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="2525:3068" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="2531:2693" ph="/* 1. set transform of CurrentlyHeldObject to be child of nothing ... */" />
-            <marker date="1542085115000" expanded="true" signature="2731:3049" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="3097:3759" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="3235:3739" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="3346:3735" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="3422:3632" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="3641:3730" ph="{...}" />
-            <marker date="1542085115000" expanded="true" signature="3765:3888" ph="/* For now: if you run into ab object, you pick it up ... */" />
-            <marker date="1542085115000" expanded="true" signature="3937:3943" ph="{...}" />
+            <marker date="1542085259000" expanded="false" signature="6:92" ph="..." />
+            <marker date="1542085259000" expanded="true" signature="138:3980" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="465:645" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="506:641" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="546:576" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="584:637" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="687:1046" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="693:835" ph="/* 1. set currently held object as other ... */" />
+            <marker date="1542085259000" expanded="true" signature="870:1040" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="1078:2534" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="1084:1266" ph="/* 1. raycast check to see if there is a pot in front of player ... */" />
+            <marker date="1542085259000" expanded="true" signature="1474:2531" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="1591:2432" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="1638:2427" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="1850:2421" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="1973:2414" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="2208:2406" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="2440:2527" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="2560:3103" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="2566:2728" ph="/* 1. set transform of CurrentlyHeldObject to be child of nothing ... */" />
+            <marker date="1542085259000" expanded="true" signature="2766:3084" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="3132:3794" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="3270:3774" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="3381:3770" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="3457:3667" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="3676:3765" ph="{...}" />
+            <marker date="1542085259000" expanded="true" signature="3800:3923" ph="/* For now: if you run into ab object, you pick it up ... */" />
+            <marker date="1542085259000" expanded="true" signature="3972:3978" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="92" column="48" selection-start-line="92" selection-start-column="48" selection-end-line="92" selection-end-column="48" />
+          <folding>
+            <marker date="1542085636000" expanded="false" signature="6:78" ph="..." />
+            <marker date="1542085636000" expanded="true" signature="128:2515" ph="{...}" />
+            <marker date="1542085636000" expanded="true" signature="492:665" ph="{...}" />
+            <marker date="1542085636000" expanded="true" signature="747:1447" ph="{...}" />
+            <marker date="1542085636000" expanded="true" signature="753:878" ph="/* switch system so that it goes thru an array of accepted string tags ... */" />
+            <marker date="1542085636000" expanded="true" signature="881:1443" ph="/* for(int i = 0; i &lt; tagList.length(); i++){ ... */" />
+            <marker date="1542085636000" expanded="true" signature="1590:1862" ph="{...}" />
+            <marker date="1542085636000" expanded="true" signature="1660:1790" ph="{...}" />
+            <marker date="1542085636000" expanded="true" signature="1710:1786" ph="{...}" />
+            <marker date="1542085636000" expanded="true" signature="1963:2082" ph="{...}" />
+            <marker date="1542085636000" expanded="true" signature="2030:2079" ph="{...}" />
+            <marker date="1542085636000" expanded="true" signature="2086:2513" ph="/* Further implementation ... */" />
           </folding>
         </state>
       </provider>

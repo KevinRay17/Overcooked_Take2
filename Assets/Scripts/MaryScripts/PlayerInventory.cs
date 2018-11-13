@@ -89,11 +89,17 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}
+			
 			else
 			{
-				dropObject();
-				Debug.Log("Dropping obejct " + rayHit.transform.name);
+				//Swap object
 			}
+		}
+		
+		else
+		{
+			dropObject();
+			Debug.Log("Dropping obejct " + rayHit.transform.name);
 		}
 	}
 	public bool dropObject()

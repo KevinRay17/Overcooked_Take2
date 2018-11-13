@@ -22,6 +22,9 @@ public class ContainerInventory : MonoBehaviour {
 
 	void Start ()
 	{
+		objectsInContainerIntVersion[0] = -1;
+		objectsInContainerIntVersion[1] = -1;
+		objectsInContainerIntVersion[2] = -1;
 		objectsInContainer = new List<GameObject>();
 	}
 
@@ -72,7 +75,7 @@ public class ContainerInventory : MonoBehaviour {
 		
 		for (int i = 0; i < objectsInContainerIntVersion.Length; i++)
 		{
-			if (objectsInContainerIntVersion[i] == 0)
+			if (objectsInContainerIntVersion[i] == -1)
 			{
 				objectsInContainerIntVersion[i] = vegetable;
 				return true;
@@ -87,7 +90,7 @@ public class ContainerInventory : MonoBehaviour {
 	{
 		for (int i = 0; i < objectsInContainerIntVersion.Length; i++)
 		{
-			objectsInContainerIntVersion[i] = 0;
+			objectsInContainerIntVersion[i] = -1;
 		}
 	}
 	
