@@ -17,11 +17,6 @@ public class PlayerInventory : MonoBehaviour
 	//Depending on the system, maybe it should be a string array or just a bunch of tags
 	public String[] acceptableTag;
 	
-	void Start ()
-	{
-		
-	}
-	
 	void Update () {
 
 		
@@ -33,7 +28,8 @@ public class PlayerInventory : MonoBehaviour
 			}
 			else
 			{
-				dropObject();
+				//dropObject();
+				dropObjectCheck();
 			}
 		}
 
@@ -48,6 +44,7 @@ public class PlayerInventory : MonoBehaviour
 		{
 			CurrentlyHeldObject = other.gameObject;
 			other.GetComponent<Transform>().SetParent(this.transform);
+			other.GetComponent<SphereCollider>().enabled = false;
 		}
 		
 	}
@@ -62,14 +59,40 @@ public class PlayerInventory : MonoBehaviour
 		Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.magenta);
 		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 1f))
 		{
+			Debug.Log("Hit " + rayHit.transform.name);
 			if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Pot")
 			{
-				Debug.Log("Hit " + rayHit);
-				//Set variable in container inventory with get/set to trigger 
+				
+				if (CurrentlyHeldObject != null)
+				{
+					Debug.Log("holding smth");
+					//Check tag against array of tags
+					string[] tempTag = rayHit.transform.GetComponent<ContainerInventory>().acceptedTag;
+					for (int i = 0; i < tempTag.Length; i++)
+					{
+						//if tag is accepted, check container if can be added
+						
+						if (CurrentlyHeldObject.tag == tempTag[i])
+						{
+							Debug.Log("acceptable tag");
+							//if accepted, destroy gameobject and reset currentlyheldobject and code
+							if (rayHit.transform.GetComponent<ContainerInventory>()
+								.addVegetable(CurrentlyHeldObjectCode))
+							{
+								Debug.Log("pot can take");
+								GameObject temp = CurrentlyHeldObject;
+								CurrentlyHeldObject = null;
+								CurrentlyHeldObjectCode = 500;
+								Destroy(temp);
+							}
+						}
+					}
+				}
 			}
 			else
 			{
-				Debug.Log("Can't pick up " + rayHit.transform.name);
+				dropObject();
+				Debug.Log("Dropping obejct " + rayHit.transform.name);
 			}
 		}
 	}
@@ -78,15 +101,14 @@ public class PlayerInventory : MonoBehaviour
 		//1. set transform of CurrentlyHeldObject to be child of nothing
 		//2. Set other object as not kinematic and apply gravity
 		//3. set CurrentlyHeldObject as null
-
-	
 		
 		if (CurrentlyHeldObject != null)
 		{
 			CurrentlyHeldObject.transform.SetParent(null);
 			CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = true;
 			CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = false;
-			
+			CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = true;
+
 			CurrentlyHeldObject = null;
 			
 			return true;
@@ -107,6 +129,8 @@ public class PlayerInventory : MonoBehaviour
 					Debug.Log("Hit " + rayHit);
 					rayHit.transform.SetParent(this.transform);
 					CurrentlyHeldObject = rayHit.transform.gameObject;
+					
+					CurrentlyHeldObject.layer = 2;
 					return true;
 				}
 				else

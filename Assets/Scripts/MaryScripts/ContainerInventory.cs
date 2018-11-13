@@ -39,7 +39,6 @@ public class ContainerInventory : MonoBehaviour {
 		 * 		}
 		 * }
 		 *
-		 */
 		if (other.tag== "Tomato")
 		{
 			if (addVegetable(1))
@@ -64,7 +63,7 @@ public class ContainerInventory : MonoBehaviour {
 			{
 				Debug.Log("onion failed to add!!!");
 			}
-		}		
+		}	*/	
 	}
 
 	//tries to add the veggie to the pot and returns true if successful; if pot is full, returns false;
