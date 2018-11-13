@@ -128,22 +128,31 @@ public class PlayerInventory : MonoBehaviour
 
 		if (CurrentlyHeldObject == null)
 		{
-			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 1f))
+			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 1f)||
+			    Physics.Raycast(transform.position-Vector3.down, transform.TransformDirection(Vector3.forward), out rayHit, 1f))
 			{
-				if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Tomato")
+				//fix this later to be more efficient
+				for (int i = 0; i < acceptableTag.Length; i++)
 				{
-					Debug.Log("Hit " + rayHit);
-					rayHit.transform.SetParent(this.transform);
-					CurrentlyHeldObject = rayHit.transform.gameObject;
+					if (rayHit.transform.GetComponent<MeshRenderer>().tag == acceptableTag[i])
+					{
+						Debug.Log("Hit " + rayHit);
+						rayHit.transform.SetParent(this.transform);
+						CurrentlyHeldObject = rayHit.transform.gameObject;
+						CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
+						CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
 					
-					CurrentlyHeldObject.layer = 2;
-					return true;
+						CurrentlyHeldObject.layer = 2;
+						return true;
+					}
+					else
+					{
+						Debug.Log("Can't pick up " + rayHit.transform.name + rayHit.transform.tag);
+						return false;
+					}
+
 				}
-				else
-				{
-					Debug.Log("Can't pick up " + rayHit.transform.name);
-					return false;
-				}
+
 			}
 		}
 
