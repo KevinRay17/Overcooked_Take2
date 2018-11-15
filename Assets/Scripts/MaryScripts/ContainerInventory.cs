@@ -28,47 +28,6 @@ public class ContainerInventory : MonoBehaviour {
 		objectsInContainer = new List<GameObject>();
 	}
 
-	//Maybe switch to raycast system later on?
-	void OnTriggerEnter(Collider other)
-	{
-		//switch system so that it goes thru an array of accepted string tags
-		//Maybe more efficient to check if pot is full first?
-		/*
-		 * for(int i = 0; i < tagList.length(); i++){
-		 * 		if(other.tag == tagList[i]){
-		 *			if(addVegetable(i)){
-		 *				add veggie
-		 * 			}
-		 * 		}
-		 * }
-		 *
-		if (other.tag== "Tomato")
-		{
-			if (addVegetable(1))
-			{
-				Debug.Log("tomato added!!!");
-				Destroy(other.gameObject);
-			}
-			else
-			{
-				Debug.Log("tomato failed to add!!!");
-			}
-		}
-		else if (other.tag == "Onion")
-		{
-			if (addVegetable(2))
-			{
-				Debug.Log("oinion added!!!");
-				Destroy(other.gameObject);
-
-			}
-			else
-			{
-				Debug.Log("onion failed to add!!!");
-			}
-		}	*/	
-	}
-
 	//tries to add the veggie to the pot and returns true if successful; if pot is full, returns false;
 	public bool addVegetable(int vegetable)
 	{
