@@ -148,9 +148,7 @@ public class PlayerInventory : MonoBehaviour
 					else
 					{
 						Debug.Log("Can't pick up " + rayHit.transform.name + rayHit.transform.tag);
-						return false;
 					}
-
 				}
 
 			}
