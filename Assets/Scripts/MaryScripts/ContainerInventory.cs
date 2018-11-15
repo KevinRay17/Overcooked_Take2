@@ -16,10 +16,15 @@ public class ContainerInventory : MonoBehaviour {
 
 	public string[] acceptedTag = new string[2];
 	
+	
+	
 	//sort objects by tag
 
 	void Start ()
 	{
+		objectsInContainerIntVersion[0] = -1;
+		objectsInContainerIntVersion[1] = -1;
+		objectsInContainerIntVersion[2] = -1;
 		objectsInContainer = new List<GameObject>();
 	}
 
@@ -37,7 +42,6 @@ public class ContainerInventory : MonoBehaviour {
 		 * 		}
 		 * }
 		 *
-		 */
 		if (other.tag== "Tomato")
 		{
 			if (addVegetable(1))
@@ -62,16 +66,16 @@ public class ContainerInventory : MonoBehaviour {
 			{
 				Debug.Log("onion failed to add!!!");
 			}
-		}		
+		}	*/	
 	}
 
 	//tries to add the veggie to the pot and returns true if successful; if pot is full, returns false;
-	private bool addVegetable(int vegetable)
+	public bool addVegetable(int vegetable)
 	{
 		
 		for (int i = 0; i < objectsInContainerIntVersion.Length; i++)
 		{
-			if (objectsInContainerIntVersion[i] == 0)
+			if (objectsInContainerIntVersion[i] == -1)
 			{
 				objectsInContainerIntVersion[i] = vegetable;
 				return true;
@@ -86,7 +90,7 @@ public class ContainerInventory : MonoBehaviour {
 	{
 		for (int i = 0; i < objectsInContainerIntVersion.Length; i++)
 		{
-			objectsInContainerIntVersion[i] = 0;
+			objectsInContainerIntVersion[i] = -1;
 		}
 	}
 	
