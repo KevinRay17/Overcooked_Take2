@@ -44,7 +44,12 @@ public class PlayerInventory : MonoBehaviour
 		{
 			CurrentlyHeldObject = other.gameObject;
 			other.GetComponent<Transform>().SetParent(this.transform);
+			if (CurrentlyHeldObject.tag == "Tomato")
 			other.GetComponent<SphereCollider>().enabled = false;
+			else
+			{
+				other.GetComponent<MeshCollider>().enabled = false;
+			}
 		}
 		
 	}
@@ -99,7 +104,7 @@ public class PlayerInventory : MonoBehaviour
 		else
 		{
 			dropObject();
-			Debug.Log("Dropping obejct " + rayHit.transform.name);
+//			Debug.Log("Dropping object " + rayHit.transform.name);
 		}
 	}
 	public bool dropObject()
@@ -113,7 +118,12 @@ public class PlayerInventory : MonoBehaviour
 			CurrentlyHeldObject.transform.SetParent(null);
 			CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = true;
 			CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = false;
-			CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = true;
+			if (CurrentlyHeldObject.tag == "Tomato")
+				CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = true;
+			else
+			{
+				CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = true;
+			}
 
 			CurrentlyHeldObject = null;
 			
