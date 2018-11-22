@@ -12,8 +12,29 @@
     <session id="1622189760">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="1591" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="1591" />
         </counts>
       </usages-collector>
     </session>
@@ -49,48 +70,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/SaminaScripts/NewCamera.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="65">
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
               <folding>
-                <marker date="1541777373069" expanded="false" signature="6:78" ph="..." />
-                <marker date="1541777373069" expanded="true" signature="118:1905" ph="{...}" />
-                <marker date="1541777373069" expanded="true" signature="362:1903" ph="{...}" />
-                <marker date="1541777373069" expanded="true" signature="937:992" ph="{...}" />
+                <marker date="1542231012601" expanded="false" signature="6:78" ph="..." />
+                <marker date="1542231012601" expanded="true" signature="118:1905" ph="{...}" />
+                <marker date="1542231012601" expanded="true" signature="362:1903" ph="{...}" />
+                <marker date="1542231012601" expanded="true" signature="937:992" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AISpawner.cs">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/SaminaScripts/VeggieSpawner.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="83" selection-start-line="22" selection-start-column="83" selection-end-line="22" selection-end-column="83" />
+            <state relative-caret-position="185">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
               <folding>
-                <marker date="1541696686956" expanded="false" signature="6:78" ph="..." />
-                <marker date="1541696686956" expanded="true" signature="119:643" ph="{...}" />
-                <marker date="1541696686956" expanded="true" signature="245:313" ph="{...}" />
-                <marker date="1541696686956" expanded="true" signature="367:641" ph="{...}" />
-                <marker date="1541696686956" expanded="true" signature="519:638" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AI.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-              <folding>
-                <marker date="1541697307625" expanded="false" signature="6:78" ph="..." />
-                <marker date="1541697307625" expanded="true" signature="112:487" ph="{...}" />
-                <marker date="1541697307625" expanded="true" signature="229:236" ph="{...}" />
-                <marker date="1541697307625" expanded="true" signature="290:485" ph="{...}" />
-                <marker date="1541697307625" expanded="true" signature="450:482" ph="{...}" />
+                <marker date="1542302262248" expanded="true" signature="6:145" ph="..." />
+                <marker date="1542302262248" expanded="true" signature="146:287" ph="/* USAGE: put this code onto a Tomato Spawner ... */" />
+                <marker date="1542302262248" expanded="true" signature="331:1373" ph="{...}" />
+                <marker date="1542302262248" expanded="true" signature="581:587" ph="{...}" />
+                <marker date="1542302262248" expanded="true" signature="631:766" ph="{...}" />
+                <marker date="1542302262248" expanded="true" signature="829:1371" ph="{...}" />
+                <marker date="1542302262248" expanded="true" signature="1160:1256" ph="/* shoot the raycast, and if it returns true, spawn the veggie ... */" />
+                <marker date="1542302262248" expanded="true" signature="1345:1365" ph="{...}" />
+                <marker date="1542302262248" expanded="true" signature="1374:1582" ph="/* Maybe switch to raycast system later on? ... */" />
+                <marker date="1542302262248" expanded="true" signature="1583:2081" ph="/* for(int i = 0; i &lt; tagList.length(); i++){ ... */" />
               </folding>
             </state>
           </provider>
@@ -99,21 +109,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/PlayerMovement.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
+            <state relative-caret-position="335">
               <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
               <folding>
-                <marker date="1541777292448" expanded="false" signature="6:99" ph="..." />
-                <marker date="1541777292448" expanded="true" signature="144:1573" ph="{...}" />
-                <marker date="1541777292448" expanded="true" signature="282:289" ph="{...}" />
-                <marker date="1541777292448" expanded="true" signature="344:374" ph="{...}" />
-                <marker date="1541777292448" expanded="true" signature="399:1571" ph="{...}" />
-                <marker date="1541777292448" expanded="true" signature="454:490" ph="{...}" />
-                <marker date="1541777292448" expanded="true" signature="493:535" ph="/* Move ... */" />
-                <marker date="1541777292448" expanded="true" signature="603:1568" ph="{...}" />
-                <marker date="1541777292448" expanded="true" signature="850:944" ph="{...}" />
-                <marker date="1541777292448" expanded="true" signature="1028:1071" ph="{...}" />
-                <marker date="1541777292448" expanded="true" signature="1217:1264" ph="{...}" />
-                <marker date="1541777292448" expanded="true" signature="1272:1300" ph="{...}" />
+                <marker date="1541693453555" expanded="false" signature="6:99" ph="..." />
+                <marker date="1541693453555" expanded="true" signature="144:1573" ph="{...}" />
+                <marker date="1541693453555" expanded="true" signature="282:289" ph="{...}" />
+                <marker date="1541693453555" expanded="true" signature="344:374" ph="{...}" />
+                <marker date="1541693453555" expanded="true" signature="399:1571" ph="{...}" />
+                <marker date="1541693453555" expanded="true" signature="454:490" ph="{...}" />
+                <marker date="1541693453555" expanded="true" signature="493:535" ph="/* Move ... */" />
+                <marker date="1541693453555" expanded="true" signature="603:1568" ph="{...}" />
+                <marker date="1541693453555" expanded="true" signature="850:944" ph="{...}" />
+                <marker date="1541693453555" expanded="true" signature="1028:1071" ph="{...}" />
+                <marker date="1541693453555" expanded="true" signature="1217:1264" ph="{...}" />
+                <marker date="1541693453555" expanded="true" signature="1272:1300" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -125,10 +135,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaminaScripts/VeggieSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaminaScripts/NewCamera.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AISpawner.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -137,6 +147,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/KevinScripts/AI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/KevinScripts/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaminaScripts/NewCamera.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaminaScripts/VeggieSpawner.cs" />
       </list>
     </option>
   </component>
@@ -146,11 +157,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="480" />
-    <option name="y" value="235" />
-    <option name="width" value="2880" />
-    <option name="height" value="1435" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="171" />
+    <option name="y" value="160" />
+    <option name="width" value="615" />
+    <option name="height" value="724" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -158,12 +169,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="UnityExplorer">
-        <option name="show-hidden-items" value="false" />
-      </pane>
-      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="UnityExplorer">
+        <option name="show-hidden-items" value="false" />
       </pane>
     </panes>
   </component>
@@ -213,11 +224,12 @@
       <updated>1541690503018</updated>
       <workItem from="1541693584236" duration="3576000" />
       <workItem from="1541774927648" duration="3112000" />
+      <workItem from="1542299286283" duration="2980000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6688000" />
+    <option name="totallyTimeSpent" value="9668000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -229,9 +241,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25285044" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.024161074" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -277,64 +289,78 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Assets/NewCamera.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AISpawner.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AISpawner.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AI.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="83" selection-start-line="22" selection-start-column="83" selection-end-line="22" selection-end-column="83" />
+        <state relative-caret-position="230">
+          <caret line="50" column="13" lean-forward="true" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
           <folding>
-            <marker date="1541696686956" expanded="false" signature="6:78" ph="..." />
-            <marker date="1541696686956" expanded="true" signature="119:643" ph="{...}" />
-            <marker date="1541696686956" expanded="true" signature="245:313" ph="{...}" />
-            <marker date="1541696686956" expanded="true" signature="367:641" ph="{...}" />
-            <marker date="1541696686956" expanded="true" signature="519:638" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/AI.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-          <folding>
-            <marker date="1541697307625" expanded="false" signature="6:78" ph="..." />
-            <marker date="1541697307625" expanded="true" signature="112:487" ph="{...}" />
-            <marker date="1541697307625" expanded="true" signature="229:236" ph="{...}" />
-            <marker date="1541697307625" expanded="true" signature="290:485" ph="{...}" />
-            <marker date="1541697307625" expanded="true" signature="450:482" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/PlayerMovement.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
-          <folding>
-            <marker date="1541777292448" expanded="false" signature="6:99" ph="..." />
-            <marker date="1541777292448" expanded="true" signature="144:1573" ph="{...}" />
-            <marker date="1541777292448" expanded="true" signature="282:289" ph="{...}" />
-            <marker date="1541777292448" expanded="true" signature="344:374" ph="{...}" />
-            <marker date="1541777292448" expanded="true" signature="399:1571" ph="{...}" />
-            <marker date="1541777292448" expanded="true" signature="454:490" ph="{...}" />
-            <marker date="1541777292448" expanded="true" signature="493:535" ph="/* Move ... */" />
-            <marker date="1541777292448" expanded="true" signature="603:1568" ph="{...}" />
-            <marker date="1541777292448" expanded="true" signature="850:944" ph="{...}" />
-            <marker date="1541777292448" expanded="true" signature="1028:1071" ph="{...}" />
-            <marker date="1541777292448" expanded="true" signature="1217:1264" ph="{...}" />
-            <marker date="1541777292448" expanded="true" signature="1272:1300" ph="{...}" />
+            <marker date="1542231012598" expanded="false" signature="6:78" ph="..." />
+            <marker date="1542231012598" expanded="true" signature="128:2515" ph="{...}" />
+            <marker date="1542231012598" expanded="true" signature="492:665" ph="{...}" />
+            <marker date="1542231012598" expanded="true" signature="747:1447" ph="{...}" />
+            <marker date="1542231012598" expanded="true" signature="753:878" ph="/* switch system so that it goes thru an array of accepted string tags ... */" />
+            <marker date="1542231012598" expanded="true" signature="881:1443" ph="/* for(int i = 0; i &lt; tagList.length(); i++){ ... */" />
+            <marker date="1542231012598" expanded="true" signature="1590:1862" ph="{...}" />
+            <marker date="1542231012598" expanded="true" signature="1660:1790" ph="{...}" />
+            <marker date="1542231012598" expanded="true" signature="1710:1786" ph="{...}" />
+            <marker date="1542231012598" expanded="true" signature="1963:2082" ph="{...}" />
+            <marker date="1542231012598" expanded="true" signature="2030:2079" ph="{...}" />
+            <marker date="1542231012598" expanded="true" signature="2086:2513" ph="/* Further implementation ... */" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/SaminaScripts/NewCamera.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="65">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
           <folding>
-            <marker date="1541777373069" expanded="false" signature="6:78" ph="..." />
-            <marker date="1541777373069" expanded="true" signature="118:1905" ph="{...}" />
-            <marker date="1541777373069" expanded="true" signature="362:1903" ph="{...}" />
-            <marker date="1541777373069" expanded="true" signature="937:992" ph="{...}" />
+            <marker date="1542231012601" expanded="false" signature="6:78" ph="..." />
+            <marker date="1542231012601" expanded="true" signature="118:1905" ph="{...}" />
+            <marker date="1542231012601" expanded="true" signature="362:1903" ph="{...}" />
+            <marker date="1542231012601" expanded="true" signature="937:992" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/KevinScripts/PlayerMovement.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+          <folding>
+            <marker date="1541693453555" expanded="false" signature="6:99" ph="..." />
+            <marker date="1541693453555" expanded="true" signature="144:1573" ph="{...}" />
+            <marker date="1541693453555" expanded="true" signature="282:289" ph="{...}" />
+            <marker date="1541693453555" expanded="true" signature="344:374" ph="{...}" />
+            <marker date="1541693453555" expanded="true" signature="399:1571" ph="{...}" />
+            <marker date="1541693453555" expanded="true" signature="454:490" ph="{...}" />
+            <marker date="1541693453555" expanded="true" signature="493:535" ph="/* Move ... */" />
+            <marker date="1541693453555" expanded="true" signature="603:1568" ph="{...}" />
+            <marker date="1541693453555" expanded="true" signature="850:944" ph="{...}" />
+            <marker date="1541693453555" expanded="true" signature="1028:1071" ph="{...}" />
+            <marker date="1541693453555" expanded="true" signature="1217:1264" ph="{...}" />
+            <marker date="1541693453555" expanded="true" signature="1272:1300" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/SaminaScripts/VeggieSpawner.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <marker date="1542302262248" expanded="true" signature="6:145" ph="..." />
+            <marker date="1542302262248" expanded="true" signature="146:287" ph="/* USAGE: put this code onto a Tomato Spawner ... */" />
+            <marker date="1542302262248" expanded="true" signature="331:1373" ph="{...}" />
+            <marker date="1542302262248" expanded="true" signature="581:587" ph="{...}" />
+            <marker date="1542302262248" expanded="true" signature="631:766" ph="{...}" />
+            <marker date="1542302262248" expanded="true" signature="829:1371" ph="{...}" />
+            <marker date="1542302262248" expanded="true" signature="1160:1256" ph="/* shoot the raycast, and if it returns true, spawn the veggie ... */" />
+            <marker date="1542302262248" expanded="true" signature="1345:1365" ph="{...}" />
+            <marker date="1542302262248" expanded="true" signature="1374:1582" ph="/* Maybe switch to raycast system later on? ... */" />
+            <marker date="1542302262248" expanded="true" signature="1583:2081" ph="/* for(int i = 0; i &lt; tagList.length(); i++){ ... */" />
           </folding>
         </state>
       </provider>
