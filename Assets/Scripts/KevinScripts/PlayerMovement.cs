@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +11,11 @@ public class PlayerMovement : MonoBehaviour
 	public float Timer = 0;
 
 	public float dashMult = 0;
+	public Ray myRay;
+	public RaycastHit myRCH;
+
+	public PlayerInventory playerInventory;
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -17,10 +23,31 @@ public class PlayerMovement : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-     
+
+		if (Input.GetKeyDown(playerInventory.takeObject))
+		{
+			SnapToTable();
+		}
 		ControllPlayer();
 	}
 
+	//Snap Held Object to Table Position
+	void SnapToTable()
+	{
+		Debug.Log("RUN");
+		if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out myRCH, 2.2f)) {
+			Debug.Log("MyRay");
+			if (myRCH.collider.gameObject.CompareTag("Table") && playerInventory.CurrentlyHeldObject != null)
+			{
+				Debug.Log("MyHitTable");
+				playerInventory.CurrentlyHeldObject.transform.SetParent(myRCH.collider.gameObject.transform);
+				playerInventory.CurrentlyHeldObject.transform.localPosition = new Vector3(0,myRCH.collider.gameObject.transform.position.y +1f,0);
+				playerInventory.dropObjectCheck();
+				playerInventory.dropObject();
+				
+			}
+		}
+	}
 
 	void ControllPlayer()
 	{
