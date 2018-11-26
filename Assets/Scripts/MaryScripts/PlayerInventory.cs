@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -19,6 +20,10 @@ public class PlayerInventory : MonoBehaviour
 	public KeyCode takeObject;
 
 	public bool HoldingThing;
+	public RaycastHit myRCH;
+
+	public GameObject TomatoClone;
+	public GameObject OnionClone;
 	
 
 	//Depending on the system, maybe it should be a string array or just a bunch of tags
@@ -29,6 +34,7 @@ public class PlayerInventory : MonoBehaviour
 		
 		if (Input.GetKeyDown(takeObject))
 		{
+			SnapToTable();
 			/*if (CurrentlyHeldObject == null)
 			{
 				Debug.Log("not holding");
@@ -136,7 +142,12 @@ public class PlayerInventory : MonoBehaviour
 		if (CurrentlyHeldObject != null)
 		{
 			CurrentlyHeldObject.layer = 0;
-			CurrentlyHeldObject.transform.SetParent(null);
+			//Check if player is holding the gameObject
+			if (CurrentlyHeldObject.transform.IsChildOf(gameObject.transform))
+			{
+				CurrentlyHeldObject.transform.SetParent(null);
+			}
+
 			CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = true;
 			CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = false;
 			if (CurrentlyHeldObjectCode > 1)
@@ -156,7 +167,7 @@ public class PlayerInventory : MonoBehaviour
 			//}
 			CurrentlyHeldObject = null;
 			HoldingThing = false;
-			Debug.Log(CurrentlyHeldObject);
+			//Debug.Log(CurrentlyHeldObject);
 			
 			return true;
 		}
@@ -195,6 +206,14 @@ public class PlayerInventory : MonoBehaviour
 					Debug.Log(rayHit.collider.gameObject);
 					CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
 					CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
+					if (CurrentlyHeldObjectCode > 1)
+					{
+						CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = false;
+					}
+					else
+					{
+						CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
+					}
 
 					CurrentlyHeldObject.layer = 2;
 					CurrentlyHeldObject.transform.localPosition= new Vector3(0,0, 1.5f); 
@@ -220,5 +239,93 @@ public class PlayerInventory : MonoBehaviour
 	private void OnCollisionEnter(Collision other)
 	{
 		
+	}
+	void SnapToTable()
+	{
+		//Check what the RayCast hits and if the table is empty and you are holding an object, put held object on the table
+		if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out myRCH, 2.2f)) {
+
+			if ((myRCH.collider.gameObject.CompareTag("Table") || myRCH.collider.gameObject.CompareTag("TSpawner") || myRCH.collider.gameObject.CompareTag("OSpawner") 
+			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2")) && CurrentlyHeldObject != null && myRCH.collider.gameObject.transform.childCount == 0) {
+				
+				CurrentlyHeldObject.transform.SetParent(myRCH.collider.gameObject.transform);
+				CurrentlyHeldObject.transform.localPosition = new Vector3(0,myRCH.collider.gameObject.transform.position.y +1f,0);
+				dropObjectCheck();
+				dropObject();
+				
+			}
+			
+			//Pick Up from Spawner Tomato
+			//If the Spawner has nothing on it then spawn new food and take it into hands
+			else if (myRCH.collider.gameObject.CompareTag("TSpawner") && CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount == 0)
+			{
+				GameObject TClone = Instantiate(TomatoClone, new Vector3(0, 1, 0), Quaternion.identity);
+				TClone.transform.SetParent(gameObject.transform);
+				CurrentlyHeldObject = TClone.gameObject;
+				CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
+				CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
+				if (CurrentlyHeldObjectCode > 1)
+				{
+					CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = false;
+				}
+				else
+				{
+					CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
+				}
+
+				CurrentlyHeldObject.layer = 2;
+				CurrentlyHeldObject.transform.localPosition= new Vector3(0,0, 1.5f); 
+
+				HoldingThing = true;
+			}
+			//Pick Up from Spawner Onion
+			else if (myRCH.collider.gameObject.CompareTag("OSpawner") && CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount == 0)
+			{
+				GameObject OClone = Instantiate(OnionClone, new Vector3(0, 1, 0), Quaternion.identity);
+				OClone.transform.SetParent(gameObject.transform);
+				CurrentlyHeldObject = OClone.gameObject;
+				CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
+				CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
+				if (CurrentlyHeldObjectCode > 1)
+				{
+					CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = false;
+				}
+				else
+				{
+					CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
+				}
+
+				CurrentlyHeldObject.layer = 2;
+				CurrentlyHeldObject.transform.localPosition= new Vector3(0,0, 1.5f); 
+
+				HoldingThing = true;
+			}
+			//If you aren't holding anything and the table has something on it, take it into hands
+			else if ((myRCH.collider.gameObject.CompareTag("Table") || myRCH.collider.gameObject.CompareTag("TSpawner") ||
+			     myRCH.collider.gameObject.CompareTag("OSpawner")
+			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2")) && CurrentlyHeldObject == null &&
+			    myRCH.collider.gameObject.transform.childCount > 0)
+			{
+				CurrentlyHeldObject = myRCH.collider.gameObject.transform.GetChild(0).gameObject;
+				CurrentlyHeldObject.transform.SetParent(gameObject.transform);
+				CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
+				CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
+				if (CurrentlyHeldObjectCode > 1)
+				{
+					CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = false;
+				}
+				else
+				{
+					CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
+				}
+
+				CurrentlyHeldObject.layer = 2;
+				CurrentlyHeldObject.transform.localPosition= new Vector3(0,0, 1.5f); 
+
+
+				HoldingThing = true;
+				
+			}
+		}
 	}
 }

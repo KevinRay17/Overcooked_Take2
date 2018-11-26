@@ -10,6 +10,7 @@
           <e p="KevinScripts" t="Include">
             <e p="AI.cs" t="Include" />
             <e p="AISpawner.cs" t="Include" />
+            <e p="CuttingBoardScript.cs" t="Include" />
             <e p="Player2Movement.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
           </e>
