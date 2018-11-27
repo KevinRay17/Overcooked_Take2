@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -17,13 +16,11 @@ public class PlayerInventory : MonoBehaviour
 	// 2 : Pot
 	// 3 : Plate
 	
+	//later: change rayhit.transform to rayhit.collider bc kevin's problem
+	
 	public KeyCode takeObject;
 
 	public bool HoldingThing;
-	public RaycastHit myRCH;
-
-	public GameObject TomatoClone;
-	public GameObject OnionClone;
 	
 
 	//Depending on the system, maybe it should be a string array or just a bunch of tags
@@ -34,18 +31,6 @@ public class PlayerInventory : MonoBehaviour
 		
 		if (Input.GetKeyDown(takeObject))
 		{
-			SnapToTable();
-			/*if (CurrentlyHeldObject == null)
-			{
-				Debug.Log("not holding");
-				pickupObject();
-			}
-			else
-			{
-				Debug.Log("hands r full ");
-
-				dropObjectCheck();
-			}*/
 			
 			if (!HoldingThing)
 			{
@@ -70,7 +55,6 @@ public class PlayerInventory : MonoBehaviour
 		//if (CurrentlyHeldObject != null)
 		if(!HoldingThing)
 		{
-			Debug.Log("HOLD");
 			CurrentlyHeldObject = other.gameObject;
 			other.GetComponent<Transform>().SetParent(this.transform);
 			other.GetComponent<SphereCollider>().enabled = false;
@@ -88,12 +72,11 @@ public class PlayerInventory : MonoBehaviour
 		
 		//future edits: if you're holding a pot and you wanna hold a different pot, what do???
 		Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.magenta);
-		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 2.2f))
+		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 1f))
 		{
 			Debug.Log("Hit " + rayHit.transform.name);
 			if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Pot")
-
-		{
+			{
 				
 				if (CurrentlyHeldObject != null)
 				{
@@ -115,12 +98,13 @@ public class PlayerInventory : MonoBehaviour
 								GameObject temp = CurrentlyHeldObject;
 								CurrentlyHeldObject = null;
 								CurrentlyHeldObjectCode = 500;
+								HoldingThing = false;
 								Destroy(temp);
 							}
 						}
 					}
 				}
-			}
+			}	
 			else
 			{
 				//Swap object
@@ -130,48 +114,36 @@ public class PlayerInventory : MonoBehaviour
 		else
 		{
 			dropObject();
-			//Debug.Log("Dropping object " + rayHit.transform.name);
+			Debug.Log("Dropping obejct " + rayHit.transform.name);
 		}
 	}
 	
-	public bool dropObject()
+	public void dropObject()
 	{
 		//1. set transform of CurrentlyHeldObject to be child of nothing
 		//2. Set other object as not kinematic and apply gravity
 		//3. set CurrentlyHeldObject as null
+		
 		if (CurrentlyHeldObject != null)
 		{
-			CurrentlyHeldObject.layer = 0;
-			//Check if player is holding the gameObject
-			if (CurrentlyHeldObject.transform.IsChildOf(gameObject.transform))
-			{
-				CurrentlyHeldObject.transform.SetParent(null);
-			}
-
+			CurrentlyHeldObject.transform.SetParent(null);
 			CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = true;
 			CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = false;
-			if (CurrentlyHeldObjectCode > 1)
-			{
-				CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = true;
-				CurrentlyHeldObjectCode = 0;
-			}
-			else
-			{
-				CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = true;
-			}
 			
+			//check to see if object is round or not for the collider
+			if(CurrentlyHeldObjectCode > 1)
+			CurrentlyHeldObject.GetComponent<BoxCollider>().enabled = true;
+			else
+			CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = true;
+			
+			
+			CurrentlyHeldObject.layer = 0;
 
-			//if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Table")
-			//{
-			//	CurrentlyHeldObject.transform.position = rayHit.transform.position;
-			//}
 			CurrentlyHeldObject = null;
 			HoldingThing = false;
-			//Debug.Log(CurrentlyHeldObject);
 			
-			return true;
+			Debug.Log(CurrentlyHeldObject + "is null!!!!!!!!!!");
 		}
-		return false;
 	}
 
 	public bool pickupObject()
@@ -180,50 +152,30 @@ public class PlayerInventory : MonoBehaviour
 
 		if (CurrentlyHeldObject == null)
 		{
-			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 2.2f))
+			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 1f)||
+			    Physics.Raycast(transform.position-Vector3.down, transform.TransformDirection(Vector3.forward), out rayHit, 1f))
 			{
-				bool isAcceptable = false;
 				//fix this later to be more efficient
 				for (int i = 0; i < acceptableTag.Length; i++)
-				{ 
+				{
 					if (rayHit.transform.GetComponent<MeshRenderer>().tag == acceptableTag[i])
 					{
-						isAcceptable = true;
-						break;
-					}
-
-					if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Pot")
-					{
-						CurrentlyHeldObjectCode = 500;
-					}
-				}
-				if (isAcceptable)
-				{
-					Debug.Log("Hit " + rayHit);
-					rayHit.transform.SetParent(gameObject.transform);
-					CurrentlyHeldObject = rayHit.collider.gameObject;
+						Debug.Log("Hit " + rayHit);
+						rayHit.transform.SetParent(this.transform);
+						CurrentlyHeldObject = rayHit.transform.gameObject;
+						CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
+						CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
 					
-					Debug.Log(rayHit.collider.gameObject);
-					CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
-					CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
-					if (CurrentlyHeldObjectCode > 1)
-					{
-						CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = false;
+						CurrentlyHeldObject.layer = 2;
+						
+						HoldingThing = true;
+						
+						return true;
 					}
 					else
 					{
-						CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
+						Debug.Log("Can't pick up " + rayHit.transform.name + rayHit.transform.tag);
 					}
-
-					CurrentlyHeldObject.layer = 2;
-					CurrentlyHeldObject.transform.localPosition= new Vector3(0,0, 1.5f); 
-
-					HoldingThing = true;
-					return true;
-				}
-				else
-				{
-					Debug.Log("Can't pick up " + rayHit.transform.name + rayHit.transform.tag);
 				}
 
 			}
@@ -239,97 +191,5 @@ public class PlayerInventory : MonoBehaviour
 	private void OnCollisionEnter(Collision other)
 	{
 		
-	}
-	void SnapToTable()
-	{
-		//Check what the RayCast hits and if the table is empty and you are holding an object, put held object on the table
-		if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out myRCH, 2.2f)) {
-
-			if ((myRCH.collider.gameObject.CompareTag("Table") || myRCH.collider.gameObject.CompareTag("TSpawner") || myRCH.collider.gameObject.CompareTag("OSpawner") 
-			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2")) && CurrentlyHeldObject != null && myRCH.collider.gameObject.transform.childCount == 0) {
-				
-				CurrentlyHeldObject.transform.SetParent(myRCH.collider.gameObject.transform);
-				CurrentlyHeldObject.transform.localPosition = new Vector3(0,myRCH.collider.gameObject.transform.position.y +1f,0);
-				dropObjectCheck();
-				dropObject();
-				
-			}
-			
-			//Pick Up from Spawner Tomato
-			//If the Spawner has nothing on it then spawn new food and take it into hands
-			else if (myRCH.collider.gameObject.CompareTag("TSpawner") && CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount == 0)
-			{
-				GameObject TClone = Instantiate(TomatoClone, new Vector3(0, 1, 0), Quaternion.identity);
-				TClone.transform.SetParent(gameObject.transform);
-				CurrentlyHeldObject = TClone.gameObject;
-				CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
-				CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
-				if (CurrentlyHeldObjectCode > 1)
-				{
-					CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = false;
-				}
-				else
-				{
-					CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
-				}
-
-				CurrentlyHeldObject.layer = 2;
-				CurrentlyHeldObject.transform.localPosition= new Vector3(0,0, 1.5f); 
-
-				HoldingThing = true;
-			}
-			//Pick Up from Spawner Onion
-			else if (myRCH.collider.gameObject.CompareTag("OSpawner") && CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount == 0)
-			{
-				GameObject OClone = Instantiate(OnionClone, new Vector3(0, 1, 0), Quaternion.identity);
-				OClone.transform.SetParent(gameObject.transform);
-				CurrentlyHeldObject = OClone.gameObject;
-				CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
-				CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
-				if (CurrentlyHeldObjectCode > 1)
-				{
-					CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = false;
-				}
-				else
-				{
-					CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
-				}
-
-				CurrentlyHeldObject.layer = 2;
-				CurrentlyHeldObject.transform.localPosition= new Vector3(0,0, 1.5f); 
-
-				HoldingThing = true;
-			}
-			//If you aren't holding anything and the table has something on it, take it into hands
-			else if ((myRCH.collider.gameObject.CompareTag("Table") || myRCH.collider.gameObject.CompareTag("TSpawner") ||
-			     myRCH.collider.gameObject.CompareTag("OSpawner")
-			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2")) && CurrentlyHeldObject == null &&
-			    myRCH.collider.gameObject.transform.childCount > 0)
-			{
-				if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().tag == "Pot")
-				{
-					CurrentlyHeldObjectCode = 500;
-				}
-				CurrentlyHeldObject = myRCH.collider.gameObject.transform.GetChild(0).gameObject;
-				CurrentlyHeldObject.transform.SetParent(gameObject.transform);
-				CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
-				CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
-				if (CurrentlyHeldObjectCode > 1)
-				{
-					CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = false;
-				}
-				else
-				{
-					CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
-				}
-
-				CurrentlyHeldObject.layer = 2;
-				CurrentlyHeldObject.transform.localPosition= new Vector3(0,0, 1.5f); 
-
-
-				HoldingThing = true;
-				
-			}
-		}
 	}
 }
