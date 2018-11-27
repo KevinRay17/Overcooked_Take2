@@ -306,6 +306,10 @@ public class PlayerInventory : MonoBehaviour
 			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2")) && CurrentlyHeldObject == null &&
 			    myRCH.collider.gameObject.transform.childCount > 0)
 			{
+				if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().tag == "Pot")
+				{
+					CurrentlyHeldObjectCode = 500;
+				}
 				CurrentlyHeldObject = myRCH.collider.gameObject.transform.GetChild(0).gameObject;
 				CurrentlyHeldObject.transform.SetParent(gameObject.transform);
 				CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;

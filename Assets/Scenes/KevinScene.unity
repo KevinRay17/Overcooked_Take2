@@ -1503,8 +1503,8 @@ MonoBehaviour:
   playerInventory: {fileID: 1089448740}
   ChopTimer1: 0
   ChopTimer2: 0
-  ChopBar1: {fileID: 0}
-  ChopBar2: {fileID: 0}
+  ChopBar1: {fileID: 1297126128}
+  ChopBar2: {fileID: 866155097}
 --- !u!1 &1120722547
 GameObject:
   m_ObjectHideFlags: 0
