@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Pot
+  - Tomato
+  - Table
+  - TSpawner
+  - OSpawner
+  - Onion
+  - CuttingBoard
+  - CuttingBoard2
   layers:
   - Default
   - TransparentFX
