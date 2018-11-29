@@ -15,9 +15,11 @@
             <e p="ContainerInventory.cs" t="Include" />
             <e p="PlateInventory.cs" t="Include" />
             <e p="PlayerInventory.cs" t="Include" />
+            <e p="PotUI.cs" t="Include" />
             <e p="TempPlayerMovement.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
           </e>
+          <e p="OrderGeneration.cs" t="Include" />
           <e p="SaminaScripts" t="Include">
             <e p="NewCamera.cs" t="Include" />
           </e>
