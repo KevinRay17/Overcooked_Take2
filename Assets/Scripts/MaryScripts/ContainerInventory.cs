@@ -7,9 +7,16 @@ public class ContainerInventory : MonoBehaviour {
 	//Maybe shouldn't use list of gameobejcts bc you cant take something out of the pot
 
 
+	public int cooktime = 45;
+	private int cookCountDown;
+	
 	public GameObject[] potVariations;
 	
 	public List<GameObject> objectsInContainer;
+
+	//use this to start the enum cooking
+	public bool potFull = false;
+	private bool enumRunning;
 
 	//Change this to a better name later lol
 	public int[] objectsInContainerIntVersion = new int[3];
@@ -21,6 +28,15 @@ public class ContainerInventory : MonoBehaviour {
 		set
 		{
 			//start or resest the timer
+			if (enumRunning)
+			{
+				cookCountDown += 15;
+			}
+			else
+			{
+				StartCoroutine(Cooking());
+			}
+			objectsInContainerIntVersion = value;
 		}
 	}
 	
@@ -80,7 +96,25 @@ public class ContainerInventory : MonoBehaviour {
 	{
 
 		WaitForSeconds wait = new WaitForSeconds(1);
-		int timerCountdown = 0;
+		cookCountDown = cooktime;
+
+		enumRunning = true;
+		if (cookCountDown > 0)
+		{
+			Debug.Log("cooking time" + cookCountDown);
+			if (potFull)
+			{
+				cookCountDown--;
+			}
+			else
+			{
+				yield break;
+			}
+		}
+		else
+		{
+			Debug.Log("AHHH BURNING FIRE");
+		}
 
 		yield return wait;
 
