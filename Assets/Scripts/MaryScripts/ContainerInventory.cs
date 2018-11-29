@@ -14,6 +14,16 @@ public class ContainerInventory : MonoBehaviour {
 	//Change this to a better name later lol
 	public int[] objectsInContainerIntVersion = new int[3];
 
+	public int[] GetObjectsInContainer
+	{
+
+		get { return objectsInContainerIntVersion; }
+		set
+		{
+			//start or resest the timer
+		}
+	}
+	
 	public string[] acceptedTag = new string[2];
 	
 	
@@ -63,4 +73,15 @@ public class ContainerInventory : MonoBehaviour {
 	 5. Pot separate from content model so that content can change color without changing the whole pot
 	 
     */
+	
+	//cooking countdown timer
+	public IEnumerator Cooking()
+	{
+
+		WaitForSeconds wait = new WaitForSeconds(1);
+		int timerCountdown = 0;
+
+		yield return wait;
+
+	}
 }

@@ -16,6 +16,8 @@ public class PlayerInventory : MonoBehaviour
 	// 2 : Pot
 	// 3 : Plate
 	
+	//later: change rayhit.transform to rayhit.collider bc kevin's problem
+	
 	public KeyCode takeObject;
 
 	public bool HoldingThing;
@@ -29,17 +31,6 @@ public class PlayerInventory : MonoBehaviour
 		
 		if (Input.GetKeyDown(takeObject))
 		{
-			/*if (CurrentlyHeldObject == null)
-			{
-				Debug.Log("not holding");
-				pickupObject();
-			}
-			else
-			{
-				Debug.Log("hands r full ");
-
-				dropObjectCheck();
-			}*/
 			
 			if (!HoldingThing)
 			{
@@ -107,6 +98,7 @@ public class PlayerInventory : MonoBehaviour
 								GameObject temp = CurrentlyHeldObject;
 								CurrentlyHeldObject = null;
 								CurrentlyHeldObjectCode = 500;
+								HoldingThing = false;
 								Destroy(temp);
 							}
 						}
@@ -126,7 +118,7 @@ public class PlayerInventory : MonoBehaviour
 		}
 	}
 	
-	public bool dropObject()
+	public void dropObject()
 	{
 		//1. set transform of CurrentlyHeldObject to be child of nothing
 		//2. Set other object as not kinematic and apply gravity
@@ -137,16 +129,21 @@ public class PlayerInventory : MonoBehaviour
 			CurrentlyHeldObject.transform.SetParent(null);
 			CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = true;
 			CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = false;
+			
+			//check to see if object is round or not for the collider
+			if(CurrentlyHeldObjectCode > 1)
 			CurrentlyHeldObject.GetComponent<BoxCollider>().enabled = true;
+			else
 			CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = true;
+			
+			
+			CurrentlyHeldObject.layer = 0;
 
 			CurrentlyHeldObject = null;
 			HoldingThing = false;
-			Debug.Log(CurrentlyHeldObject);
 			
-			return true;
+			Debug.Log(CurrentlyHeldObject + "is null!!!!!!!!!!");
 		}
-		return false;
 	}
 
 	public bool pickupObject()
