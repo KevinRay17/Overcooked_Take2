@@ -12,6 +12,9 @@ TagManager:
   - Onion
   - CuttingBoard
   - CuttingBoard2
+  - CutTomato
+  - CutOnion
+  - Plate
   layers:
   - Default
   - TransparentFX

@@ -47,6 +47,7 @@ public class ContainerInventory : MonoBehaviour {
 			if (objectsInContainerIntVersion[i] == -1)
 			{
 				objectsInContainerIntVersion[i] = vegetable;
+				StartCoroutine(Cooking());
 				return true;
 			}
 		}

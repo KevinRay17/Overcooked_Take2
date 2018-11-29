@@ -196,7 +196,7 @@ Transform:
   m_LocalScale: {x: 1.3141, y: 1.2981564, z: 1.6082}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &81692965
 GameObject:
@@ -262,7 +262,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &86666275
 GameObject:
@@ -332,7 +332,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 55e4c3162eba74e12940e9fe89d42385, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 55e4c3162eba74e12940e9fe89d42385, type: 3}
+      propertyPath: m_TagString
+      value: Plate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55e4c3162eba74e12940e9fe89d42385, type: 3}
@@ -440,7 +444,7 @@ Transform:
   m_Children:
   - {fileID: 431163437}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &209076178
 Rigidbody:
@@ -480,6 +484,8 @@ MonoBehaviour:
   - Plate
   - Pot
   - Onion
+  - CutTomato
+  - CutOnion
 --- !u!114 &209076180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutFood: 306
-  CutTomato: {fileID: 100006, guid: 661de8c10eb924e119f626565f48f27d, type: 3}
+  CutTomato: {fileID: 1808939458821554, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
   CutOnion: {fileID: 100000, guid: 8c8c144b7a394441e80623c66d63ab7b, type: 3}
   playerInventory: {fileID: 209076179}
   ChopTimer1: 0
@@ -920,7 +926,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &571903991
 GameObject:
@@ -1047,12 +1053,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b5bc661ec064ffaa2dea806d761013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potVariations: []
-  objectsInContainer: []
+  potVariations:
+  - {fileID: 0}
+  - {fileID: 0}
+  objectsInContainer:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   objectsInContainerIntVersion: 000000000000000000000000
   acceptedTag:
-  - 
-  - 
+  - CutTomato
+  - CutOnion
 --- !u!64 &615532151
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1156,7 +1167,7 @@ Transform:
   m_Children:
   - {fileID: 307880208}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &630961040
 MonoBehaviour:
@@ -1175,6 +1186,50 @@ MonoBehaviour:
   acceptedTag:
   - 
   - 
+--- !u!1 &658714888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 55e4c3162eba74e12940e9fe89d42385,
+    type: 3}
+  m_PrefabInternal: {fileID: 140070625}
+--- !u!65 &658714892
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 658714888}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0452511, y: 3, z: 1.0452511}
+  m_Center: {x: 0, y: 0, z: 0.000000029802322}
+--- !u!65 &658714893
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 658714888}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0452511, y: 0.13230553, z: 1.0452511}
+  m_Center: {x: 0, y: 0, z: 0.000000029802322}
+--- !u!54 &658714894
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 658714888}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &766663608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1271,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &866155095
 GameObject:
@@ -1324,7 +1379,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4399566730640000, guid: 2421d842026231d48a23aa18ae3f39cb, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1735593402883650, guid: 2421d842026231d48a23aa18ae3f39cb, type: 2}
       propertyPath: m_Layer
@@ -1446,7 +1501,7 @@ Transform:
   m_Children:
   - {fileID: 1851204765}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1089448739
 Rigidbody:
@@ -1486,6 +1541,8 @@ MonoBehaviour:
   - Onion
   - Pot
   - Plate
+  - CutTomato
+  - CutOnion
 --- !u!114 &1089448741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,7 +1555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutFood: 46
-  CutTomato: {fileID: 100006, guid: 661de8c10eb924e119f626565f48f27d, type: 3}
+  CutTomato: {fileID: 1808939458821554, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
   CutOnion: {fileID: 100000, guid: 8c8c144b7a394441e80623c66d63ab7b, type: 3}
   playerInventory: {fileID: 1089448740}
   ChopTimer1: 0
@@ -1592,7 +1649,7 @@ RectTransform:
   m_Children:
   - {fileID: 866155096}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 83.86, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1668,6 +1725,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1297126126}
   m_CullTransparentMesh: 0
+--- !u!1001 &1305310951
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4164575071766084, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -7.3203864
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164575071766084, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164575071766084, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2.6111689
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164575071766084, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164575071766084, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164575071766084, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164575071766084, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164575071766084, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1323354338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,7 +1850,7 @@ Transform:
   m_LocalScale: {x: 2, y: 1.360683, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1333606801
 GameObject:
@@ -1890,7 +1989,7 @@ RectTransform:
   m_Children:
   - {fileID: 1297126127}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 83.86, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1984,7 +2083,7 @@ Transform:
   m_Children:
   - {fileID: 615532149}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1478931474
 MonoBehaviour:
@@ -2020,7 +2119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1502996149
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2203,7 +2302,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4875748755529972, guid: 144dd2e78f47d6b4abd03edae5414048, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1770613507401240, guid: 144dd2e78f47d6b4abd03edae5414048, type: 2}
       propertyPath: m_Name
@@ -2443,7 +2542,7 @@ Transform:
   m_LocalScale: {x: 1.3141, y: 1.2981564, z: 1.6082}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1982368246
 GameObject:
@@ -2528,7 +2627,7 @@ Transform:
   m_LocalScale: {x: 1.3141, y: 1.2981564, z: 1.6082}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1988934367
 GameObject:
@@ -2590,7 +2689,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2037754576
 GameObject:
@@ -2619,7 +2718,7 @@ Transform:
   m_Children:
   - {fileID: 451195113}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2094323934
 GameObject:
@@ -2704,7 +2803,7 @@ Transform:
   m_LocalScale: {x: 1.3141, y: 1.2981564, z: 1.6082}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2111154132
 GameObject:

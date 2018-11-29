@@ -46,19 +46,23 @@ public class CuttingBoardScript : MonoBehaviour {
 		//Check if Raycast hits an object and if that object is a cutting board and you are not holding anything and that cutting board has a child
 		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out myRCH, 2.2f))
 		{
-			if (myRCH.collider.gameObject.CompareTag("CuttingBoard") && playerInventory.CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount > 0)
+			if (myRCH.collider.gameObject.CompareTag("CuttingBoard") && (myRCH.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Tomato") || 
+			                                                             myRCH.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Onion")) && 
+			    playerInventory.CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount > 0)
 			{
 				//Rate at the Timer moves intervals then at 100 boost the real meter up a tick
-				ChopTimer1 += 350 * (Time.deltaTime);
+				ChopTimer1 += 400 * (Time.deltaTime);
 				if (ChopTimer1 >= 100)
 				{
 					ChopMeter1 += 5;
 					ChopTimer1 = 0;
 				}
 			}
-			if (myRCH.collider.gameObject.CompareTag("CuttingBoard2") && playerInventory.CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount > 0)
+			if (myRCH.collider.gameObject.CompareTag("CuttingBoard2") && (myRCH.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Tomato") || 
+			                                                           myRCH.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Onion")) &&
+			    playerInventory.CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount > 0)
 			{
-				ChopTimer2+= 350 * (Time.deltaTime);
+				ChopTimer2+= 400 * (Time.deltaTime);
 				if (ChopTimer2 >= 100)
 				{
 					ChopMeter2 += 5;
