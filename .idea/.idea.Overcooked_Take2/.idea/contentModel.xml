@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Kevin Ray\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Kevin Ray\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_Overcooked_Take2.1688914186.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Kevin Ray\Desktop\Unity Folders\Overcooked_Take2" t="IncludeRecursive">
+    <e p="C:\Users\HSAII 4\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\HSAII 4\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_Overcooked_Take2.122124828.00" t="ExcludeRecursive" />
+    <e p="C:\Users\HSAII 4\Documents\OvercookedFinal2.0\Overcooked_Take2" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="3DScripts" t="Include">
+            <e p="OrderGeneration.cs" t="Include" />
+            <e p="RecipeTimer.cs" t="Include" />
+          </e>
           <e p="KevinScripts" t="Include">
             <e p="AI.cs" t="Include" />
             <e p="AISpawner.cs" t="Include" />
@@ -17,6 +21,7 @@
             <e p="ContainerInventory.cs" t="Include" />
             <e p="PlayerInventory.cs" t="Include" />
             <e p="TempPlayerMovement.cs" t="Include" />
+            <e p="Timer.cs" t="Include" />
           </e>
           <e p="SaminaScripts" t="Include">
             <e p="NewCamera.cs" t="Include" />
