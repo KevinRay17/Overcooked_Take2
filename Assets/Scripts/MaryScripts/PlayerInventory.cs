@@ -88,7 +88,9 @@ public class PlayerInventory : MonoBehaviour
 								CurrentlyHeldObjectCode = 500;
 								HoldingThing = false;
 								Destroy(temp);
+								break;
 							}
+							
 						}
 						else
 						{
@@ -102,6 +104,7 @@ public class PlayerInventory : MonoBehaviour
 				Debug.Log("Platehit");
 				if (CurrentlyHeldObject.tag == "Pot" && CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull)
 				{
+					Debug.Log("plat hit step 2");
 					if (rayHit.transform.GetComponent<PlateInventory>().full)
 					{
 						Debug.Log("Plate is full");
@@ -110,6 +113,7 @@ public class PlayerInventory : MonoBehaviour
 					{
 						//set plate to full
 						rayHit.transform.GetComponent<PlateInventory>().full = true;
+						Debug.Log("Plate is full: " + rayHit.transform.GetComponent<PlateInventory>().full);
 						for (int i = 0; i < 3; i++)
 						{
 							CurrentlyHeldObject.GetComponent<ContainerInventory>().objectsInContainerIntVersion[i] = -1;
