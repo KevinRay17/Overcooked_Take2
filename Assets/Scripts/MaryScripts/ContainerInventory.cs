@@ -7,9 +7,14 @@ public class ContainerInventory : MonoBehaviour {
 	//Maybe shouldn't use list of gameobejcts bc you cant take something out of the pot
 
 
+	public int cooktime = 45;
+	
 	public GameObject[] potVariations;
 	
 	public List<GameObject> objectsInContainer;
+
+	//use this to start the enum cooking
+	public bool potFull = false;
 
 	//Change this to a better name later lol
 	public int[] objectsInContainerIntVersion = new int[3];
@@ -79,7 +84,19 @@ public class ContainerInventory : MonoBehaviour {
 	{
 
 		WaitForSeconds wait = new WaitForSeconds(1);
-		int timerCountdown = 0;
+		int timerCountdown = cooktime;
+
+		if (timerCountdown > 0)
+		{
+			if (potFull)
+			{
+				timerCountdown--;
+			}
+			else
+			{
+				yield break;
+			}
+		}
 
 		yield return wait;
 

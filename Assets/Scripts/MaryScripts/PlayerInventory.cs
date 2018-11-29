@@ -16,6 +16,7 @@ public class PlayerInventory : MonoBehaviour
 	// 2 : Pot
 	// 3 : Plate
 	
+	
 	//later: change rayhit.transform to rayhit.collider bc kevin's problem
 	
 	public KeyCode takeObject;
@@ -46,22 +47,7 @@ public class PlayerInventory : MonoBehaviour
 		}
 
 	}
-
-	public void addObject(GameObject other)
-	{
-		//1. set currently held object as other
-		//2. set transform of other object to child of player
-		//3. set other object rigidbody as kinematic
-		//if (CurrentlyHeldObject != null)
-		if(!HoldingThing)
-		{
-			CurrentlyHeldObject = other.gameObject;
-			other.GetComponent<Transform>().SetParent(this.transform);
-			other.GetComponent<SphereCollider>().enabled = false;
-		}
-		
-	}
-
+	
 	public void dropObjectCheck()
 	{
 		//1. raycast check to see if there is a pot in front of player
@@ -72,7 +58,9 @@ public class PlayerInventory : MonoBehaviour
 		
 		//future edits: if you're holding a pot and you wanna hold a different pot, what do???
 		Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.magenta);
-		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 1f))
+		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 1f)||
+		    Physics.Raycast(transform.position-Vector3.down*0.75f, transform.TransformDirection(Vector3.forward), out rayHit, 1f)||
+		    Physics.Raycast(transform.position-Vector3.down*0.5f, transform.TransformDirection(Vector3.forward), out rayHit, 1f))
 		{
 			Debug.Log("Hit " + rayHit.transform.name);
 			if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Pot")
@@ -105,6 +93,27 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}	
+			else if(rayHit.transform.GetComponent<MeshRenderer>().tag == "Plate")
+			{
+				if (CurrentlyHeldObject.tag == "Pot" && CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull)
+				{
+					if (rayHit.transform.GetComponent<PlateInventory>().full)
+					{
+						Debug.Log("Plate is full");
+					}
+					else
+					{
+						//set plate to full
+						rayHit.transform.GetComponent<PlateInventory>().full = true;
+						for (int i = 0; i < 3; i++)
+						{
+							CurrentlyHeldObject.GetComponent<ContainerInventory>().objectsInContainerIntVersion[i] = -1;
+							CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull = false;
+							Debug.Log("plat full pot empty");
+						}
+					}
+				}
+			}
 			else
 			{
 				//Swap object
