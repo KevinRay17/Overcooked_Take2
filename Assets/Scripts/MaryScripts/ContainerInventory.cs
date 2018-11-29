@@ -8,7 +8,7 @@ public class ContainerInventory : MonoBehaviour {
 
 
 	public int cooktime = 45;
-	private int cookCountDown;
+	public int cookCountDown = 900;
 	
 	public GameObject[] potVariations;
 	
@@ -20,25 +20,6 @@ public class ContainerInventory : MonoBehaviour {
 
 	//Change this to a better name later lol
 	public int[] objectsInContainerIntVersion = new int[3];
-
-	public int[] GetObjectsInContainer
-	{
-
-		get { return objectsInContainerIntVersion; }
-		set
-		{
-			//start or resest the timer
-			if (enumRunning)
-			{
-				cookCountDown += 15;
-			}
-			else
-			{
-				StartCoroutine(Cooking());
-			}
-			objectsInContainerIntVersion = value;
-		}
-	}
 	
 	public string[] acceptedTag = new string[2];
 	
@@ -62,7 +43,24 @@ public class ContainerInventory : MonoBehaviour {
 		{
 			if (objectsInContainerIntVersion[i] == -1)
 			{
+				if (!potFull)
+				{
+					potFull = true;
+				}
+				
 				objectsInContainerIntVersion[i] = vegetable;
+				
+				if (enumRunning)
+				{
+					Debug.Log("more time");
+					cookCountDown += 15;
+				}
+				else
+				{
+					Debug.Log("started cooking");
+					StartCoroutine(Cooking());
+				}
+				
 				return true;
 			}
 		}
@@ -101,21 +99,17 @@ public class ContainerInventory : MonoBehaviour {
 		if (cookCountDown > 0)
 		{
 			Debug.Log("cooking time" + cookCountDown);
-			if (potFull)
+			while (potFull)
 			{
 				cookCountDown--;
-			}
-			else
-			{
-				yield break;
+
+				yield return wait;
 			}
 		}
 		else
 		{
 			Debug.Log("AHHH BURNING FIRE");
 		}
-
-		yield return wait;
 
 	}
 }

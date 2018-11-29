@@ -132,7 +132,6 @@ public class PlayerInventory : MonoBehaviour
 		else
 		{
 			dropObject();
-			Debug.Log("Dropping obejct " + rayHit.transform.name);
 		}
 	}
 	
