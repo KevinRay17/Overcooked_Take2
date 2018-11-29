@@ -100,6 +100,7 @@ public class ContainerInventory : MonoBehaviour {
 		enumRunning = true;
 		if (cookCountDown > 0)
 		{
+			Debug.Log("cooking time" + cookCountDown);
 			if (potFull)
 			{
 				cookCountDown--;
@@ -108,6 +109,10 @@ public class ContainerInventory : MonoBehaviour {
 			{
 				yield break;
 			}
+		}
+		else
+		{
+			Debug.Log("AHHH BURNING FIRE");
 		}
 
 		yield return wait;

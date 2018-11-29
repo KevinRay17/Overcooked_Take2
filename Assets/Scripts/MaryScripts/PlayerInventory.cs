@@ -68,7 +68,7 @@ public class PlayerInventory : MonoBehaviour
 				
 				if (CurrentlyHeldObject != null)
 				{
-					Debug.Log("holding smth");
+					Debug.Log("holding smth and trying to interact w pot");
 					//Check tag against array of tags
 					string[] tempTag = rayHit.transform.GetComponent<ContainerInventory>().acceptedTag;
 					for (int i = 0; i < tempTag.Length; i++)
@@ -90,11 +90,16 @@ public class PlayerInventory : MonoBehaviour
 								Destroy(temp);
 							}
 						}
+						else
+						{
+							Debug.Log("tag doesnt match tag array");
+						}
 					}
 				}
 			}	
 			else if(rayHit.transform.GetComponent<MeshRenderer>().tag == "Plate")
 			{
+				Debug.Log("Platehit");
 				if (CurrentlyHeldObject.tag == "Pot" && CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull)
 				{
 					if (rayHit.transform.GetComponent<PlateInventory>().full)
@@ -174,7 +179,11 @@ public class PlayerInventory : MonoBehaviour
 						CurrentlyHeldObject = rayHit.transform.gameObject;
 						CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
 						CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
-					
+						if (CurrentlyHeldObject.tag == "Tomato" || CurrentlyHeldObject.tag == "Onion")
+						{
+							CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
+						}
+
 						CurrentlyHeldObject.layer = 2;
 						
 						HoldingThing = true;
