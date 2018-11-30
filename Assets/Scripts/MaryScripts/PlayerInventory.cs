@@ -111,16 +111,40 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}
+			else if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Plate")
+			{
+				Debug.Log("Platehit");
+				if (CurrentlyHeldObject.tag == "Pot" && CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull)
+				{
+					Debug.Log("plat hit step 2");
+					if (rayHit.transform.GetComponent<PlateInventory>().full)
+					{
+						Debug.Log("Plate is full");
+					}
+					else
+					{
+						//set plate to full
+						rayHit.transform.GetComponent<PlateInventory>().full = true;
+						Debug.Log("Plate is full: " + rayHit.transform.GetComponent<PlateInventory>().full);
+						for (int i = 0; i < 3; i++)
+						{
+							CurrentlyHeldObject.GetComponent<ContainerInventory>().objectsInContainerIntVersion[i] = -1;
+							CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull = false;
+							Debug.Log("plat full pot empty");
+						}
+					}
+				}
+			}
+
 			else
 			{
 				//Swap object
 			}
 		}
-		
 		else
 		{
 			dropObject();
-			//Debug.Log("Dropping object " + rayHit.transform.name);
+		
 		}
 	}
 	
