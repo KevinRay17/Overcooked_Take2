@@ -17,7 +17,7 @@ public class ContainerInventory : MonoBehaviour {
 	//use this to start the enum cooking
 	public bool potFull = false;
 	private bool enumRunning;
-	public bool cooked, overcooked, burning;
+	public bool cooking, cooked, overcooked, burning;
 
 	//Change this to a better name later lol
 	public int[] objectsInContainerIntVersion = new int[3];
@@ -95,9 +95,12 @@ public class ContainerInventory : MonoBehaviour {
 	public IEnumerator Cooking()
      	{
      
+		     //chnage the cooking system to check if pot is on stove!!!
      		WaitForSeconds wait = new WaitForSeconds(1);
      		cookCountDown = cooktime;
-     
+
+		     cooking = true;
+		     
      		enumRunning = true;
      		if (cookCountDown > 0)
      		{
@@ -113,7 +116,7 @@ public class ContainerInventory : MonoBehaviour {
 		     {
 			     cooked = true;
 			     StartCoroutine(burnTimer());
-     			Debug.Log("AHHH BURNING FIRE");
+     			Debug.Log("burn timer starting");
      		}
      
      	}
@@ -127,6 +130,11 @@ public class ContainerInventory : MonoBehaviour {
 		if (cookCountDown > 0)
 		{
 			Debug.Log("burning time" + burnTime);
+			//if you take the pot off the fire, then stop burning
+			if (!burning)
+			{
+				yield break;
+			}
 			while (potFull)
 			{
 				burnTime--;
@@ -140,5 +148,11 @@ public class ContainerInventory : MonoBehaviour {
 			Debug.Log("AHHH BURNING FIRE");
 		}
 
+	}
+
+	public IEnumerator potFireTimer()
+	{
+		WaitForSeconds wait = new WaitForSeconds(1);
+		yield return wait;
 	}
 }
