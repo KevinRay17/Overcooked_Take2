@@ -19,6 +19,7 @@ TagManager:
   - Stove
   - Dishwasher
   - DishReturn
+  - Trash
   layers:
   - Default
   - TransparentFX

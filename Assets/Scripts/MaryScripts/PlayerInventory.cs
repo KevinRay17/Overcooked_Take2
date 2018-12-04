@@ -55,7 +55,43 @@ public class PlayerInventory : MonoBehaviour
 		}
 
 	}
-
+	public void trash()
+	{
+		for (int i = 0; i < acceptableTag.Length; i++)
+		{
+			if (CurrentlyHeldObject.tag == acceptableTag[i])
+			{
+				Debug.Log("trash ofund tag");
+				if (CurrentlyHeldObject.tag == "Pot")
+				{
+					if (CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull)
+					{
+						//empty pot
+						CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
+					}
+				}else if (CurrentlyHeldObject.tag == "Plate")
+				{
+					if (CurrentlyHeldObject.GetComponent<PlateInventory>().full)
+					{
+						CurrentlyHeldObject.GetComponent<PlateInventory>().full = false;
+						CurrentlyHeldObject.GetComponent<PlateInventory>().OnionSoup = false;
+						CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup = false;
+						CurrentlyHeldObject.GetComponent<PlateInventory>().isRuined = false;
+					}
+				}
+				else
+				{
+					Debug.Log("throwaway");
+					//destroy currently held object
+					GameObject temp = CurrentlyHeldObject;
+					CurrentlyHeldObject = null;
+					HoldingThing = false;
+					Destroy(temp);
+				}
+				break;
+			}
+		}
+	}
 	public void addObject(GameObject other)
 	{
 		//1. set currently held object as other
@@ -154,6 +190,13 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}
+			else if(rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Trash"))
+			{
+				Debug.Log("hit trash");
+				trash();
+			}
+			
+			
 
 			else
 			{
@@ -352,6 +395,8 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}
+			
+			
 
 
 
