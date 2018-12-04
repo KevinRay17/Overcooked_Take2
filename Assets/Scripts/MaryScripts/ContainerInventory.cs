@@ -21,7 +21,6 @@ public class ContainerInventory : MonoBehaviour {
     public bool enumRunning;
     
     //use for checking dish Orders
-    public int soupVeggie;
     public bool completelyFull;
 
     //Change this to a better name later lol
