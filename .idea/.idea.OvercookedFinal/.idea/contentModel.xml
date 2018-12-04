@@ -16,6 +16,7 @@
             <e p="PlateInventory.cs" t="Include" />
             <e p="PlayerInventory.cs" t="Include" />
             <e p="PotUI.cs" t="Include" />
+            <e p="PotUIFollow.cs" t="Include" />
             <e p="TempPlayerMovement.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
           </e>

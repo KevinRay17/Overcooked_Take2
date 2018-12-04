@@ -241,6 +241,8 @@ public class PlayerInventory : MonoBehaviour
 			}
 		}
 	}
+	
+	
 	//For now: if you run into ab object, you pick it up
 	//Future: if raycast hit an object, drop current object to pick it up
 
