@@ -24,8 +24,12 @@ public class ContainerInventory : MonoBehaviour {
 	
 	public string[] acceptedTag = new string[2];
 	
+	public int waitForBurn = 0;
+	public int burnTimer = 0;
+	public bool burnt = false;
 	
-	
+	//use for checking dish Orders
+	public bool completelyFull;
 	//sort objects by tag
 
 	void Start ()
@@ -115,12 +119,12 @@ public class ContainerInventory : MonoBehaviour {
      		else
 		     {
 			     cooked = true;
-			     StartCoroutine(burnTimer());
+			     StartCoroutine(burnTimerCountdown());
      			Debug.Log("burn timer starting");
      		}
      
      	}
-	public IEnumerator burnTimer()
+	public IEnumerator burnTimerCountdown()
 	{
 
 		int burnTime = 30;

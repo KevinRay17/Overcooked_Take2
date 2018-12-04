@@ -41,5 +41,22 @@ public class PotUIFollow : MonoBehaviour
 				}
 			}
 		}
+
+		if (pot.cooked)
+		{
+			statusIcon.sprite = greenCheck;
+		}
+		else if (pot.overcooked)
+		{
+			statusIcon.sprite = redAlert;
+		}
+		else if (pot.burning)
+		{
+			
+		}
+		else
+		{
+			statusIcon.sprite = null;
+		}
 	}
 }
