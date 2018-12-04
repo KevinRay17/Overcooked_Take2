@@ -55,11 +55,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+            <state relative-caret-position="225">
+              <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
               <folding>
                 <marker date="1543938917441" expanded="false" signature="6:78" ph="..." />
                 <marker date="1543938917441" expanded="true" signature="128:3554" ph="{...}" />
@@ -88,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/PlayerInventory.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+            <state relative-caret-position="225">
+              <caret line="87" column="61" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="61" />
               <folding>
                 <marker date="1543937347579" expanded="true" signature="6:92" ph="..." />
                 <marker date="1543937347579" expanded="true" signature="138:6921" ph="{...}" />
@@ -350,12 +350,12 @@
       <workItem from="1543431714623" duration="8249000" />
       <workItem from="1543898610228" duration="1274000" />
       <workItem from="1543904874378" duration="1257000" />
-      <workItem from="1543935547728" duration="3305000" />
+      <workItem from="1543935547728" duration="3755000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28859000" />
+    <option name="totallyTimeSpent" value="29309000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -456,10 +456,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/PotUIFollow.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="58" column="37" selection-start-line="58" selection-start-column="37" selection-end-line="58" selection-end-column="37" />
+          <folding>
+            <marker date="1543939417444" expanded="true" signature="6:100" ph="..." />
+            <marker date="1543939417444" expanded="true" signature="142:1184" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="372:1182" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="461:969" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="495:965" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="551:905" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="745:795" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="851:899" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="914:960" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="988:1031" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="1058:1099" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="1123:1135" ph="{...}" />
+            <marker date="1543939417444" expanded="true" signature="1142:1179" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
+          <folding>
+            <marker date="1543938917441" expanded="false" signature="6:78" ph="..." />
+            <marker date="1543938917441" expanded="true" signature="128:3554" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="845:1018" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="1161:1675" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="1231:1603" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="1281:1599" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="1304:1337" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="1417:1484" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="1493:1572" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="1775:1914" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="1842:1891" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="1918:2345" ph="/* Further implementation ... */" />
+            <marker date="1543938917441" expanded="true" signature="2404:2986" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="2658:2831" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="2742:2822" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="2843:2972" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="3027:3442" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="3147:3366" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="3266:3293" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="3312:3362" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="3373:3438" ph="{...}" />
+            <marker date="1543938917441" expanded="true" signature="3478:3552" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/PlayerInventory.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        <state relative-caret-position="225">
+          <caret line="87" column="61" selection-start-line="87" selection-start-column="58" selection-end-line="87" selection-end-column="61" />
           <folding>
             <marker date="1543937347579" expanded="true" signature="6:92" ph="..." />
             <marker date="1543937347579" expanded="true" signature="138:6921" ph="{...}" />
@@ -504,59 +557,6 @@
             <marker date="1543937347579" expanded="true" signature="6507:6709" ph="{...}" />
             <marker date="1543937347579" expanded="true" signature="6738:6861" ph="/* For now: if you run into ab object, you pick it up ... */" />
             <marker date="1543937347579" expanded="true" signature="6910:6919" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/PotUIFollow.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="58" column="37" selection-start-line="58" selection-start-column="37" selection-end-line="58" selection-end-column="37" />
-          <folding>
-            <marker date="1543939417444" expanded="true" signature="6:100" ph="..." />
-            <marker date="1543939417444" expanded="true" signature="142:1184" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="372:1182" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="461:969" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="495:965" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="551:905" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="745:795" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="851:899" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="914:960" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="988:1031" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="1058:1099" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="1123:1135" ph="{...}" />
-            <marker date="1543939417444" expanded="true" signature="1142:1179" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/MaryScripts/ContainerInventory.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
-          <folding>
-            <marker date="1543938917441" expanded="false" signature="6:78" ph="..." />
-            <marker date="1543938917441" expanded="true" signature="128:3554" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="845:1018" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="1161:1675" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="1231:1603" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="1281:1599" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="1304:1337" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="1417:1484" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="1493:1572" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="1775:1914" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="1842:1891" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="1918:2345" ph="/* Further implementation ... */" />
-            <marker date="1543938917441" expanded="true" signature="2404:2986" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="2658:2831" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="2742:2822" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="2843:2972" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="3027:3442" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="3147:3366" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="3266:3293" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="3312:3362" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="3373:3438" ph="{...}" />
-            <marker date="1543938917441" expanded="true" signature="3478:3552" ph="{...}" />
           </folding>
         </state>
       </provider>

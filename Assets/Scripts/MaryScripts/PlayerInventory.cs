@@ -183,6 +183,7 @@ public class PlayerInventory : MonoBehaviour
 						CurrentlyHeldObject = rayHit.transform.gameObject;
 						CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
 						CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
+						CurrentlyHeldObjectCode = i;
 						if (CurrentlyHeldObject.tag == "Tomato" || CurrentlyHeldObject.tag == "Onion")
 						{
 							CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
