@@ -69,12 +69,14 @@ public class ContainerInventory : MonoBehaviour {
 	}
 
 	//When pot is thrown away: empties the pot and returns it to empty prefab
-	private void emptyPot()
+	public void emptyPot()
 	{
 		for (int i = 0; i < objectsInContainerIntVersion.Length; i++)
 		{
 			objectsInContainerIntVersion[i] = -1;
 		}
+
+		potFull = false;
 	}
 	
 	/*Further implementation

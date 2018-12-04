@@ -123,9 +123,10 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}
-			else
+			else if(rayHit.transform.GetComponent<MeshRenderer>().tag ==  "Trash")
 			{
-				//Swap object
+				Debug.Log("hit trash");
+				trash();
 			}
 		}
 		
@@ -204,8 +205,42 @@ public class PlayerInventory : MonoBehaviour
 
 		return false;
 	}
-	
-	
+
+
+	public void trash()
+	{
+		for (int i = 0; i < acceptableTag.Length; i++)
+		{
+			if (CurrentlyHeldObject.tag == acceptableTag[i])
+			{
+				Debug.Log("trash ofund tag");
+				if (CurrentlyHeldObject.tag == "Pot")
+				{
+					if (CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull)
+					{
+						//empty pot
+						CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
+					}
+				}else if (CurrentlyHeldObject.tag == "Plate")
+				{
+					if (CurrentlyHeldObject.GetComponent<PlateInventory>().full)
+					{
+						CurrentlyHeldObject.GetComponent<PlateInventory>().full = false;
+					}
+				}
+				else
+				{
+					Debug.Log("throwaway");
+					//destroy currently held object
+					GameObject temp = CurrentlyHeldObject;
+					CurrentlyHeldObject = null;
+					HoldingThing = false;
+					Destroy(temp);
+				}
+				break;
+			}
+		}
+	}
 	//For now: if you run into ab object, you pick it up
 	//Future: if raycast hit an object, drop current object to pick it up
 
