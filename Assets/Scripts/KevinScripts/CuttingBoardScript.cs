@@ -19,11 +19,14 @@ public class CuttingBoardScript : MonoBehaviour {
    //Timers and reference to UI
 	public float ChopTimer1 = 0;
 	public float ChopTimer2 = 0;
+	public float WashTimer = 0;
 	public Image ChopBar1;
 	public Image ChopBar2;
 	static public float ChopMeter1 = 0;
 
 	static public float ChopMeter2 = 0;
+
+	static public float WashMeter = 0;
 	// Use this for initialization
 	void Start () {
 		
@@ -51,7 +54,7 @@ public class CuttingBoardScript : MonoBehaviour {
 			    playerInventory.CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount > 0)
 			{
 				//Rate at the Timer moves intervals then at 100 boost the real meter up a tick
-				ChopTimer1 += 400 * (Time.deltaTime);
+				ChopTimer1 += 800 * (Time.deltaTime);
 				if (ChopTimer1 >= 100)
 				{
 					ChopMeter1 += 5;
@@ -62,11 +65,22 @@ public class CuttingBoardScript : MonoBehaviour {
 			                                                           myRCH.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Onion")) &&
 			    playerInventory.CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount > 0)
 			{
-				ChopTimer2+= 400 * (Time.deltaTime);
+				ChopTimer2+= 800 * (Time.deltaTime);
 				if (ChopTimer2 >= 100)
 				{
 					ChopMeter2 += 5;
 					ChopTimer2 = 0;
+				}
+			}
+
+			if (myRCH.collider.gameObject.CompareTag("Dishwasher") &&
+			    playerInventory.CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount > 0)
+			{
+				WashTimer += 800 * (Time.deltaTime);
+				if (WashTimer >= 100)
+				{
+					WashMeter += 5;
+					WashTimer = 0;
 				}
 			}
 
@@ -110,7 +124,25 @@ public class CuttingBoardScript : MonoBehaviour {
 
 				ChopMeter2 = 0;
 			}
+
+			if (WashMeter >= 100)
+			{
+				
+				playerInventory.CurrentlyHeldObject = myRCH.collider.gameObject.transform.GetChild(0).gameObject;
+				playerInventory.CurrentlyHeldObject.transform.SetParent(gameObject.transform);
+				playerInventory.CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
+				playerInventory.CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
+				playerInventory.CurrentlyHeldObjectCode = 4;
+				playerInventory.CurrentlyHeldObject.GetComponent<BoxCollider>().enabled = false;
+
+				playerInventory.CurrentlyHeldObject.GetComponent<PlateInventory>().isDirty = false;
+				playerInventory.CurrentlyHeldObject.layer = 2;
+				playerInventory.CurrentlyHeldObject.transform.localPosition= new Vector3(0,0, 1.5f); 
+
+				playerInventory.HoldingThing = true;
+			}
+			}
 		}
 		
 	}
-}
+

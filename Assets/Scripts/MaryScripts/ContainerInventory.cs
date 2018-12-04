@@ -1,23 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.UI;
+
 public class ContainerInventory : MonoBehaviour {
     //Maybe shouldn't use list of gameobejcts bc you cant take something out of the pot
     public int cooktime = 45;
     public int cookCountDown = 900;
+    public int waitForBurn = 0;
+    public int burnTimer = 0;
+    public bool burnt = false;
+    
     
     public GameObject[] potVariations;
     
     public List<GameObject> objectsInContainer;
     //use this to start the enum cooking
     public bool potFull = false;
-    private bool enumRunning;
+    public bool enumRunning;
+    
+    //use for checking dish Orders
+    public int soupVeggie;
+    public bool completelyFull;
+
     //Change this to a better name later lol
     public int[] objectsInContainerIntVersion = new int[3];
     
     public string[] acceptedTag = new string[2];
-    
-    
+
+    public Image CookMeter;
     
     //sort objects by tag
     void Start ()
@@ -28,6 +40,7 @@ public class ContainerInventory : MonoBehaviour {
         objectsInContainer = new List<GameObject>();
     }
     //tries to add the veggie to the pot and returns true if successful; if pot is full, returns false;
+   
     public bool addVegetable(int vegetable)
     {
         
@@ -42,29 +55,39 @@ public class ContainerInventory : MonoBehaviour {
                 
                 objectsInContainerIntVersion[i] = vegetable;
                 
-                if (enumRunning)
+                if (enumRunning && !burnt)
                 {
                     Debug.Log("more time");
-                    cookCountDown += 15;
+                    cookCountDown += 60;
+                    cooktime += 60;
                 }
                 else
                 {
                     Debug.Log("started cooking");
                     StartCoroutine(Cooking());
                 }
-                
+
+                completelyFull = (objectsInContainerIntVersion[0] != -1) && (objectsInContainerIntVersion[1] != -1) && (objectsInContainerIntVersion[2] != -1);
                 return true;
             }
         }
+
         Debug.Log("'uh oh its full,' says add vegetable");
+        
         return false;
     }
     //When pot is thrown away: empties the pot and returns it to empty prefab
-    private void emptyPot()
+    public void emptyPot()
     {
         for (int i = 0; i < objectsInContainerIntVersion.Length; i++)
         {
             objectsInContainerIntVersion[i] = -1;
+            completelyFull = false;
+            potFull = false;
+            waitForBurn = 0;
+            burnTimer = 0;
+            burnt = false;
+            enumRunning = false;
         }
     }
     
@@ -82,21 +105,49 @@ public class ContainerInventory : MonoBehaviour {
     //cooking countdown timer
     public IEnumerator Cooking()
     {
-        WaitForSeconds wait = new WaitForSeconds(1);
-        cookCountDown = cooktime;
-        enumRunning = true;
-        if (cookCountDown > 0)
+        WaitForSeconds wait = new WaitForSeconds(.1f);
+        if (!enumRunning)
         {
+            cooktime = 120;
+            cookCountDown = cooktime;
+            enumRunning = true;
+        }
+
+        
             Debug.Log("cooking time" + cookCountDown);
             while (potFull)
             {
-                cookCountDown--;
+                
+                if (gameObject.transform.parent != null)
+                {
+
+                    if (gameObject.transform.parent.CompareTag("Stove") && cookCountDown > 0 && !burnt)
+                    {
+                        CookMeter.fillAmount = ((float) (cooktime - cookCountDown)) / cooktime;
+                        cookCountDown--;
+                        waitForBurn = 0;
+                        burnTimer = 0;
+                    }
+                    else if (gameObject.transform.parent.CompareTag("Stove") && cookCountDown <= 0 && waitForBurn < 60)
+                    {
+                        CookMeter.fillAmount = 0;
+                        waitForBurn++;
+                    }
+
+                    if (gameObject.transform.parent.CompareTag("Stove") && waitForBurn >= 60 && burnTimer < 120)
+                    {
+                        burnTimer++;
+                    }
+
+                    if (gameObject.transform.parent.CompareTag("Stove") && burnTimer >= 120)
+                    {
+                        burnt = true;
+                    }
+                }
+
                 yield return wait;
+               
+             
             }
         }
-        else
-        {
-            Debug.Log("AHHH BURNING FIRE");
-        }
     }
-}

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Principal;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -24,6 +25,10 @@ public class PlayerInventory : MonoBehaviour
 
 	public GameObject TomatoClone;
 	public GameObject OnionClone;
+	public ContainerInventory potInventory;
+
+	public GameObject plate;
+	public GameObject DishReturn;
 	
 
 	//Depending on the system, maybe it should be a string array or just a bunch of tags
@@ -80,7 +85,7 @@ public class PlayerInventory : MonoBehaviour
 		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 2.2f))
 		{
 			Debug.Log("Hit " + rayHit.transform.name);
-			if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot"))
+			if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot") || (rayHit.collider.gameObject.CompareTag("Stove") && rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot")))
 
 		{
 			
@@ -88,7 +93,7 @@ public class PlayerInventory : MonoBehaviour
 				{
 					Debug.Log("holding smth");
 					//Check tag against array of tags
-					string[] tempTag = rayHit.transform.GetComponent<ContainerInventory>().acceptedTag;
+					string[] tempTag = potInventory.acceptedTag;
 					for (int i = 0; i < tempTag.Length; i++)
 					{
 						//if tag is accepted, check container if can be added
@@ -97,8 +102,7 @@ public class PlayerInventory : MonoBehaviour
 						{
 							Debug.Log("acceptable tag");
 							//if accepted, destroy gameobject and reset currentlyheldobject and code
-							if (rayHit.transform.GetComponent<ContainerInventory>()
-								.addVegetable(CurrentlyHeldObjectCode))
+							if (potInventory.addVegetable(CurrentlyHeldObjectCode) && !potInventory.burnt)
 							{
 								Debug.Log("pot can take");
 								GameObject temp = CurrentlyHeldObject;
@@ -111,10 +115,10 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}
-			else if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Plate")
+			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Plate"))
 			{
 				Debug.Log("Platehit");
-				if (CurrentlyHeldObject.tag == "Pot" && CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull)
+				if (CurrentlyHeldObject.tag == "Pot" && CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && potInventory.cookCountDown <= 0)
 				{
 					Debug.Log("plat hit step 2");
 					if (rayHit.transform.GetComponent<PlateInventory>().full)
@@ -123,14 +127,29 @@ public class PlayerInventory : MonoBehaviour
 					}
 					else
 					{
-						//set plate to full
+						//set plate to the type of soup put in
 						rayHit.transform.GetComponent<PlateInventory>().full = true;
-						Debug.Log("Plate is full: " + rayHit.transform.GetComponent<PlateInventory>().full);
+						if (potInventory.objectsInContainerIntVersion[0] == 0 &&
+						    potInventory.objectsInContainerIntVersion[1] == 0 &&
+						    potInventory.objectsInContainerIntVersion[2] == 0 && !potInventory.burnt)
+						{
+							rayHit.transform.GetComponent<PlateInventory>().TomatoSoup = true;
+						}
+						else if (potInventory.objectsInContainerIntVersion[0] == 1 &&
+						    potInventory.objectsInContainerIntVersion[1] == 1 &&
+						    potInventory.objectsInContainerIntVersion[2] == 1 && !potInventory.burnt)
+						{
+							rayHit.transform.GetComponent<PlateInventory>().OnionSoup = true;
+						}
+						else
+						{
+							rayHit.transform.GetComponent<PlateInventory>().isRuined = true;	
+						}
+
 						for (int i = 0; i < 3; i++)
 						{
-							CurrentlyHeldObject.GetComponent<ContainerInventory>().objectsInContainerIntVersion[i] = -1;
-							CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull = false;
-							Debug.Log("plat full pot empty");
+							CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
+							//Debug.Log("plat full pot empty");
 						}
 					}
 				}
@@ -280,8 +299,62 @@ public class PlayerInventory : MonoBehaviour
 				dropObjectCheck();
 				dropObject();
 				
+			} else if (myRCH.collider.gameObject.CompareTag("Stove") && CurrentlyHeldObject != null &&
+			           myRCH.collider.gameObject.transform.childCount == 0)
+			{
+				if (CurrentlyHeldObject.CompareTag("Pot"))
+				{
+					CurrentlyHeldObject.transform.SetParent(myRCH.collider.gameObject.transform);
+					CurrentlyHeldObject.transform.localPosition =
+						new Vector3(0, myRCH.collider.gameObject.transform.position.y + 1f, 0);
+					dropObjectCheck();
+					dropObject();
+				}
+			} else if (myRCH.collider.gameObject.CompareTag("Server") && CurrentlyHeldObject != null)
+			{
+				if (CurrentlyHeldObject.CompareTag("Plate"))
+				{
+					if (CurrentlyHeldObject.GetComponent<PlateInventory>().isRuined == false)
+					{
+						if (CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup == true)
+						{
+							Debug.Log("yay");
+							StartCoroutine(DishReturnTimer());
+							Destroy(CurrentlyHeldObject);
+							CurrentlyHeldObjectCode = 0;
+							CurrentlyHeldObject = null;
+							HoldingThing = false;
+							//complete order and score
+						}
+						else if (CurrentlyHeldObject.GetComponent<PlateInventory>().OnionSoup == true)
+						{
+							StartCoroutine(DishReturnTimer());
+							Destroy(CurrentlyHeldObject);
+							CurrentlyHeldObjectCode = 0;
+							CurrentlyHeldObject = null;
+							HoldingThing = false;
+							//complete order and score
+						}
+					}
+				}
 			}
-			
+			else if (myRCH.collider.gameObject.CompareTag("Dishwasher") && CurrentlyHeldObject != null)
+			{
+				if (CurrentlyHeldObject.CompareTag("Plate"))
+				{
+					if (CurrentlyHeldObject.GetComponent<PlateInventory>().isDirty == true)
+					{
+						CurrentlyHeldObject.transform.SetParent(myRCH.collider.gameObject.transform);
+						CurrentlyHeldObject.transform.localPosition =
+							new Vector3(0, myRCH.collider.gameObject.transform.position.y + 1f, 0);
+						dropObjectCheck();
+						dropObject();
+					}
+				}
+			}
+
+
+
 			//Pick Up from Spawner Tomato
 			//If the Spawner has nothing on it then spawn new food and take it into hands
 			else if (myRCH.collider.gameObject.CompareTag("TSpawner") && CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount == 0)
@@ -337,7 +410,7 @@ public class PlayerInventory : MonoBehaviour
 			//If you aren't holding anything and the table has something on it, take it into hands
 			else if ((myRCH.collider.gameObject.CompareTag("Table") || myRCH.collider.gameObject.CompareTag("TSpawner") ||
 			     myRCH.collider.gameObject.CompareTag("OSpawner")
-			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2")) && CurrentlyHeldObject == null &&
+			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2") || myRCH.collider.gameObject.CompareTag("Stove") || myRCH.collider.gameObject.CompareTag("DishReturn")) && CurrentlyHeldObject == null &&
 			    myRCH.collider.gameObject.transform.childCount > 0)
 			{
 				if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().tag == "Pot")
@@ -376,5 +449,17 @@ public class PlayerInventory : MonoBehaviour
 				
 			}
 		}
+	}
+
+	public IEnumerator DishReturnTimer()
+	{
+		WaitForSeconds wait = new WaitForSeconds(6);
+		yield return wait;
+		GameObject plateClone = Instantiate(plate, transform.position, Quaternion.identity);
+		plateClone.transform.SetParent(DishReturn.gameObject.transform);
+		plateClone.transform.localPosition = new Vector3(0,1,0);
+		plateClone.GetComponent<PlateInventory>().isDirty = true;
+
+
 	}
 }
