@@ -211,7 +211,7 @@ public class PlayerInventory : MonoBehaviour
 	{
 		for (int i = 0; i < acceptableTag.Length; i++)
 		{
-			if (CurrentlyHeldObject.tag == acceptableTag[i])
+			if (CurrentlyHeldObject.CompareTag(acceptableTag[i]))
 			{
 				Debug.Log("trash ofund tag");
 				if (CurrentlyHeldObject.tag == "Pot")

@@ -446,7 +446,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a35acb8641a438ebd17cbe9308bb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pot: {fileID: 1856732215}
+  pot: {fileID: 1856732216}
+  vegIcons:
+  - {fileID: 559054736}
+  - {fileID: 1732244360}
+  - {fileID: 363872640}
+  statusIcon: {fileID: 0}
+  onion: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  tomato: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  greenCheck: {fileID: 0}
+  redAlert: {fileID: 0}
 --- !u!114 &550493078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,8 +579,7 @@ RectTransform:
 --- !u!114 &559054736
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114627626594658728, guid: dbb9f6258e8a74697a5e7c21e23bd12b,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 559054734}
   m_Enabled: 1
