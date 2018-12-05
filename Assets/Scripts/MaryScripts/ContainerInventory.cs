@@ -157,6 +157,7 @@ public class ContainerInventory : MonoBehaviour {
 	public IEnumerator potFireTimer()
 	{
 		WaitForSeconds wait = new WaitForSeconds(1);
+		
 		yield return wait;
 	}
 }

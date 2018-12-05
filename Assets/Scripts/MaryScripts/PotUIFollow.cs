@@ -16,14 +16,14 @@ public class PotUIFollow : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		transform.position = pot.transform.position + Vector3.up * 0.5f;
+		transform.position = pot.transform.position + Vector3.up + Vector3.forward*2;
+		transform.LookAt(Camera.main.transform);
 		if (pot.potFull)
 		{
 			for(int i = 0; i < 3; i++)
 			{
 				if (pot.objectsInContainerIntVersion[i] != -1)
 				{
-					//vegIcons[pot.objectsInContainerIntVersion[i]].enabled = true;
 					vegIcons[pot.objectsInContainerIntVersion[i]].enabled = true;
 
 					if (pot.objectsInContainerIntVersion[i] == 0)
@@ -56,7 +56,7 @@ public class PotUIFollow : MonoBehaviour
 		}
 		else
 		{
-			statusIcon.sprite = null;
+			statusIcon.enabled = false;
 		}
 	}
 }

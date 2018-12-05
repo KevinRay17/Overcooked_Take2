@@ -184,7 +184,7 @@ public class PlayerInventory : MonoBehaviour
 						CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
 						CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
 						CurrentlyHeldObjectCode = i;
-						if (CurrentlyHeldObject.tag == "Tomato" || CurrentlyHeldObject.tag == "Onion")
+						if (CurrentlyHeldObject.CompareTag("Tomato")|| CurrentlyHeldObject.CompareTag("Onion"))
 						{
 							CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
 						}

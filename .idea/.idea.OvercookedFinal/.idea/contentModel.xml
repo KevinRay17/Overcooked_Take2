@@ -13,6 +13,7 @@
           </e>
           <e p="MaryScripts" t="Include">
             <e p="ContainerInventory.cs" t="Include" />
+            <e p="fireBehavior.cs" t="Include" />
             <e p="PlateInventory.cs" t="Include" />
             <e p="PlayerInventory.cs" t="Include" />
             <e p="PotUI.cs" t="Include" />
