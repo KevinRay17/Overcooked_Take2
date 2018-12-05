@@ -12,6 +12,13 @@ TagManager:
   - Onion
   - CuttingBoard
   - CuttingBoard2
+  - CutTomato
+  - CutOnion
+  - Plate
+  - Server
+  - Stove
+  - Dishwasher
+  - DishReturn
   layers:
   - Default
   - TransparentFX

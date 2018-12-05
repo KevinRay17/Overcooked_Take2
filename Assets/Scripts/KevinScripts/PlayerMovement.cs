@@ -21,40 +21,11 @@ public class PlayerMovement : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		ControlPlayer();
 	}
-
-	//Snap Held Object to Table Position
-	/*void SnapToTable()
-	{
-		
-		if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out myRCH, 2.2f)) {
-			Debug.Log("MyRay");
-			if ((myRCH.collider.gameObject.CompareTag("Table") || myRCH.collider.gameObject.CompareTag("TSpawner") || myRCH.collider.gameObject.CompareTag("OSpawner")) && playerInventory.CurrentlyHeldObject != null) {
-				playerInventory.CurrentlyHeldObject.transform.SetParent(myRCH.collider.gameObject.transform);
-				playerInventory.CurrentlyHeldObject.transform.localPosition = new Vector3(0,myRCH.collider.gameObject.transform.position.y +1f,0);
-				playerInventory.dropObjectCheck();
-				playerInventory.dropObject();
-				
-			}
-
-			else if (myRCH.collider.gameObject.CompareTag("TSpawner") && playerInventory.CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount == 0)
-			{
-				GameObject TClone = Instantiate(TomatoClone, new Vector3(0, 1, 0), Quaternion.identity);
-				TClone.transform.SetParent(gameObject.transform);
-				playerInventory.CurrentlyHeldObject = TClone.gameObject;
-				playerInventory.CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
-				playerInventory.CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
-
-				playerInventory.CurrentlyHeldObject.layer = 2;
-				playerInventory.CurrentlyHeldObject.transform.localPosition= new Vector3(0,0, 1.5f); 
-
-				playerInventory.HoldingThing = true;
-			}
-		}
-	}*/
+	
 
 	void ControlPlayer()
 	{

@@ -12,7 +12,7 @@ public class AISpawner : MonoBehaviour {
 	void Start ()
 	{
 		//Initiate time to spawn
-		timerMax = Random.Range(2f, 5f);
+		timerMax = Random.Range(2f, 7f);
 	}
 	
 	// Update is called once per frame
@@ -25,7 +25,7 @@ public class AISpawner : MonoBehaviour {
 		{
 			Instantiate(AI, transform.position, Quaternion.identity);
 			timer = 0;
-			timerMax = Random.Range(2f, 5f);
+			timerMax = Random.Range(2f, 7f);
 		}
 	}
 }

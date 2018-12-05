@@ -1,51 +1,14 @@
 fileFormatVersion: 2
-guid: ee2da60adbb936542b4e9c23432c49c5
+guid: e8e24e1271bf45b459fac317a73c099e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: imagePlane1
-    100002: imagePlane2
-    100004: //RootNode
-    100006: pCone1
-    100008: pSphere1
-    100010: pSphere2
-    100012: pSphere3
-    100014: pSphere4
-    100016: pSphere5
-    100018: pSphere6
-    400000: imagePlane1
-    400002: imagePlane2
-    400004: //RootNode
-    400006: pCone1
-    400008: pSphere1
-    400010: pSphere2
-    400012: pSphere3
-    400014: pSphere4
-    400016: pSphere5
-    400018: pSphere6
+    100000: //RootNode
+    400000: //RootNode
     2100000: lambert1
-    2300000: pCone1
-    2300002: pSphere1
-    2300004: pSphere2
-    2300006: pSphere3
-    2300008: pSphere4
-    2300010: pSphere5
-    2300012: pSphere6
-    3300000: pCone1
-    3300002: pSphere1
-    3300004: pSphere2
-    3300006: pSphere3
-    3300008: pSphere4
-    3300010: pSphere5
-    3300012: pSphere6
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: pSphere1
-    4300002: pSphere2
-    4300004: pSphere3
-    4300006: pSphere4
-    4300008: pSphere5
-    4300010: pSphere6
-    4300012: pCone1
-    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
