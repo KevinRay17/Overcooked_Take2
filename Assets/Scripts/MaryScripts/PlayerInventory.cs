@@ -29,13 +29,27 @@ public class PlayerInventory : MonoBehaviour
 
 	public GameObject plate;
 	public GameObject DishReturn;
-	
+
+	public GameObject Lighting;
 
 	//Depending on the system, maybe it should be a string array or just a bunch of tags
 	public String[] acceptableTag;
 	
 	void Update () {
-
+		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out myRCH, 2.2f))
+		{
+			if (myRCH.collider != null)
+			{
+				//Lighting.transform.SetParent(myRCH.collider.gameObject.transform);
+				Lighting.transform.position = new Vector3(myRCH.collider.transform.position.x ,myRCH.collider.transform.position.y + 4.4f,myRCH.transform.position.z);
+				Lighting.SetActive(true);
+			}
+		}
+		else
+		{
+			Lighting.SetActive(false);
+		}
+	 
 		
 		if (Input.GetKeyDown(takeObject))
 		{
@@ -55,7 +69,43 @@ public class PlayerInventory : MonoBehaviour
 		}
 
 	}
-
+	public void trash()
+	{
+		for (int i = 0; i < acceptableTag.Length; i++)
+		{
+			if (CurrentlyHeldObject.tag == acceptableTag[i])
+			{
+				Debug.Log("trash ofund tag");
+				if (CurrentlyHeldObject.tag == "Pot")
+				{
+					if (CurrentlyHeldObject.GetComponent<ContainerInventory>().potFull)
+					{
+						//empty pot
+						CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
+					}
+				}else if (CurrentlyHeldObject.tag == "Plate")
+				{
+					if (CurrentlyHeldObject.GetComponent<PlateInventory>().full)
+					{
+						CurrentlyHeldObject.GetComponent<PlateInventory>().full = false;
+						CurrentlyHeldObject.GetComponent<PlateInventory>().OnionSoup = false;
+						CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup = false;
+						CurrentlyHeldObject.GetComponent<PlateInventory>().isRuined = false;
+					}
+				}
+				else
+				{
+					Debug.Log("throwaway");
+					//destroy currently held object
+					GameObject temp = CurrentlyHeldObject;
+					CurrentlyHeldObject = null;
+					HoldingThing = false;
+					Destroy(temp);
+				}
+				break;
+			}
+		}
+	}
 	public void addObject(GameObject other)
 	{
 		//1. set currently held object as other
@@ -89,7 +139,6 @@ public class PlayerInventory : MonoBehaviour
 
 		{
 			
-			potInventory = rayHit.transform.GetComponent<ContainerInventory>();
 				if (CurrentlyHeldObject != null)
 				{
 					Debug.Log("holding smth");
@@ -155,6 +204,13 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}
+			else if(rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Trash"))
+			{
+				Debug.Log("hit trash");
+				trash();
+			}
+			
+			
 
 			else
 			{
@@ -215,7 +271,7 @@ public class PlayerInventory : MonoBehaviour
 		{
 			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 2.2f))
 			{
-				if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Pot")
+				if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot"))
 				{
 					CurrentlyHeldObjectCode = 2;
 				}
@@ -283,6 +339,10 @@ public class PlayerInventory : MonoBehaviour
 	//For now: if you run into ab object, you pick it up
 	//Future: if raycast hit an object, drop current object to pick it up
 
+	private void OnCollisionEnter(Collision other)
+	{
+		
+	}
 	void SnapToTable()
 	{
 		//Check what the RayCast hits and if the table is empty and you are holding an object, put held object on the table
@@ -349,6 +409,8 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}
+			
+			
 
 
 
@@ -410,7 +472,7 @@ public class PlayerInventory : MonoBehaviour
 			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2") || myRCH.collider.gameObject.CompareTag("Stove") || myRCH.collider.gameObject.CompareTag("DishReturn")) && CurrentlyHeldObject == null &&
 			    myRCH.collider.gameObject.transform.childCount > 0)
 			{
-				if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().tag == "Pot")
+				if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().CompareTag("Pot"))
 				{
 					CurrentlyHeldObjectCode = 2;
 				}
