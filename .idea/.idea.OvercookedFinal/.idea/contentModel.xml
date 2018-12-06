@@ -5,9 +5,15 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="3DScripts" t="Include">
+            <e p="OrderGeneration.cs" t="Include" />
+            <e p="ScoreKeep.cs" t="Include" />
+          </e>
           <e p="KevinScripts" t="Include">
             <e p="AI.cs" t="Include" />
             <e p="AISpawner.cs" t="Include" />
+            <e p="CuttingBoardScript.cs" t="Include" />
+            <e p="PlateSpawner.cs" t="Include" />
             <e p="Player2Movement.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
           </e>
@@ -21,9 +27,9 @@
             <e p="TempPlayerMovement.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
           </e>
-          <e p="OrderGeneration.cs" t="Include" />
           <e p="SaminaScripts" t="Include">
             <e p="NewCamera.cs" t="Include" />
+            <e p="VeggieSpawner.cs" t="Include" />
           </e>
         </e>
       </e>

@@ -89,6 +89,7 @@ public class PlayerInventory : MonoBehaviour
 
 		{
 			
+			potInventory = rayHit.transform.GetComponent<ContainerInventory>();
 				if (CurrentlyHeldObject != null)
 				{
 					Debug.Log("holding smth");
@@ -282,10 +283,6 @@ public class PlayerInventory : MonoBehaviour
 	//For now: if you run into ab object, you pick it up
 	//Future: if raycast hit an object, drop current object to pick it up
 
-	private void OnCollisionEnter(Collision other)
-	{
-		
-	}
 	void SnapToTable()
 	{
 		//Check what the RayCast hits and if the table is empty and you are holding an object, put held object on the table
