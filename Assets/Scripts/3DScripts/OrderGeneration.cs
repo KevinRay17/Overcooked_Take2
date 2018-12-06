@@ -51,14 +51,15 @@ public class OrderGeneration : MonoBehaviour {
 					//if int is 1, spawn onion soup
 					if (whichRecipe == 1)
 					{
-						GameObject recipeInstance1 = Instantiate (recipe1Prefab, transform.position + new Vector3(250f * numberOfOrders, -100f), transform.rotation);
+						
+						GameObject recipeInstance1 = Instantiate (recipe1Prefab, transform.position + new Vector3(250f * numberOfOrders, -100f), Quaternion.identity);
 						recipeInstance1.transform.SetParent(gameCanvas.transform);
 					}
 					
 					//if int is 2, spawn tomato soup
 					else if (whichRecipe == 2)
 					{
-						GameObject recipeInstance1 = Instantiate (recipe2Prefab, transform.position + new Vector3(250f * numberOfOrders, -100f), transform.rotation);
+						GameObject recipeInstance1 = Instantiate (recipe2Prefab, transform.position + new Vector3(250f * numberOfOrders, -100f), Quaternion.identity);
 						recipeInstance1.transform.SetParent(gameCanvas.transform);
 					}
 				

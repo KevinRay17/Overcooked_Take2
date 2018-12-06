@@ -29,13 +29,27 @@ public class PlayerInventory : MonoBehaviour
 
 	public GameObject plate;
 	public GameObject DishReturn;
-	
+
+	public GameObject Lighting;
 
 	//Depending on the system, maybe it should be a string array or just a bunch of tags
 	public String[] acceptableTag;
 	
 	void Update () {
-
+		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out myRCH, 2.2f))
+		{
+			if (myRCH.collider != null)
+			{
+				//Lighting.transform.SetParent(myRCH.collider.gameObject.transform);
+				Lighting.transform.position = new Vector3(myRCH.collider.transform.position.x ,myRCH.collider.transform.position.y + 4.4f,myRCH.transform.position.z);
+				Lighting.SetActive(true);
+			}
+		}
+		else
+		{
+			Lighting.SetActive(false);
+		}
+	 
 		
 		if (Input.GetKeyDown(takeObject))
 		{
@@ -257,7 +271,7 @@ public class PlayerInventory : MonoBehaviour
 		{
 			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 2.2f))
 			{
-				if (rayHit.transform.GetComponent<MeshRenderer>().tag == "Pot")
+				if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot"))
 				{
 					CurrentlyHeldObjectCode = 2;
 				}
@@ -458,7 +472,7 @@ public class PlayerInventory : MonoBehaviour
 			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2") || myRCH.collider.gameObject.CompareTag("Stove") || myRCH.collider.gameObject.CompareTag("DishReturn")) && CurrentlyHeldObject == null &&
 			    myRCH.collider.gameObject.transform.childCount > 0)
 			{
-				if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().tag == "Pot")
+				if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().CompareTag("Pot"))
 				{
 					CurrentlyHeldObjectCode = 2;
 				}
