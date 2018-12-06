@@ -4,11 +4,21 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Tomato
   - Pot
-  - Plate
-  - Trash
+  - Tomato
+  - Table
+  - TSpawner
+  - OSpawner
   - Onion
+  - CuttingBoard
+  - CuttingBoard2
+  - CutTomato
+  - CutOnion
+  - Plate
+  - Server
+  - Stove
+  - Dishwasher
+  - DishReturn
   layers:
   - Default
   - TransparentFX

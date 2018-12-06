@@ -6,5 +6,10 @@ public class PlateInventory : MonoBehaviour
 {
 
 	public bool full;
-	//in future, keep track of what type of soup 
+	public bool OnionSoup;
+	public bool TomatoSoup;
+	public bool isRuined;
+	public bool isDirty;
+
+
 }

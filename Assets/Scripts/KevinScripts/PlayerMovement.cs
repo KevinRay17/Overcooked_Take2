@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,19 +11,23 @@ public class PlayerMovement : MonoBehaviour
 	public float Timer = 0;
 
 	public float dashMult = 0;
+	
+
+	
+	
 	// Use this for initialization
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-     
-		ControllPlayer();
+	void FixedUpdate () {
+
+		ControlPlayer();
 	}
+	
 
-
-	void ControllPlayer()
+	void ControlPlayer()
 	{
 		//Dash timer resetting on update
 		if (Timer < 1)
