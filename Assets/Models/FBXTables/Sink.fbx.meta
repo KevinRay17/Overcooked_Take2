@@ -14,6 +14,7 @@ ModelImporter:
     100016: pCube6
     100018: pCube7
     100020: //RootNode
+    100022: pCube12
     400000: back
     400002: imagePlane2
     400004: imagePlane3
@@ -25,8 +26,14 @@ ModelImporter:
     400016: pCube6
     400018: pCube7
     400020: //RootNode
+    400022: pCube12
     2000000: back
     2100000: lambert1
+    2100002: lambert2
+    2100004: lambert4
+    2100006: lambert3
+    2100008: lambert5
+    2100010: blinn1
     2300000: pCube1
     2300002: pCube10
     2300004: pCube11
@@ -34,6 +41,7 @@ ModelImporter:
     2300008: pCube5
     2300010: pCube6
     2300012: pCube7
+    2300014: pCube12
     3300000: pCube1
     3300002: pCube10
     3300004: pCube11
@@ -41,6 +49,7 @@ ModelImporter:
     3300008: pCube5
     3300010: pCube6
     3300012: pCube7
+    3300014: pCube12
     4300000: pCube1
     4300002: pCube2
     4300004: pCube5
@@ -48,6 +57,7 @@ ModelImporter:
     4300008: pCube7
     4300010: pCube10
     4300012: pCube11
+    4300014: pCube12
   externalObjects: {}
   materials:
     importMaterials: 1

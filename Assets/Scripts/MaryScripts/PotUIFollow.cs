@@ -42,11 +42,11 @@ public class PotUIFollow : MonoBehaviour
 			}
 		}
 
-		if (pot.cooked)
+		if (pot.cooktime == 0)
 		{
 			statusIcon.sprite = greenCheck;
 		}
-		else if (pot.overcooked)
+		else if (pot.waitForBurn >= 60 && pot.burnTimer < 120)
 		{
 			statusIcon.sprite = redAlert;
 		}

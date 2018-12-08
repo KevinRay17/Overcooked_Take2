@@ -472,13 +472,18 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 23431365712752568, guid: 0aeb8d4daf411844a80591aa80a44e31,
+        type: 2}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4730015335645234, guid: 0aeb8d4daf411844a80591aa80a44e31, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.63
       objectReference: {fileID: 0}
     - target: {fileID: 4730015335645234, guid: 0aeb8d4daf411844a80591aa80a44e31, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.71
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 4730015335645234, guid: 0aeb8d4daf411844a80591aa80a44e31, type: 2}
       propertyPath: m_LocalPosition.z
@@ -507,7 +512,7 @@ Prefab:
     - target: {fileID: 65922720973148086, guid: 0aeb8d4daf411844a80591aa80a44e31,
         type: 2}
       propertyPath: m_Size.y
-      value: 0.223055
+      value: 0.323055
       objectReference: {fileID: 0}
     - target: {fileID: 33322233658170512, guid: 0aeb8d4daf411844a80591aa80a44e31,
         type: 2}
@@ -519,6 +524,21 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23431365712752568, guid: 0aeb8d4daf411844a80591aa80a44e31,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 55e4c3162eba74e12940e9fe89d42385, type: 3}
+    - target: {fileID: 23431365712752568, guid: 0aeb8d4daf411844a80591aa80a44e31,
+        type: 2}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 55e4c3162eba74e12940e9fe89d42385, type: 3}
+    - target: {fileID: 23431365712752568, guid: 0aeb8d4daf411844a80591aa80a44e31,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 913e54d0192520748ad837e80952aa27, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aeb8d4daf411844a80591aa80a44e31, type: 2}
   m_IsPrefabAsset: 0
@@ -744,6 +764,9 @@ MonoBehaviour:
   waitForBurn: 0
   burnTimer: 0
   burnt: 0
+  cooked: 0
+  overcooked: 0
+  burning: 0
   potVariations: []
   objectsInContainer: []
   potFull: 0
@@ -1112,7 +1135,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 451195112}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1475,6 +1498,9 @@ MonoBehaviour:
   waitForBurn: 0
   burnTimer: 0
   burnt: 0
+  cooked: 0
+  overcooked: 0
+  burning: 0
   potVariations:
   - {fileID: 0}
   - {fileID: 0}
@@ -1503,7 +1529,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 65150e06b6ae54d479b095a173b3a824, type: 3}
+  m_Mesh: {fileID: 4300004, guid: 40731dcf0aef5674fb9a461450ed5168, type: 3}
 --- !u!54 &615532152
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1535,7 +1561,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 65150e06b6ae54d479b095a173b3a824, type: 3}
+  - {fileID: 2100000, guid: 913e54d0192520748ad837e80952aa27, type: 2}
+  - {fileID: 2100000, guid: 913e54d0192520748ad837e80952aa27, type: 2}
+  - {fileID: 2100000, guid: 913e54d0192520748ad837e80952aa27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1562,7 +1590,7 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 615532148}
-  m_Mesh: {fileID: 4300000, guid: 65150e06b6ae54d479b095a173b3a824, type: 3}
+  m_Mesh: {fileID: 4300004, guid: 40731dcf0aef5674fb9a461450ed5168, type: 3}
 --- !u!1 &623152090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,6 +1714,9 @@ MonoBehaviour:
   waitForBurn: 0
   burnTimer: 0
   burnt: 0
+  cooked: 0
+  overcooked: 0
+  burning: 0
   potVariations: []
   objectsInContainer: []
   potFull: 0
@@ -2861,9 +2892,9 @@ Canvas:
   m_GameObject: {fileID: 1421142376}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 439430447}
+  m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0

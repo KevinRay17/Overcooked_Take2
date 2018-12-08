@@ -52,15 +52,29 @@ public class OrderGeneration : MonoBehaviour {
 					if (whichRecipe == 1)
 					{
 						
-						GameObject recipeInstance1 = Instantiate (recipe1Prefab, transform.position + new Vector3(-20 +(40 * numberOfOrders), 185f), Quaternion.identity);
+						GameObject recipeInstance1 = Instantiate (recipe1Prefab, transform.position + new Vector3(-20 +(40 * numberOfOrders), 10f), Quaternion.identity);
 						recipeInstance1.transform.SetParent(gameCanvas.transform);
+						transform.LookAt(Camera.main.transform);
+						recipeInstance1.GetComponent<RectTransform>().anchoredPosition =
+							new Vector3(-445 + (80 * numberOfOrders), 180f, 0);
+						recipeInstance1.transform.localPosition = new Vector3(recipeInstance1.transform.localPosition.x,
+							recipeInstance1.transform.localPosition.y, 0);
+						recipeInstance1.transform.localEulerAngles = new Vector3(0,0,0);
+						recipeInstance1.transform.localScale = new Vector3(1,1,1);
 					}
 					
 					//if int is 2, spawn tomato soup
 					else if (whichRecipe == 2)
 					{
-						GameObject recipeInstance1 = Instantiate (recipe2Prefab, transform.position + new Vector3(-20 + (40 * numberOfOrders), 185f), Quaternion.identity);
-						recipeInstance1.transform.SetParent(gameCanvas.transform);
+						GameObject recipeInstance2 = Instantiate (recipe2Prefab, transform.position + new Vector3(-20 + (40 * numberOfOrders), 10f), Quaternion.identity);
+						recipeInstance2.transform.SetParent(gameCanvas.transform);
+						recipeInstance2.GetComponent<RectTransform>().anchoredPosition =
+							new Vector3(-445 + (80 * numberOfOrders), 180f, 0);
+						recipeInstance2.transform.localPosition = new Vector3(recipeInstance2.transform.localPosition.x,
+							recipeInstance2.transform.localPosition.y, 0);
+						recipeInstance2.transform.localEulerAngles = new Vector3(0,0,0);
+						recipeInstance2.transform.localScale = new Vector3(1,1,1);
+						
 					}
 				
 				timeUntilNextOrder = 280;

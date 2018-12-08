@@ -11,7 +11,7 @@ public class ContainerInventory : MonoBehaviour {
     public int waitForBurn = 0;
     public int burnTimer = 0;
     public bool burnt = false;
-    
+    public bool cooked, overcooked, burning;
     
     public GameObject[] potVariations;
     
