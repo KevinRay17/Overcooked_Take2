@@ -16,7 +16,6 @@ public class PotUIFollow : MonoBehaviour
 	void Update ()
 	{
 		transform.position = pot.transform.position + Vector3.up + Vector3.forward*2;
-		transform.LookAt(Camera.main.transform);
 		if (pot.potFull)
 		{
 			for(int i = 0; i < 3; i++)

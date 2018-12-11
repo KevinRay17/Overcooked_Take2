@@ -167,7 +167,9 @@ public class PlayerInventory : MonoBehaviour
 			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Plate"))
 			{
 				Debug.Log("Platehit");
-				if (CurrentlyHeldObject.tag == "Pot" && CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && potInventory.cookCountDown <= 0)
+				if (CurrentlyHeldObject.tag == "Pot" && 
+				    CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && 
+				    potInventory.cookCountDown <= 0)
 				{
 					Debug.Log("plat hit step 2");
 					if (rayHit.transform.GetComponent<PlateInventory>().full)

@@ -58,6 +58,21 @@ public class ContainerInventory : MonoBehaviour {
 					potFull = true;
 				}
 				
+				Debug.Log(i);
+
+				if (i == 0)
+				{
+					Debug.Log("new model");
+					Destroy(transform.GetChild(0).gameObject);
+					GameObject temp = Instantiate(potVariations[1], transform);
+					temp.transform.localPosition = Vector3.zero;
+				}else if (i == 2)
+				{
+					Debug.Log("new mode2l");
+					Destroy(transform.GetChild(0).gameObject);
+					GameObject temp = Instantiate(potVariations[2], transform);
+					temp.transform.localPosition = Vector3.zero;
+				}
 				objectsInContainerIntVersion[i] = vegetable;
 				
 				if (enumRunning)

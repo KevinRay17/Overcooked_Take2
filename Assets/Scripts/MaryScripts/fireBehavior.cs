@@ -7,7 +7,7 @@ public class fireBehavior : MonoBehaviour
 
 	//1. Set itself as a child of the table
 	//2. snap to table's position
-	//3. raycast all 4 directions to see if there's a table (if rayhit.tag == table or something)
+	//3. raycast all 4 directions to see if there's a table (if rayhit.tag == table/stove/counter or something)
 	public bool alive;
 	public bool beingExtinguished;
 
