@@ -24,8 +24,8 @@ public class PotUIFollow : MonoBehaviour
 			{
 				if (pot.objectsInContainerIntVersion[i] != -1)
 				{
-					vegIcons[pot.objectsInContainerIntVersion[i]].enabled = true;
-
+					vegIcons[i].enabled = true;
+					
 					if (pot.objectsInContainerIntVersion[i] == 0)
 					{
 						vegIcons[i].sprite  = tomato;
@@ -39,15 +39,19 @@ public class PotUIFollow : MonoBehaviour
 				{
 					vegIcons[i].enabled = false;
 				}
+				
+				
 			}
 		}
 
 		if (pot.cooked)
 		{
+			statusIcon.enabled = true;
 			statusIcon.sprite = greenCheck;
 		}
 		else if (pot.overcooked)
 		{
+			statusIcon.enabled = true;
 			statusIcon.sprite = redAlert;
 		}
 		else if (pot.burning)
