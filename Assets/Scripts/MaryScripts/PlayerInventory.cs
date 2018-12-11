@@ -30,7 +30,7 @@ public class PlayerInventory : MonoBehaviour
 	public GameObject plate;
 	public GameObject DishReturn;
 
-	public GameObject Lighting;
+	//public GameObject Lighting;
 
 	//Depending on the system, maybe it should be a string array or just a bunch of tags
 	public String[] acceptableTag;
@@ -41,13 +41,13 @@ public class PlayerInventory : MonoBehaviour
 			if (myRCH.collider != null)
 			{
 				//Lighting.transform.SetParent(myRCH.collider.gameObject.transform);
-				Lighting.transform.position = new Vector3(myRCH.collider.transform.position.x ,myRCH.collider.transform.position.y + 4.4f,myRCH.transform.position.z);
-				Lighting.SetActive(true);
+				//Lighting.transform.position = new Vector3(myRCH.collider.transform.position.x ,myRCH.collider.transform.position.y + 4.4f,myRCH.transform.position.z);
+				//Lighting.SetActive(true);
 			}
 		}
 		else
 		{
-			Lighting.SetActive(false);
+			//Lighting.SetActive(false);
 		}
 	 
 		

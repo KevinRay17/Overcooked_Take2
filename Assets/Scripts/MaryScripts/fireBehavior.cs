@@ -6,10 +6,13 @@ public class fireBehavior : MonoBehaviour
 {
 
 	public bool alive;
+	public bool beingExtinguished;
 
 	public int burnLifeCounter = 0;
 
 	public int extinguishTimer = 0;
+
+	public GameObject firePrefab;
 	
 	// Use this for initialization
 	void Start ()
@@ -27,10 +30,10 @@ public class fireBehavior : MonoBehaviour
 		bool left, right, up, down;
 		
 		WaitForSeconds wait = new WaitForSeconds(1);
-		if (burnLifeCounter < 20)
+		if (burnLifeCounter < 30)
 		{
 			//raycast left and right to see if there is fire, if not, instantiate fire in 1 random direction
-			
+			burnLifeCounter++;
 		}
 		else
 		{
@@ -46,12 +49,34 @@ public class fireBehavior : MonoBehaviour
 
 			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out rayHit, 2.2f))
 			{
+				
 			}
 
 			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out rayHit, 2.2f))
 			{
+				
+			}
+
+			burnLifeCounter = 0;
+			int randomDirection = Random.Range(0, 4);
+			Vector3 position = transform.position;
+			
+			GameObject temp = Instantiate(firePrefab, transform);
+			if (randomDirection == 0)
+			{
+				temp.transform.position += Vector3.down;
+			}else if (randomDirection == 1)
+			{
+				temp.transform.position += Vector3.forward;
+			}else if (randomDirection == 2)
+			{
+				temp.transform.position += Vector3.left;
+			}else if (randomDirection == 3)
+			{
+				temp.transform.position += Vector3.right;
 			}
 			
+
 		}
 
 		if (alive)
