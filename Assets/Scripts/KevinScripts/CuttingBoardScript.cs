@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 //Measure the Cutting of the Veggies in a separate script for clarity, can be put in playerInventory
 public class CuttingBoardScript : MonoBehaviour {
+	//Cutting Sound
+	private AudioSource myAudio;
+
+	public AudioClip Chop;
 	//Button Press to cut food
 	public KeyCode cutFood;
 	
@@ -29,7 +33,7 @@ public class CuttingBoardScript : MonoBehaviour {
 	static public float WashMeter = 0;
 	// Use this for initialization
 	void Start () {
-		
+		myAudio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -57,6 +61,7 @@ public class CuttingBoardScript : MonoBehaviour {
 				ChopTimer1 += 800 * (Time.deltaTime);
 				if (ChopTimer1 >= 100)
 				{
+					myAudio.PlayOneShot(Chop);
 					ChopMeter1 += 5;
 					ChopTimer1 = 0;
 				}
@@ -68,6 +73,7 @@ public class CuttingBoardScript : MonoBehaviour {
 				ChopTimer2+= 800 * (Time.deltaTime);
 				if (ChopTimer2 >= 100)
 				{
+					myAudio.PlayOneShot(Chop);
 					ChopMeter2 += 5;
 					ChopTimer2 = 0;
 				}

@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerInventory : MonoBehaviour
 {
+	private AudioSource myAudio;
+	[FormerlySerializedAs("pickUpSFX")] public AudioClip dropSFX;
 	private Ray ray = new Ray();
 	private RaycastHit rayHit = new RaycastHit();
 	
@@ -32,10 +35,18 @@ public class PlayerInventory : MonoBehaviour
 
 	public GameObject Lighting;
 
+	public OrderGeneration orderGen;
+
 	//Depending on the system, maybe it should be a string array or just a bunch of tags
 	public String[] acceptableTag;
-	
+
+	private void Start()
+	{
+		myAudio = GetComponent<AudioSource>();
+	}
+
 	void Update () {
+		//Light something if if in raycast range so they know what they are selecting
 		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out myRCH, 2.2f))
 		{
 			if (myRCH.collider != null)
@@ -69,6 +80,7 @@ public class PlayerInventory : MonoBehaviour
 		}
 
 	}
+	//Empty pot/destroy object
 	public void trash()
 	{
 		for (int i = 0; i < acceptableTag.Length; i++)
@@ -168,7 +180,7 @@ public class PlayerInventory : MonoBehaviour
 			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Plate"))
 			{
 				Debug.Log("Platehit");
-				if (CurrentlyHeldObject.tag == "Pot" && CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && potInventory.cookCountDown <= 0)
+				if (CurrentlyHeldObject.CompareTag("Pot") && CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && potInventory.cookCountDown <= 0)
 				{
 					Debug.Log("plat hit step 2");
 					if (rayHit.transform.GetComponent<PlateInventory>().full)
@@ -257,7 +269,7 @@ public class PlayerInventory : MonoBehaviour
 			CurrentlyHeldObject = null;
 			HoldingThing = false;
 			//Debug.Log(CurrentlyHeldObject);
-			
+			myAudio.PlayOneShot(dropSFX);
 			return true;
 		}
 		return false;
@@ -350,7 +362,6 @@ public class PlayerInventory : MonoBehaviour
 
 			if ((myRCH.collider.gameObject.CompareTag("Table") || myRCH.collider.gameObject.CompareTag("TSpawner") || myRCH.collider.gameObject.CompareTag("OSpawner") 
 			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2")) && CurrentlyHeldObject != null && myRCH.collider.gameObject.transform.childCount == 0) {
-				
 				CurrentlyHeldObject.transform.SetParent(myRCH.collider.gameObject.transform);
 				CurrentlyHeldObject.transform.localPosition = new Vector3(0,myRCH.collider.gameObject.transform.position.y +1f,0);
 				dropObjectCheck();
@@ -367,29 +378,33 @@ public class PlayerInventory : MonoBehaviour
 					dropObjectCheck();
 					dropObject();
 				}
-			} else if (myRCH.collider.gameObject.CompareTag("Server") && CurrentlyHeldObject != null)
+			} 
+			//Serve Dish if Plate is of correct order
+			else if (myRCH.collider.gameObject.CompareTag("Server") && CurrentlyHeldObject != null)
 			{
 				if (CurrentlyHeldObject.CompareTag("Plate"))
 				{
 					if (CurrentlyHeldObject.GetComponent<PlateInventory>().isRuined == false)
 					{
-						if (CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup == true)
+						if (CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup == true && orderGen.TomatoOrderCheck())
 						{
-							Debug.Log("yay");
+							
 							StartCoroutine(DishReturnTimer());
 							Destroy(CurrentlyHeldObject);
 							CurrentlyHeldObjectCode = 0;
 							CurrentlyHeldObject = null;
 							HoldingThing = false;
+							orderGen.DestroyTomatoAndScore();
 							//complete order and score
 						}
-						else if (CurrentlyHeldObject.GetComponent<PlateInventory>().OnionSoup == true)
+						else if (CurrentlyHeldObject.GetComponent<PlateInventory>().OnionSoup == true && orderGen.OnionOrderCheck())
 						{
 							StartCoroutine(DishReturnTimer());
 							Destroy(CurrentlyHeldObject);
 							CurrentlyHeldObjectCode = 0;
 							CurrentlyHeldObject = null;
 							HoldingThing = false;
+							orderGen.DestroyOnionAndScore();
 							//complete order and score
 						}
 					}
@@ -418,6 +433,7 @@ public class PlayerInventory : MonoBehaviour
 			//If the Spawner has nothing on it then spawn new food and take it into hands
 			else if (myRCH.collider.gameObject.CompareTag("TSpawner") && CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount == 0)
 			{
+				
 				GameObject TClone = Instantiate(TomatoClone, new Vector3(0, 1, 0), Quaternion.identity);
 				TClone.transform.SetParent(gameObject.transform);
 				CurrentlyHeldObject = TClone.gameObject;

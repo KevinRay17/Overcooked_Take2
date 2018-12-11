@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7728cf7f337e54b91956b2aecf0fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerMax: 10
+  timerMax: 20
   timer: 0
 --- !u!136 &136047017077193540
 CapsuleCollider:

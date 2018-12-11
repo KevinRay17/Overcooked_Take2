@@ -40,20 +40,20 @@ public class NewCamera : MonoBehaviour
 		}
 
 		//Screen bounds y
-		if (cam.transform.position.y > 12.93f)
-			cam.transform.position = new Vector3(cam.transform.position.x, 12.93f, cam.transform.position.z);
-		if (cam.transform.position.y < 11.93f)
-			cam.transform.position = new Vector3(cam.transform.position.x, 11.93f, cam.transform.position.z);
+		if (cam.transform.position.y > 15.93f)
+			cam.transform.position = new Vector3(cam.transform.position.x, 15.93f, cam.transform.position.z);
+		if (cam.transform.position.y < 13.93f)
+			cam.transform.position = new Vector3(cam.transform.position.x, 13.93f, cam.transform.position.z);
 		//screen bounds z
-		if (cam.transform.position.z > 2.84f)
-			cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, 2.84f);
-		if (cam.transform.position.z < -1.21f)
-			cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, -1.21f);
+		if (cam.transform.position.z > 2f)
+			cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, 2f);
+		if (cam.transform.position.z < -.21f)
+			cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, -.21f);
 		//screen bounds x
-		if (cam.transform.position.x > 1.5f)
-			cam.transform.position = new Vector3(1.5f, cam.transform.position.y, cam.transform.position.z);
-		if (cam.transform.position.x < -1.5f)
-			cam.transform.position = new Vector3(-1.5f, cam.transform.position.y, cam.transform.position.z);
+		if (cam.transform.position.x > 2.1f)
+			cam.transform.position = new Vector3(2.1f, cam.transform.position.y, cam.transform.position.z);
+		if (cam.transform.position.x < -.8f)
+			cam.transform.position = new Vector3(-.8f, cam.transform.position.y, cam.transform.position.z);
 		
 	}
 }

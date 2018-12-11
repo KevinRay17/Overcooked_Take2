@@ -17,7 +17,7 @@ public class AI : MonoBehaviour {
 	{
 		timer += 1 * Time.deltaTime;
 		//Movespeed
-		Vector3 movement = new Vector3(0,0,-.05f);
+		Vector3 movement = new Vector3(0,0,-.025f);
 		transform.Translate(movement);
 		//Kill
 		if (timer >= timerMax)
