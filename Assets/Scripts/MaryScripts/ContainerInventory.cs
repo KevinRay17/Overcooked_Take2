@@ -147,7 +147,8 @@ public class ContainerInventory : MonoBehaviour {
 					burnt = true;
 					//instantiate fire
 
-					Instantiate(fire,transform);
+					Debug.Log("instantiate fire");
+					Instantiate(fire,GetComponent<Transform>());
 				}
 			}
 

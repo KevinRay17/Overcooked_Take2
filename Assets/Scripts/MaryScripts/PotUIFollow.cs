@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PotUIFollow : MonoBehaviour
 {
 	public ContainerInventory pot;
-	//public SpriteRenderer[] vegIcons;
 	public Image[] vegIcons;
 	public Image statusIcon;
 
