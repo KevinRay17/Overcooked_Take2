@@ -14,12 +14,16 @@ ModelImporter:
     400006: pCube1
     400008: pCylinder1
     2100000: lambert1
+    2100002: lambert3
+    2100004: lambert2
     2300000: pasted__pCube1
     2300002: pCube1
     2300004: pCylinder1
+    2300006: //RootNode
     3300000: pasted__pCube1
     3300002: pCube1
     3300004: pCylinder1
+    3300006: //RootNode
     4300000: pCylinder1
     4300002: pCube1
     4300004: pasted__pCube1
