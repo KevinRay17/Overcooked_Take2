@@ -144,3 +144,7 @@ MonoBehaviour:
   TomatoSoup: 0
   isRuined: 0
   isDirty: 0
+  mesh: {fileID: 4300004, guid: 393b93fc595ca8549b1562fcdc89d9e1, type: 3}
+  emptyPlate: {fileID: 4300000, guid: 11d1e5fd3e8cb0c4585c1df85445c1d5, type: 3}
+  Phong: {fileID: 2100002, guid: 216690a3d85b63c4db64486cc5351619, type: 3}
+  Metal: {fileID: 2100000, guid: 913e54d0192520748ad837e80952aa27, type: 2}

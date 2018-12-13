@@ -43,7 +43,7 @@ public class Player2Movement : MonoBehaviour {
 			//Dash Initialization
 			if (Input.GetKeyDown("right shift") && Timer >= .5f)
 			{
-				dashMult = 5;
+				dashMult = 4.5f;
 				Timer = 0;
 			}
 			//While dashMult is more than 1 it will slow down. Change the number value *Time.deltaTime to effect how long the dash is

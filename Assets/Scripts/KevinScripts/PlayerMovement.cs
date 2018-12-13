@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
 	public float Timer = 0;
 
 	public float dashMult = 0;
-	
 
 	
 	
@@ -50,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 			//Dash Initialization
 			if (Input.GetKeyDown("left shift") && Timer >= .5f)
 			{
-				dashMult = 5;
+				dashMult = 4.5f;
 				Timer = 0;
 			}
 			//While dashMult is more than 1 it will slow down. Change the number value *Time.deltaTime to effect how long the dash is
@@ -62,12 +61,10 @@ public class PlayerMovement : MonoBehaviour
 			{
 				dashMult = 1;
 			}
-			
 
 			//Move and Look Direction
 			Vector3 movement = new Vector3(moveHorizontal*dashMult, 0.0f, moveVertical*dashMult);
 			transform.rotation = Quaternion.LookRotation(movement);
-
 
 			transform.Translate(movement * movementSpeed * Time.deltaTime, Space.World);
 		}

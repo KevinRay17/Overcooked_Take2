@@ -45,10 +45,10 @@ public class NewCamera : MonoBehaviour
 		if (cam.transform.position.y < 13.93f)
 			cam.transform.position = new Vector3(cam.transform.position.x, 13.93f, cam.transform.position.z);
 		//screen bounds z
-		if (cam.transform.position.z > 2f)
-			cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, 2f);
-		if (cam.transform.position.z < -.21f)
-			cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, -.21f);
+		if (cam.transform.position.z > 3f)
+			cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, 3f);
+		if (cam.transform.position.z < .81f)
+			cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, .81f);
 		//screen bounds x
 		if (cam.transform.position.x > 2.1f)
 			cam.transform.position = new Vector3(2.1f, cam.transform.position.y, cam.transform.position.z);

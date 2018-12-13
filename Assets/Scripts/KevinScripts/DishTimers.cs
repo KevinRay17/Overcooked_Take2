@@ -17,7 +17,7 @@ public class DishTimers : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Timer.fillAmount -= .03f * Time.deltaTime;
+		Timer.fillAmount -= .01f * Time.deltaTime;
 		if (Timer.fillAmount <= 0)
 		{
 			DestroyAndScore();
