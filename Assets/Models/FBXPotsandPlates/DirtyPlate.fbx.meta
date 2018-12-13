@@ -1,41 +1,18 @@
 fileFormatVersion: 2
-guid: 2cb5718b567fc0e48a5663d5ad9462fd
+guid: a59bc61234cef17409464d05229d75d5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: group
-    100004: pasted__pCube1
-    100006: pCube1
-    100008: pCylinder1
-    100010: pCylinder2
     400000: //RootNode
-    400002: group
-    400004: pasted__pCube1
-    400006: pCube1
-    400008: pCylinder1
-    400010: pCylinder2
-    2100000: lambert1
-    2100002: lambert2
-    2100004: phong1
-    2300000: pasted__pCube1
-    2300002: pCube1
-    2300004: pCylinder1
-    2300006: pCylinder2
-    2300008: //RootNode
-    3300000: pasted__pCube1
-    3300002: pCube1
-    3300004: pCylinder1
-    3300006: pCylinder2
-    3300008: //RootNode
-    4300000: pCylinder1
-    4300002: pCube1
-    4300004: pasted__pCube1
-    4300006: pCylinder2
-    4300008: pCylinder3
+    2100000: lambert2
+    2100002: phong1
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCylinder9
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -64,11 +41,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-<<<<<<< HEAD
-    globalScale: 0.0175
-=======
-    globalScale: 100
->>>>>>> origin/Mary
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -87,7 +60,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
@@ -95,7 +68,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
