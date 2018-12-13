@@ -116,7 +116,7 @@ public class PlayerInventory : MonoBehaviour
 		{
 			Debug.Log("HOLD");
 			CurrentlyHeldObject = other.gameObject;
-			other.GetComponent<Transform>().SetParent(this.transform);
+			other.GetComponent<Transform>().SetParent(transform);
 			other.GetComponent<SphereCollider>().enabled = false;
 		}
 		
@@ -136,9 +136,8 @@ public class PlayerInventory : MonoBehaviour
 		{
 			Debug.Log("Hit " + rayHit.transform.name);
 			if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot") || (rayHit.collider.gameObject.CompareTag("Stove") && rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot")))
-
-		{
-			
+			{
+				potInventory = rayHit.transform.GetComponent<ContainerInventory>();
 				if (CurrentlyHeldObject != null)
 				{
 					Debug.Log("holding smth");
@@ -148,11 +147,11 @@ public class PlayerInventory : MonoBehaviour
 					{
 						//if tag is accepted, check container if can be added
 						
-						if (CurrentlyHeldObject.tag == tempTag[i])
+						if (CurrentlyHeldObject.CompareTag(tempTag[i]))
 						{
 							Debug.Log("acceptable tag");
 							//if accepted, destroy gameobject and reset currentlyheldobject and code
-							if (potInventory.addVegetable(CurrentlyHeldObjectCode) && !potInventory.burnt)
+							if (potInventory.addVegetable(i) && !potInventory.burnt)
 							{
 								Debug.Log("pot can take");
 								GameObject temp = CurrentlyHeldObject;
@@ -168,7 +167,9 @@ public class PlayerInventory : MonoBehaviour
 			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Plate"))
 			{
 				Debug.Log("Platehit");
-				if (CurrentlyHeldObject.tag == "Pot" && CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && potInventory.cookCountDown <= 0)
+				if (CurrentlyHeldObject.tag == "Pot" && 
+				    CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && 
+				    potInventory.cookCountDown <= 0)
 				{
 					Debug.Log("plat hit step 2");
 					if (rayHit.transform.GetComponent<PlateInventory>().full)
@@ -210,8 +211,14 @@ public class PlayerInventory : MonoBehaviour
 				trash();
 			}
 			
-			
-
+			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Fire"))
+			{
+				if (CurrentlyHeldObject.CompareTag("Extinguisher"))
+				{
+					//Extinguish fire
+					rayHit.transform.GetComponent<fireBehavior>().extinguish();
+				}
+			}
 			else
 			{
 				//Swap object
