@@ -168,7 +168,6 @@ public class ContainerInventory : MonoBehaviour {
 			}
 
 			yield return wait;
-               
              
 		}
 	}

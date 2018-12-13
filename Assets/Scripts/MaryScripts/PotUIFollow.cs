@@ -12,10 +12,18 @@ public class PotUIFollow : MonoBehaviour
 	public Sprite onion, tomato, greenCheck, redAlert;
 
 
+	void Start()
+	{
+		statusIcon.enabled = false;
+		for (int i = 0; i < 3; i++)
+		{
+			vegIcons[i].enabled = false;
+		}
+	}
 	// Update is called once per frame
 	void Update ()
 	{
-		transform.position = pot.transform.position + Vector3.up + Vector3.forward*2;
+		transform.position = pot.transform.position + Vector3.up/2 + Vector3.forward/2;
 		if (pot.potFull)
 		{
 			for(int i = 0; i < 3; i++)
@@ -41,22 +49,31 @@ public class PotUIFollow : MonoBehaviour
 				
 			}
 		}
+		else
+		{
+			for (int i = 0; i < 3; i++)
+			{
+				vegIcons[i].enabled = false;
+			}
+		}
 
-		if (pot.cooked)
+		if (pot.cookCountDown == 0 && pot.burnTimer == 0)
 		{
 			statusIcon.enabled = true;
 			statusIcon.sprite = greenCheck;
 		}
-		else if (pot.overcooked)
+		else if (pot.burnTimer > 0)
 		{
 			statusIcon.enabled = true;
 			statusIcon.sprite = redAlert;
 		}
-		else if (pot.burning)
-		{
-			
-		}
+		
 		else
+		{
+			statusIcon.enabled = false;
+		}
+
+		if (!pot.cooking)
 		{
 			statusIcon.enabled = false;
 		}

@@ -21,6 +21,7 @@ TagManager:
   - DishReturn
   - Trash
   - Fire
+  - Extinguisher
   layers:
   - Default
   - TransparentFX

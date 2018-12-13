@@ -211,8 +211,14 @@ public class PlayerInventory : MonoBehaviour
 				trash();
 			}
 			
-			
-
+			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Fire"))
+			{
+				if (CurrentlyHeldObject.CompareTag("Extinguisher"))
+				{
+					//Extinguish fire
+					rayHit.transform.GetComponent<fireBehavior>().extinguish();
+				}
+			}
 			else
 			{
 				//Swap object
