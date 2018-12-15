@@ -12,15 +12,20 @@ ModelImporter:
     400004: pSphere1
     400006: pSphere2
     2100000: lambert1
+    2100002: lambert3
+    2100004: lambert2
     2300000: pCube1
     2300002: pSphere1
     2300004: pSphere2
+    2300006: //RootNode
     3300000: pCube1
     3300002: pSphere1
     3300004: pSphere2
+    3300006: //RootNode
     4300000: pSphere1
     4300002: pSphere2
     4300004: pCube1
+    4300006: pCube2
   externalObjects: {}
   materials:
     importMaterials: 1
