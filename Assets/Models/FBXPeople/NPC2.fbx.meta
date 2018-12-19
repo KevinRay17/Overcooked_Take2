@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 70a12d61e9b64714abcca218c1ad597c
+guid: 320c979f6398efb459acfc36eb414475
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert1
-    2100002: phong1
-    2100004: phong2
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pSphere1
+    100000: bottom
+    100002: //RootNode
+    100004: pSphere7
+    400000: bottom
+    400002: //RootNode
+    400004: pSphere7
+    2000000: bottom
+    2100000: Eyes
+    2100002: Skin
+    2100004: Shirt
+    2100006: lambert5
+    2100008: Nose
+    2100010: Hair
+    2300000: pSphere7
+    3300000: pSphere7
+    4300000: pSphere7
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1

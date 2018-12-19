@@ -1,16 +1,15 @@
 fileFormatVersion: 2
-guid: 70a12d61e9b64714abcca218c1ad597c
+guid: cb3dd0bd45bddaa4da0ad63ba07d0c9b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
+    2100000: lambert2
     2100002: phong1
-    2100004: phong2
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pSphere1
+    4300000: pCylinder9
   externalObjects: {}
   materials:
     importMaterials: 1

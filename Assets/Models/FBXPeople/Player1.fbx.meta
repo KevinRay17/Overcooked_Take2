@@ -46,6 +46,17 @@ ModelImporter:
     400038: pSphere8
     400040: pSphere9
     2100000: lambert1
+    2100002: lambert4
+    2100004: lambert6
+    2100006: lambert9
+    2100008: lambert8
+    2100010: lambert7
+    2100012: lambert5
+    2100014: phong1
+    2100016: lambert3
+    2100018: blinn1
+    2100020: blinn2
+    2100022: lambert2
     2300000: pCone1
     2300002: pCube1
     2300004: pCylinder1
@@ -64,6 +75,7 @@ ModelImporter:
     2300030: pSphere7
     2300032: pSphere8
     2300034: pSphere9
+    2300036: //RootNode
     3300000: pCone1
     3300002: pCube1
     3300004: pCylinder1
@@ -82,6 +94,7 @@ ModelImporter:
     3300030: pSphere7
     3300032: pSphere8
     3300034: pSphere9
+    3300036: //RootNode
     4300000: pSphere1
     4300002: pSphere2
     4300004: pSphere3
@@ -100,6 +113,7 @@ ModelImporter:
     4300030: pCylinder4
     4300032: pCylinder5
     4300034: pSphere11
+    4300036: pCylinder6
   externalObjects: {}
   materials:
     importMaterials: 1

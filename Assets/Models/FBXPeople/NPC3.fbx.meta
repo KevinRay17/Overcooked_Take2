@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 70a12d61e9b64714abcca218c1ad597c
+guid: dc9d610f21e1ce145ae56f5bb866dcf1
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
-    2100002: phong1
-    2100004: phong2
+    2100000: Skin
+    2100002: Shirt
+    2100004: Eyes
+    2100006: Nose
+    2100008: glasses
+    2100010: Mouth
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pSphere1
+    4300000: pSphere9
   externalObjects: {}
   materials:
     importMaterials: 1
