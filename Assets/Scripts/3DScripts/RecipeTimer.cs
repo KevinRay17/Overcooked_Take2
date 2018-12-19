@@ -38,4 +38,8 @@ public class RecipeTimer : MonoBehaviour
 		}
 
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master
