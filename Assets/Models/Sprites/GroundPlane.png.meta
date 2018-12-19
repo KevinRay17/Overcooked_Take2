@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: f0f224b2a1b4d55459bb897c301dcc20
+=======
+<<<<<<< HEAD
+guid: f0f224b2a1b4d55459bb897c301dcc20
+=======
+guid: 50d279e3793a4954eba63677bbd47e29
+>>>>>>> origin/master
+>>>>>>> origin/Kevin_Develop
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}

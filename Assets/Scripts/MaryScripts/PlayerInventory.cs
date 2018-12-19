@@ -129,7 +129,7 @@ public class PlayerInventory : MonoBehaviour
 		{
 			Debug.Log("HOLD");
 			CurrentlyHeldObject = other.gameObject;
-			other.GetComponent<Transform>().SetParent(this.transform);
+			other.GetComponent<Transform>().SetParent(transform);
 			other.GetComponent<SphereCollider>().enabled = false;
 		}
 		
@@ -148,10 +148,16 @@ public class PlayerInventory : MonoBehaviour
 		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 2.2f))
 		{
 			Debug.Log("Hit " + rayHit.transform.name);
+<<<<<<< HEAD
 			if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot") || (rayHit.collider.gameObject.transform.childCount > 0 && rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot")))
 
 		{
 			
+=======
+			if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot") || (rayHit.collider.gameObject.CompareTag("Stove") && rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot")))
+			{
+				potInventory = rayHit.transform.GetComponent<ContainerInventory>();
+>>>>>>> origin/Mary
 				if (CurrentlyHeldObject != null)
 				{
 					Debug.Log("holding smth");
@@ -161,7 +167,7 @@ public class PlayerInventory : MonoBehaviour
 					{
 						//if tag is accepted, check container if can be added
 						
-						if (CurrentlyHeldObject.tag == tempTag[i])
+						if (CurrentlyHeldObject.CompareTag(tempTag[i]))
 						{
 							Debug.Log("acceptable tag");
 							//if accepted, destroy gameobject and reset currentlyheldobject and code
@@ -181,7 +187,13 @@ public class PlayerInventory : MonoBehaviour
 			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Plate") )
 			{
 				Debug.Log("Platehit");
+<<<<<<< HEAD
 				if (CurrentlyHeldObject.CompareTag("Pot") && CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && potInventory.cookCountDown <= 0)
+=======
+				if (CurrentlyHeldObject.tag == "Pot" && 
+				    CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && 
+				    potInventory.cookCountDown <= 0)
+>>>>>>> origin/Mary
 				{
 					Debug.Log("plat hit step 2");
 					if (rayHit.transform.GetComponent<PlateInventory>().full)
@@ -267,17 +279,25 @@ public class PlayerInventory : MonoBehaviour
 				trash();
 			}
 			
-			
-
-			else
+			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Fire"))
 			{
-				//Swap object
+				if (CurrentlyHeldObject.CompareTag("Extinguisher"))
+				{
+					//Extinguish fire
+					rayHit.transform.GetComponent<fireBehavior>().extinguish();
+				}
+			}
+			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Server"))
+			{
+				if (CurrentlyHeldObject.CompareTag("Plate"))
+				{
+					OrderGeneration.OG.scoreCheck(CurrentlyHeldObject.GetComponent<PlateInventory>());
+				}
 			}
 		}
 		else
 		{
 			dropObject();
-		
 		}
 	}
 	
@@ -393,13 +413,6 @@ public class PlayerInventory : MonoBehaviour
 	}
 	
 	
-	//For now: if you run into ab object, you pick it up
-	//Future: if raycast hit an object, drop current object to pick it up
-
-	private void OnCollisionEnter(Collision other)
-	{
-		
-	}
 	void SnapToTable()
 	{
 		//Check what the RayCast hits and if the table is empty and you are holding an object, put held object on the table
@@ -431,8 +444,24 @@ public class PlayerInventory : MonoBehaviour
 				{
 			
 					if (CurrentlyHeldObject.GetComponent<PlateInventory>().isRuined == false)
+<<<<<<< HEAD
 					{ 
 						if (CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup == true && orderGen.TomatoOrderCheck())
+=======
+					{
+						if (OrderGeneration.OG.scoreCheck(CurrentlyHeldObject.GetComponent<PlateInventory>()))
+						{
+							Debug.Log("yay");
+							StartCoroutine(DishReturnTimer());
+							Destroy(CurrentlyHeldObject);
+							CurrentlyHeldObjectCode = 0;
+							CurrentlyHeldObject = null;
+							HoldingThing = false;
+						}
+
+						/*
+						if (CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup == true)
+>>>>>>> origin/Mary
 						{
 							StartCoroutine(DishReturnTimer());
 							Destroy(CurrentlyHeldObject);
@@ -451,7 +480,7 @@ public class PlayerInventory : MonoBehaviour
 							HoldingThing = false;
 							orderGen.DestroyOnionAndScore();
 							//complete order and score
-						}
+						}*/
 					}
 				}
 			}
@@ -652,7 +681,7 @@ public class PlayerInventory : MonoBehaviour
 		}
 	}
 
-	public IEnumerator DishReturnTimer()
+	 IEnumerator DishReturnTimer()
 	{
 		WaitForSeconds wait = new WaitForSeconds(6);
 		yield return wait;
@@ -660,7 +689,5 @@ public class PlayerInventory : MonoBehaviour
 		plateClone.transform.SetParent(DishReturn.gameObject.transform);
 		plateClone.transform.localPosition = new Vector3(0,1,0);
 		plateClone.GetComponent<PlateInventory>().isDirty = true;
-
-
 	}
 }
