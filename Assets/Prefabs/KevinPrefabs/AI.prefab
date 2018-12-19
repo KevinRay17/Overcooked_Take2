@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23261413113241606}
   - component: {fileID: 136047017077193540}
   - component: {fileID: 114181149140005600}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd7728cf7f337e54b91956b2aecf0fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerMax: 10
+  timerMax: 20
   timer: 0
 --- !u!136 &136047017077193540
 CapsuleCollider:

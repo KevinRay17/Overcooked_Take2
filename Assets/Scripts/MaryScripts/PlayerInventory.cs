@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerInventory : MonoBehaviour
 {
+	private AudioSource myAudio;
+	[FormerlySerializedAs("pickUpSFX")] public AudioClip dropSFX;
 	private Ray ray = new Ray();
 	private RaycastHit rayHit = new RaycastHit();
 	
@@ -30,24 +33,33 @@ public class PlayerInventory : MonoBehaviour
 	public GameObject plate;
 	public GameObject DishReturn;
 
-	//public GameObject Lighting;
+	public GameObject Lighting;
+
+	public OrderGeneration orderGen;
+	public CuttingBoardScript cutBoard;
 
 	//Depending on the system, maybe it should be a string array or just a bunch of tags
 	public String[] acceptableTag;
-	
+
+	private void Start()
+	{
+		myAudio = GetComponent<AudioSource>();
+	}
+
 	void Update () {
+		//Light something if if in raycast range so they know what they are selecting
 		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out myRCH, 2.2f))
 		{
 			if (myRCH.collider != null)
 			{
 				//Lighting.transform.SetParent(myRCH.collider.gameObject.transform);
-				//Lighting.transform.position = new Vector3(myRCH.collider.transform.position.x ,myRCH.collider.transform.position.y + 4.4f,myRCH.transform.position.z);
-				//Lighting.SetActive(true);
+				Lighting.transform.position = new Vector3(myRCH.collider.transform.position.x ,myRCH.collider.transform.position.y + 4.4f,myRCH.transform.position.z);
+				Lighting.SetActive(true);
 			}
 		}
 		else
 		{
-			//Lighting.SetActive(false);
+			Lighting.SetActive(false);
 		}
 	 
 		
@@ -69,6 +81,7 @@ public class PlayerInventory : MonoBehaviour
 		}
 
 	}
+	//Empty pot/destroy object
 	public void trash()
 	{
 		for (int i = 0; i < acceptableTag.Length; i++)
@@ -135,9 +148,16 @@ public class PlayerInventory : MonoBehaviour
 		if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 2.2f))
 		{
 			Debug.Log("Hit " + rayHit.transform.name);
+<<<<<<< HEAD
+			if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot") || (rayHit.collider.gameObject.transform.childCount > 0 && rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot")))
+
+		{
+			
+=======
 			if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot") || (rayHit.collider.gameObject.CompareTag("Stove") && rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot")))
 			{
 				potInventory = rayHit.transform.GetComponent<ContainerInventory>();
+>>>>>>> origin/Mary
 				if (CurrentlyHeldObject != null)
 				{
 					Debug.Log("holding smth");
@@ -164,12 +184,16 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}
-			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Plate"))
+			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Plate") )
 			{
 				Debug.Log("Platehit");
+<<<<<<< HEAD
+				if (CurrentlyHeldObject.CompareTag("Pot") && CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && potInventory.cookCountDown <= 0)
+=======
 				if (CurrentlyHeldObject.tag == "Pot" && 
 				    CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && 
 				    potInventory.cookCountDown <= 0)
+>>>>>>> origin/Mary
 				{
 					Debug.Log("plat hit step 2");
 					if (rayHit.transform.GetComponent<PlateInventory>().full)
@@ -205,6 +229,50 @@ public class PlayerInventory : MonoBehaviour
 					}
 				}
 			}
+			//If plate is on a table and you want to put soup in it
+			else if (rayHit.collider.gameObject.transform.childCount > 0)
+			{
+				if (rayHit.collider.gameObject.transform.GetChild(0).gameObject.transform.CompareTag("Plate"))
+				{
+					if (CurrentlyHeldObject.CompareTag("Pot") &&
+					    CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull &&
+					    potInventory.cookCountDown <= 0)
+					{
+						Debug.Log("plat hit step 2");
+						if (rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>().full)
+						{
+							Debug.Log("Plate is full");
+						}
+						else
+						{
+							//set plate to the type of soup put in
+							rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>().full= true;
+							if (potInventory.objectsInContainerIntVersion[0] == 0 &&
+							    potInventory.objectsInContainerIntVersion[1] == 0 &&
+							    potInventory.objectsInContainerIntVersion[2] == 0 && !potInventory.burnt)
+							{
+								rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>().TomatoSoup = true;
+							}
+							else if (potInventory.objectsInContainerIntVersion[0] == 1 &&
+							         potInventory.objectsInContainerIntVersion[1] == 1 &&
+							         potInventory.objectsInContainerIntVersion[2] == 1 && !potInventory.burnt)
+							{
+								rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>().OnionSoup= true;
+							}
+							else
+							{
+								rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>().isRuined = true;
+							}
+
+							for (int i = 0; i < 3; i++)
+							{
+								CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
+								//Debug.Log("plat full pot empty");
+							}
+						}
+					}
+				}
+			}
 			else if(rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Trash"))
 			{
 				Debug.Log("hit trash");
@@ -219,15 +287,17 @@ public class PlayerInventory : MonoBehaviour
 					rayHit.transform.GetComponent<fireBehavior>().extinguish();
 				}
 			}
-			else
+			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Server"))
 			{
-				//Swap object
+				if (CurrentlyHeldObject.CompareTag("Plate"))
+				{
+					OrderGeneration.OG.scoreCheck(CurrentlyHeldObject.GetComponent<PlateInventory>());
+				}
 			}
 		}
 		else
 		{
 			dropObject();
-		
 		}
 	}
 	
@@ -264,7 +334,7 @@ public class PlayerInventory : MonoBehaviour
 			CurrentlyHeldObject = null;
 			HoldingThing = false;
 			//Debug.Log(CurrentlyHeldObject);
-			
+			myAudio.PlayOneShot(dropSFX);
 			return true;
 		}
 		return false;
@@ -343,13 +413,6 @@ public class PlayerInventory : MonoBehaviour
 	}
 	
 	
-	//For now: if you run into ab object, you pick it up
-	//Future: if raycast hit an object, drop current object to pick it up
-
-	private void OnCollisionEnter(Collision other)
-	{
-		
-	}
 	void SnapToTable()
 	{
 		//Check what the RayCast hits and if the table is empty and you are holding an object, put held object on the table
@@ -357,9 +420,8 @@ public class PlayerInventory : MonoBehaviour
 
 			if ((myRCH.collider.gameObject.CompareTag("Table") || myRCH.collider.gameObject.CompareTag("TSpawner") || myRCH.collider.gameObject.CompareTag("OSpawner") 
 			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2")) && CurrentlyHeldObject != null && myRCH.collider.gameObject.transform.childCount == 0) {
-				
 				CurrentlyHeldObject.transform.SetParent(myRCH.collider.gameObject.transform);
-				CurrentlyHeldObject.transform.localPosition = new Vector3(0,myRCH.collider.gameObject.transform.position.y +1f,0);
+				CurrentlyHeldObject.transform.localPosition = new Vector3(0,myRCH.collider.gameObject.transform.position.y +.5f,0);
 				dropObjectCheck();
 				dropObject();
 				
@@ -370,17 +432,24 @@ public class PlayerInventory : MonoBehaviour
 				{
 					CurrentlyHeldObject.transform.SetParent(myRCH.collider.gameObject.transform);
 					CurrentlyHeldObject.transform.localPosition =
-						new Vector3(0, myRCH.collider.gameObject.transform.position.y + 1f, 0);
+						new Vector3(0, myRCH.collider.gameObject.transform.position.y + .5f, 0);
 					dropObjectCheck();
 					dropObject();
 				}
-			} else if (myRCH.collider.gameObject.CompareTag("Server") && CurrentlyHeldObject != null)
+			} 
+			//Serve Dish if Plate is of correct order
+			else if (myRCH.collider.gameObject.CompareTag("Server") && CurrentlyHeldObject != null)
 			{
 				if (CurrentlyHeldObject.CompareTag("Plate"))
 				{
+			
 					if (CurrentlyHeldObject.GetComponent<PlateInventory>().isRuined == false)
+<<<<<<< HEAD
+					{ 
+						if (CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup == true && orderGen.TomatoOrderCheck())
+=======
 					{
-						if (CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup == true)
+						if (OrderGeneration.OG.scoreCheck(CurrentlyHeldObject.GetComponent<PlateInventory>()))
 						{
 							Debug.Log("yay");
 							StartCoroutine(DishReturnTimer());
@@ -388,17 +457,30 @@ public class PlayerInventory : MonoBehaviour
 							CurrentlyHeldObjectCode = 0;
 							CurrentlyHeldObject = null;
 							HoldingThing = false;
-							//complete order and score
 						}
-						else if (CurrentlyHeldObject.GetComponent<PlateInventory>().OnionSoup == true)
+
+						/*
+						if (CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup == true)
+>>>>>>> origin/Mary
 						{
 							StartCoroutine(DishReturnTimer());
 							Destroy(CurrentlyHeldObject);
 							CurrentlyHeldObjectCode = 0;
 							CurrentlyHeldObject = null;
 							HoldingThing = false;
+							orderGen.DestroyTomatoAndScore();
 							//complete order and score
 						}
+						else if (CurrentlyHeldObject.GetComponent<PlateInventory>().OnionSoup == true && orderGen.OnionOrderCheck())
+						{
+							StartCoroutine(DishReturnTimer());
+							Destroy(CurrentlyHeldObject);
+							CurrentlyHeldObjectCode = 0;
+							CurrentlyHeldObject = null;
+							HoldingThing = false;
+							orderGen.DestroyOnionAndScore();
+							//complete order and score
+						}*/
 					}
 				}
 			}
@@ -410,7 +492,7 @@ public class PlayerInventory : MonoBehaviour
 					{
 						CurrentlyHeldObject.transform.SetParent(myRCH.collider.gameObject.transform);
 						CurrentlyHeldObject.transform.localPosition =
-							new Vector3(0, myRCH.collider.gameObject.transform.position.y + 1f, 0);
+							new Vector3(1, myRCH.collider.gameObject.transform.position.y + .5f, 0);
 						dropObjectCheck();
 						dropObject();
 					}
@@ -425,6 +507,7 @@ public class PlayerInventory : MonoBehaviour
 			//If the Spawner has nothing on it then spawn new food and take it into hands
 			else if (myRCH.collider.gameObject.CompareTag("TSpawner") && CurrentlyHeldObject == null && myRCH.collider.gameObject.transform.childCount == 0)
 			{
+				
 				GameObject TClone = Instantiate(TomatoClone, new Vector3(0, 1, 0), Quaternion.identity);
 				TClone.transform.SetParent(gameObject.transform);
 				CurrentlyHeldObject = TClone.gameObject;
@@ -476,7 +559,7 @@ public class PlayerInventory : MonoBehaviour
 			//If you aren't holding anything and the table has something on it, take it into hands
 			else if ((myRCH.collider.gameObject.CompareTag("Table") || myRCH.collider.gameObject.CompareTag("TSpawner") ||
 			     myRCH.collider.gameObject.CompareTag("OSpawner")
-			     || myRCH.collider.gameObject.CompareTag("CuttingBoard") || myRCH.collider.gameObject.CompareTag("CuttingBoard2") || myRCH.collider.gameObject.CompareTag("Stove") || myRCH.collider.gameObject.CompareTag("DishReturn")) && CurrentlyHeldObject == null &&
+			     ||  myRCH.collider.gameObject.CompareTag("Stove") || myRCH.collider.gameObject.CompareTag("DishReturn")) && CurrentlyHeldObject == null &&
 			    myRCH.collider.gameObject.transform.childCount > 0)
 			{
 				if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().CompareTag("Pot"))
@@ -514,10 +597,91 @@ public class PlayerInventory : MonoBehaviour
 				HoldingThing = true;
 				
 			}
+			//Can't pick up from cutting board if cutting started
+			else if (myRCH.collider.gameObject.CompareTag("CuttingBoard") && CurrentlyHeldObject == null &&
+			         myRCH.collider.gameObject.transform.childCount > 0  && (cutBoard.ChopBar1.fillAmount <=0))
+			{
+				if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().CompareTag("Pot"))
+				{
+					CurrentlyHeldObjectCode = 2;
+				}
+				else if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>()
+					.CompareTag("Plate"))
+					CurrentlyHeldObjectCode = 4;
+				else
+				{
+					CurrentlyHeldObjectCode = 0;
+				}
+
+				CurrentlyHeldObject = myRCH.collider.gameObject.transform.GetChild(0).gameObject;
+				CurrentlyHeldObject.transform.SetParent(gameObject.transform);
+				CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
+				CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
+				if (CurrentlyHeldObjectCode > 3)
+				{
+					CurrentlyHeldObject.GetComponent<BoxCollider>().enabled = false;
+				}
+				else if (CurrentlyHeldObjectCode > 1 && CurrentlyHeldObjectCode < 3)
+				{
+					CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = false;
+				}
+				else
+				{
+					CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
+				}
+
+				CurrentlyHeldObject.layer = 2;
+				CurrentlyHeldObject.transform.localPosition = new Vector3(0, 0, 1.5f);
+
+
+				HoldingThing = true;
+			
+
+			}
+			else if (myRCH.collider.gameObject.CompareTag("CuttingBoard2") && CurrentlyHeldObject == null &&
+			         myRCH.collider.gameObject.transform.childCount > 0  && (cutBoard.ChopBar2.fillAmount <=0))
+			{
+				if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().CompareTag("Pot"))
+				{
+					CurrentlyHeldObjectCode = 2;
+				}
+				else if (myRCH.collider.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>()
+					.CompareTag("Plate"))
+					CurrentlyHeldObjectCode = 4;
+				else
+				{
+					CurrentlyHeldObjectCode = 0;
+				}
+
+				CurrentlyHeldObject = myRCH.collider.gameObject.transform.GetChild(0).gameObject;
+				CurrentlyHeldObject.transform.SetParent(gameObject.transform);
+				CurrentlyHeldObject.GetComponent<Rigidbody>().isKinematic = true;
+				CurrentlyHeldObject.GetComponent<Rigidbody>().useGravity = false;
+				if (CurrentlyHeldObjectCode > 3)
+				{
+					CurrentlyHeldObject.GetComponent<BoxCollider>().enabled = false;
+				}
+				else if (CurrentlyHeldObjectCode > 1 && CurrentlyHeldObjectCode < 3)
+				{
+					CurrentlyHeldObject.GetComponent<MeshCollider>().enabled = false;
+				}
+				else
+				{
+					CurrentlyHeldObject.GetComponent<SphereCollider>().enabled = false;
+				}
+
+				CurrentlyHeldObject.layer = 2;
+				CurrentlyHeldObject.transform.localPosition = new Vector3(0, 0, 1.5f);
+
+
+				HoldingThing = true;
+			
+
+			}
 		}
 	}
 
-	public IEnumerator DishReturnTimer()
+	 IEnumerator DishReturnTimer()
 	{
 		WaitForSeconds wait = new WaitForSeconds(6);
 		yield return wait;
@@ -525,7 +689,5 @@ public class PlayerInventory : MonoBehaviour
 		plateClone.transform.SetParent(DishReturn.gameObject.transform);
 		plateClone.transform.localPosition = new Vector3(0,1,0);
 		plateClone.GetComponent<PlateInventory>().isDirty = true;
-
-
 	}
 }

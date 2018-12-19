@@ -32,7 +32,17 @@ public class ContainerInventory : MonoBehaviour {
 	public Image CookMeter;
 
 	public GameObject fire;
-	
+	public Mesh pot1of3;
+	public Mesh pot2of3;
+	public Mesh pot3of3;
+	public Mesh OGMesh;
+
+	public Material Phong;
+
+	public Material Metal;
+	//Material[] mats = GetComponent<MeshRenderer>().materials;
+	//mats[1] = Phong;
+	//GetComponent<MeshRenderer>().materials = mats;
 	//use for checking dish Orders
 	public bool completelyFull;
 	//sort objects by tag
@@ -77,16 +87,43 @@ public class ContainerInventory : MonoBehaviour {
 				
 				if (enumRunning)
 				{
+					
+					if (cooktime == 120)
+					{
+						Mesh pot2 = Instantiate(pot2of3);
+						GetComponent<MeshFilter>().sharedMesh = pot2;
+						Material[] mats = GetComponent<MeshRenderer>().materials;
+						mats[1] = Phong;
+						mats[0] = Metal;
+						GetComponent<MeshRenderer>().materials = mats;
+					}
+					else if (cooktime == 180)
+					{
+						Mesh pot3 = Instantiate(pot3of3);
+						GetComponent<MeshFilter>().sharedMesh = pot3;
+						Material[] mats = GetComponent<MeshRenderer>().materials;
+						mats[0] = Phong;
+						mats[1] = Metal;
+						GetComponent<MeshRenderer>().materials = mats;
+					}
 					Debug.Log("more time");
-					cookCountDown += 15;
+					cookCountDown += 60;
+					cooktime += 60;
+					
 				}
 				else
 				{
 					Debug.Log("started cooking");
 					StartCoroutine(Cooking());
+					Mesh pot1 = Instantiate(pot1of3);
+					GetComponent<MeshFilter>().sharedMesh = pot1;
+					Material[] mats = GetComponent<MeshRenderer>().materials;
+					mats[0] = Phong;
+					GetComponent<MeshRenderer>().materials = mats;
 				}
-				
+				completelyFull = (objectsInContainerIntVersion[0] != -1) && (objectsInContainerIntVersion[1] != -1) && (objectsInContainerIntVersion[2] != -1);
 				return true;
+				
 			}
 		}
 		Debug.Log("'uh oh its full,' says add vegetable");
@@ -101,11 +138,18 @@ public class ContainerInventory : MonoBehaviour {
 		{
 			objectsInContainerIntVersion[i] = -1;
 			completelyFull = false;
+			cookCountDown = 120;
 			potFull = false;
 			waitForBurn = 0;
 			burnTimer = 0;
 			burnt = false;
 			enumRunning = false;
+			Mesh newPot = Instantiate(OGMesh);
+			GetComponent<MeshFilter>().sharedMesh = newPot;
+			Material[] mats = GetComponent<MeshRenderer>().materials;
+			mats[1] = Metal;
+			mats[0] = Metal;
+			GetComponent<MeshRenderer>().materials = mats;
 		}
 	}
 	
@@ -130,15 +174,18 @@ public class ContainerInventory : MonoBehaviour {
 			cookCountDown = cooktime;
 			enumRunning = true;
 		}
-
         
-		Debug.Log("cooking time" + cookCountDown);
 		while (potFull)
 		{
+<<<<<<< HEAD
+            
+=======
+			
+>>>>>>> origin/Mary
                 
 			if (gameObject.transform.parent != null)
 			{
-
+				Debug.Log(gameObject.transform.parent.tag);
 				if (gameObject.transform.parent.CompareTag("Stove") && cookCountDown > 0 && !burnt)
 				{
 					CookMeter.fillAmount = ((float) (cooktime - cookCountDown)) / cooktime;
@@ -151,22 +198,31 @@ public class ContainerInventory : MonoBehaviour {
 					CookMeter.fillAmount = 0;
 					waitForBurn++;
 				}
-
 				if (gameObject.transform.parent.CompareTag("Stove") && waitForBurn >= 60 && burnTimer < 120)
 				{
 					burnTimer++;
 				}
-
 				if (gameObject.transform.parent.CompareTag("Stove") && burnTimer >= 120)
 				{
 					burnt = true;
 					//instantiate fire
+<<<<<<< HEAD
+					Debug.Log("instantiate fire");
+					GameObject temp = Instantiate(fire,GetComponent<Transform>());
+					temp.transform.localPosition = Vector3.zero;
+=======
 
 					Debug.Log("instantiate fire");
+<<<<<<< HEAD
 					Instantiate(fire,GetComponent<Transform>());
+>>>>>>> 68bd770c45b53b349b1f77b8e4ab633ac45052f2
+=======
+					GameObject temp = Instantiate(fire,GetComponent<Transform>());
+					temp.transform.localPosition = Vector3.zero;
+					temp.transform.localScale = Vector3.one;
+>>>>>>> origin/Mary
 				}
 			}
-
 			yield return wait;
              
 		}

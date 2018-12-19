@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class PotUIFollow : MonoBehaviour
 {
 	public ContainerInventory pot;
 	public Image[] vegIcons;
 	public Image statusIcon;
-
 	public Sprite onion, tomato, greenCheck, redAlert;
+<<<<<<< HEAD
+	void Start()
+	{
+=======
 
 
 	void Start()
 	{
 		statusIcon.enabled = false;
+>>>>>>> origin/Mary
 		for (int i = 0; i < 3; i++)
 		{
 			vegIcons[i].enabled = false;
@@ -31,7 +34,11 @@ public class PotUIFollow : MonoBehaviour
 				if (pot.objectsInContainerIntVersion[i] != -1)
 				{
 					vegIcons[i].enabled = true;
+<<<<<<< HEAD
+                    
+=======
 					
+>>>>>>> origin/Mary
 					if (pot.objectsInContainerIntVersion[i] == 0)
 					{
 						vegIcons[i].sprite  = tomato;
@@ -45,8 +52,13 @@ public class PotUIFollow : MonoBehaviour
 				{
 					vegIcons[i].enabled = false;
 				}
+<<<<<<< HEAD
+                
+                
+=======
 				
 				
+>>>>>>> origin/Mary
 			}
 		}
 		else
@@ -56,7 +68,10 @@ public class PotUIFollow : MonoBehaviour
 				vegIcons[i].enabled = false;
 			}
 		}
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/Mary
 		if (pot.cookCountDown == 0 && pot.burnTimer == 0)
 		{
 			statusIcon.enabled = true;
@@ -70,7 +85,11 @@ public class PotUIFollow : MonoBehaviour
 		
 		else
 		{
+<<<<<<< HEAD
+            
+=======
 			statusIcon.enabled = false;
+>>>>>>> origin/Mary
 		}
 
 		if (!pot.cooking)
