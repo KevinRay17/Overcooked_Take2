@@ -17,6 +17,7 @@ public class EndSceneShow : MonoBehaviour
 		fail.text = OrderGeneration.OG.failedRecipes + " x 10 = " + OrderGeneration.OG.failedRecipes * 10;
 
 		total.text = OrderGeneration.OG.successRecipes * 20 - OrderGeneration.OG.failedRecipes * 10 + "";
+		StartCoroutine(starShow());
 	}
 
 	IEnumerator starShow()
