@@ -2781,17 +2781,17 @@ Prefab:
         type: 2}
       propertyPath: pot1of3
       value: 
-      objectReference: {fileID: 4300008, guid: 216690a3d85b63c4db64486cc5351619, type: 3}
+      objectReference: {fileID: 4300000, guid: 216690a3d85b63c4db64486cc5351619, type: 3}
     - target: {fileID: 114863939926064864, guid: 4815491997ae0d049b352010b3c63a2d,
         type: 2}
       propertyPath: pot2of3
       value: 
-      objectReference: {fileID: 4300004, guid: 88d1b77fa79fd0b4487ea23d3d68fe23, type: 3}
+      objectReference: {fileID: 4300000, guid: 88d1b77fa79fd0b4487ea23d3d68fe23, type: 3}
     - target: {fileID: 114863939926064864, guid: 4815491997ae0d049b352010b3c63a2d,
         type: 2}
       propertyPath: pot3of3
       value: 
-      objectReference: {fileID: 4300008, guid: 2cb5718b567fc0e48a5663d5ad9462fd, type: 3}
+      objectReference: {fileID: 4300000, guid: 2cb5718b567fc0e48a5663d5ad9462fd, type: 3}
     - target: {fileID: 114863939926064864, guid: 4815491997ae0d049b352010b3c63a2d,
         type: 2}
       propertyPath: fire
@@ -3253,23 +3253,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Chop: {fileID: 8300000, guid: 26d95706ce54d974087f0a8e932b32ad, type: 3}
   cutFood: 46
-  CutTomato: {fileID: 1808939458821554, guid: fa9cd889bd4ce8b4bb02a40e33eeafe3, type: 2}
-  CutOnion: {fileID: 100000, guid: 8c8c144b7a394441e80623c66d63ab7b, type: 3}
-  CuttingTomato1: {fileID: 0}
-  CuttingTomato2: {fileID: 0}
-  CuttingTomato3: {fileID: 0}
-  CuttingTomato4: {fileID: 0}
-  CuttingOnion1: {fileID: 0}
-  CuttingOnion2: {fileID: 0}
-  CuttingOnion3: {fileID: 0}
-  CuttingOnion4: {fileID: 0}
+  CutTomato: {fileID: 1424879148389966, guid: e6a58763ebec74b46b7d5ae663877079, type: 2}
+  CutOnion: {fileID: 1717306704699086, guid: d6c5fc8ae44273e48a7b38b0f5f55010, type: 2}
+  CuttingTomato1: {fileID: 1013699979957228, guid: 20f24a2d93aad274faae4c62eb012aeb,
+    type: 2}
+  CuttingTomato2: {fileID: 1146851803149918, guid: a6ac91b5367b05f409c62d8315c47096,
+    type: 2}
+  CuttingTomato3: {fileID: 1423221078535002, guid: 33c9368541c5c874487fd23a12084d0f,
+    type: 2}
+  CuttingTomato4: {fileID: 1429581167736224, guid: ff9fcd0f0be85a94f9fc0aca32ed67bf,
+    type: 2}
+  CuttingOnion1: {fileID: 1173880256271300, guid: 4f703db95687b7d4283ae6e388ffcdce,
+    type: 2}
+  CuttingOnion2: {fileID: 1979822060561096, guid: 1344dfac409930a4aa6233e0703ac6e9,
+    type: 2}
+  CuttingOnion3: {fileID: 1656425082532598, guid: 21e81ee64dbe38948a3acba6d5d3f2e2,
+    type: 2}
+  CuttingOnion4: {fileID: 1412228443474508, guid: a38e9e87733e9a642bdd3d542325cfc4,
+    type: 2}
   playerInventory: {fileID: 1089448740}
   ChopTimer1: 0
   ChopTimer2: 0
   WashTimer: 0
   ChopBar1: {fileID: 1297126128}
   ChopBar2: {fileID: 866155097}
-  WashBar: {fileID: 0}
+  WashBar: {fileID: 1449273949}
 --- !u!82 &1089448742
 AudioSource:
   m_ObjectHideFlags: 0

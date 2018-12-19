@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
 
@@ -15,44 +16,21 @@ public class Timer : MonoBehaviour {
 	void Start () {
 		secondsLeft = 3600;
 		minutesLeft = 3;
+		StartCoroutine(countdownTimer());
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-
-		if (minutesLeft >= 0 )
+	IEnumerator countdownTimer()
+	{
+		WaitForSeconds wait = new WaitForSeconds(1);
+		while (secondsLeft > 0)
 		{
-			secondsLeft -= 1;
+			secondsLeft--;
+			float minutes = Mathf.Floor(secondsLeft / 60);
+			int seconds = Mathf.RoundToInt(secondsLeft%60);
+			timer.text = minutes + ":" + seconds;
+			yield return wait;
 		}
-
-		if (secondsLeft > 600)
-		{
-			timer.text = minutesLeft + ":" + secondsLeft/60;
-		}
-
-
-
-		if (secondsLeft < 600)
-		{
-			timer.text = minutesLeft + ":0" + secondsLeft/60;
-		}
-
-
-		if (secondsLeft == 0)
-		{
-			minutesLeft -=1;
-			secondsLeft = 3540;
-		}
-
-		if (minutesLeft == -1 )
-		{
-			gameOver.SetActive(true);
-			timer.text = "0:00";
-			secondsLeft = 1;
-
-		}
-
-
+		
+		SceneManager.LoadScene("EndScene");
 	}
 }

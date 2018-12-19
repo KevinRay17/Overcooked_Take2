@@ -177,7 +177,11 @@ public class ContainerInventory : MonoBehaviour {
         
 		while (potFull)
 		{
+<<<<<<< HEAD
             
+=======
+			
+>>>>>>> origin/Mary
                 
 			if (gameObject.transform.parent != null)
 			{
@@ -209,8 +213,14 @@ public class ContainerInventory : MonoBehaviour {
 =======
 
 					Debug.Log("instantiate fire");
+<<<<<<< HEAD
 					Instantiate(fire,GetComponent<Transform>());
 >>>>>>> 68bd770c45b53b349b1f77b8e4ab633ac45052f2
+=======
+					GameObject temp = Instantiate(fire,GetComponent<Transform>());
+					temp.transform.localPosition = Vector3.zero;
+					temp.transform.localScale = Vector3.one;
+>>>>>>> origin/Mary
 				}
 			}
 			yield return wait;
