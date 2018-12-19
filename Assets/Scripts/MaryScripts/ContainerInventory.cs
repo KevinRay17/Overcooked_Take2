@@ -68,6 +68,21 @@ public class ContainerInventory : MonoBehaviour {
 					potFull = true;
 				}
 				
+				Debug.Log(i);
+
+				if (i == 0)
+				{
+					Debug.Log("new model");
+					Destroy(transform.GetChild(0).gameObject);
+					GameObject temp = Instantiate(potVariations[1], transform);
+					temp.transform.localPosition = Vector3.zero;
+				}else if (i == 2)
+				{
+					Debug.Log("new mode2l");
+					Destroy(transform.GetChild(0).gameObject);
+					GameObject temp = Instantiate(potVariations[2], transform);
+					temp.transform.localPosition = Vector3.zero;
+				}
 				objectsInContainerIntVersion[i] = vegetable;
 				
 				if (enumRunning)
@@ -187,9 +202,15 @@ public class ContainerInventory : MonoBehaviour {
 				{
 					burnt = true;
 					//instantiate fire
+<<<<<<< HEAD
 					Debug.Log("instantiate fire");
 					GameObject temp = Instantiate(fire,GetComponent<Transform>());
 					temp.transform.localPosition = Vector3.zero;
+=======
+
+					Debug.Log("instantiate fire");
+					Instantiate(fire,GetComponent<Transform>());
+>>>>>>> 68bd770c45b53b349b1f77b8e4ab633ac45052f2
 				}
 			}
 			yield return wait;
