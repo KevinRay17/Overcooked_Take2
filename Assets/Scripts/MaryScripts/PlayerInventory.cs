@@ -219,15 +219,17 @@ public class PlayerInventory : MonoBehaviour
 					rayHit.transform.GetComponent<fireBehavior>().extinguish();
 				}
 			}
-			else
+			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Server"))
 			{
-				//Swap object
+				if (CurrentlyHeldObject.CompareTag("Plate"))
+				{
+					OrderGeneration.OG.scoreCheck(CurrentlyHeldObject.GetComponent<PlateInventory>());
+				}
 			}
 		}
 		else
 		{
 			dropObject();
-		
 		}
 	}
 	
@@ -343,13 +345,6 @@ public class PlayerInventory : MonoBehaviour
 	}
 	
 	
-	//For now: if you run into ab object, you pick it up
-	//Future: if raycast hit an object, drop current object to pick it up
-
-	private void OnCollisionEnter(Collision other)
-	{
-		
-	}
 	void SnapToTable()
 	{
 		//Check what the RayCast hits and if the table is empty and you are holding an object, put held object on the table
@@ -380,6 +375,17 @@ public class PlayerInventory : MonoBehaviour
 				{
 					if (CurrentlyHeldObject.GetComponent<PlateInventory>().isRuined == false)
 					{
+						if (OrderGeneration.OG.scoreCheck(CurrentlyHeldObject.GetComponent<PlateInventory>()))
+						{
+							Debug.Log("yay");
+							StartCoroutine(DishReturnTimer());
+							Destroy(CurrentlyHeldObject);
+							CurrentlyHeldObjectCode = 0;
+							CurrentlyHeldObject = null;
+							HoldingThing = false;
+						}
+
+						/*
 						if (CurrentlyHeldObject.GetComponent<PlateInventory>().TomatoSoup == true)
 						{
 							Debug.Log("yay");
@@ -398,7 +404,7 @@ public class PlayerInventory : MonoBehaviour
 							CurrentlyHeldObject = null;
 							HoldingThing = false;
 							//complete order and score
-						}
+						}*/
 					}
 				}
 			}
@@ -517,7 +523,7 @@ public class PlayerInventory : MonoBehaviour
 		}
 	}
 
-	public IEnumerator DishReturnTimer()
+	 IEnumerator DishReturnTimer()
 	{
 		WaitForSeconds wait = new WaitForSeconds(6);
 		yield return wait;
@@ -525,7 +531,5 @@ public class PlayerInventory : MonoBehaviour
 		plateClone.transform.SetParent(DishReturn.gameObject.transform);
 		plateClone.transform.localPosition = new Vector3(0,1,0);
 		plateClone.GetComponent<PlateInventory>().isDirty = true;
-
-
 	}
 }

@@ -132,13 +132,13 @@ public class ContainerInventory : MonoBehaviour {
 		}
 
         
-		Debug.Log("cooking time" + cookCountDown);
 		while (potFull)
 		{
+			
                 
 			if (gameObject.transform.parent != null)
 			{
-
+				Debug.Log(gameObject.transform.parent.tag);
 				if (gameObject.transform.parent.CompareTag("Stove") && cookCountDown > 0 && !burnt)
 				{
 					CookMeter.fillAmount = ((float) (cooktime - cookCountDown)) / cooktime;
@@ -163,7 +163,9 @@ public class ContainerInventory : MonoBehaviour {
 					//instantiate fire
 
 					Debug.Log("instantiate fire");
-					Instantiate(fire,GetComponent<Transform>());
+					GameObject temp = Instantiate(fire,GetComponent<Transform>());
+					temp.transform.localPosition = Vector3.zero;
+					temp.transform.localScale = Vector3.one;
 				}
 			}
 

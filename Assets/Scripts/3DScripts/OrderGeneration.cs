@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class OrderGeneration : MonoBehaviour {
 
 	public Text score;
-	public int pointCount;
+	public int pointCount = 0;
 	public int recipePrice;
+
+	public int failedRecipes = 0;
+	public int successRecipes = 0;
 	
 	public int numberOfOrders;
 	public int timeUntilNextOrder;
@@ -16,22 +19,35 @@ public class OrderGeneration : MonoBehaviour {
 	public Canvas gameCanvas;
 
 	public int whichRecipe;
+
+	public static OrderGeneration OG;
 	
-	//public GameObject [] orderArray = new GameObject[6];
+	public int [] orderArray = new int[6];
 
 
 	// Use this for initialization
 	void Start () {
-		
-		pointCount = 0;
 
+		DontDestroyOnLoad(this);
 		recipePrice = 24;
 		
 
 		timeUntilNextOrder = 100;
 		numberOfOrders = 0;
 
-		//for (int i = 0; i < orderArray.Length; i++)
+		if (OG == null)
+		{
+			OG = this;
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+
+		for (int i = 0; i < orderArray.Length; i++)
+		{
+			orderArray[i] = -1;
+		}
 
 	}
 	
@@ -61,6 +77,15 @@ public class OrderGeneration : MonoBehaviour {
 						GameObject recipeInstance1 = Instantiate (recipe2Prefab, transform.position + new Vector3(250f * numberOfOrders, -100f), transform.rotation);
 						recipeInstance1.transform.SetParent(gameCanvas.transform);
 					}
+
+					for (int i = 0; i < orderArray.Length; i++)
+					{
+						if (orderArray[i] == -1)
+						{
+							orderArray[i] = whichRecipe;
+							break;
+						}
+					}
 				
 				timeUntilNextOrder = 280;
 				}
@@ -73,12 +98,25 @@ public class OrderGeneration : MonoBehaviour {
 		score.text = " " + pointCount;
 
 		
-		//placeholder for incrementing the player's score when a dish is served
-		if (Input.GetKeyDown("space"))
+	}
+
+
+	public bool scoreCheck(PlateInventory PI)
+	{
+		for (int i = 0; i < orderArray.Length; i++)
 		{
-			pointCount += recipePrice;
+			if (orderArray[i] != -1)
+			{
+				if (PI.OnionSoup || PI.TomatoSoup)
+				{
+					successRecipes++;
+					orderArray[i] = -1;
+					numberOfOrders--;
+					return true;
+				}
+			}
 		}
-		
-		
+
+		return false;
 	}
 }

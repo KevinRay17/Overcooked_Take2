@@ -22,6 +22,7 @@ public class fireBehavior : MonoBehaviour
 	{
 		alive = true;
 		StartCoroutine(FireSpread());
+		transform.GetComponentInParent<BoxCollider>().enabled = false;
 	}
 
 
@@ -83,9 +84,10 @@ public class fireBehavior : MonoBehaviour
 				int randomDirection = Random.Range(0, 4);
 				Vector3 position = transform.position;
 
-				GameObject temp = Instantiate(firePrefab);
+				
 				if (randomDirection == 0 && down)
 				{
+					GameObject temp = Instantiate(firePrefab);
 					Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out rayHit, 2.2f);
 					temp.transform.position += Vector3.back;
 					Debug.Log(rayHit.transform.name);
@@ -93,6 +95,7 @@ public class fireBehavior : MonoBehaviour
 				}
 				else if (randomDirection == 1 && up)
 				{
+					GameObject temp = Instantiate(firePrefab);
 					Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out rayHit, 2.2f);
 					
 					temp.transform.position += Vector3.forward;
@@ -101,6 +104,7 @@ public class fireBehavior : MonoBehaviour
 				}
 				else if (randomDirection == 2 && left)
 				{
+					GameObject temp = Instantiate(firePrefab);
 					Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out rayHit, 2.2f);
 					temp.transform.position += Vector3.left;
 					temp.transform.SetParent(rayHit.transform);
@@ -108,6 +112,7 @@ public class fireBehavior : MonoBehaviour
 				}
 				else if (randomDirection == 3 && right)
 				{
+					GameObject temp = Instantiate(firePrefab);
 					Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out rayHit, 2.2f);
 					temp.transform.position += Vector3.right;
 					Debug.Log(rayHit.transform.name);
@@ -140,6 +145,7 @@ public class fireBehavior : MonoBehaviour
 
 		beingExtinguished = false;
 		Debug.Log("EXTINGUISHED FIRE!");
+		transform.GetComponentInParent<BoxCollider>().enabled = true;
 		Destroy(this);
 
 	}
