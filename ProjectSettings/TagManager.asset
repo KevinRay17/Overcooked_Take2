@@ -23,6 +23,7 @@ TagManager:
   - OnionTimer
   - TomatoTimer
   - Fire
+  - Extinguisher
   layers:
   - Default
   - TransparentFX

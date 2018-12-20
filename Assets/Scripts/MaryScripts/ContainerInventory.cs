@@ -68,6 +68,21 @@ public class ContainerInventory : MonoBehaviour {
 					potFull = true;
 				}
 				
+				Debug.Log(i);
+
+				if (i == 0)
+				{
+					Debug.Log("new model");
+					Destroy(transform.GetChild(0).gameObject);
+					GameObject temp = Instantiate(potVariations[1], transform);
+					temp.transform.localPosition = Vector3.zero;
+				}else if (i == 2)
+				{
+					Debug.Log("new mode2l");
+					Destroy(transform.GetChild(0).gameObject);
+					GameObject temp = Instantiate(potVariations[2], transform);
+					temp.transform.localPosition = Vector3.zero;
+				}
 				objectsInContainerIntVersion[i] = vegetable;
 				
 				if (enumRunning)
@@ -159,15 +174,18 @@ public class ContainerInventory : MonoBehaviour {
 			cookCountDown = cooktime;
 			enumRunning = true;
 		}
-
         
-		Debug.Log("cooking time" + cookCountDown);
 		while (potFull)
 		{
+<<<<<<< HEAD
+            
+=======
+			
+>>>>>>> origin/Mary
                 
 			if (gameObject.transform.parent != null)
 			{
-
+				Debug.Log(gameObject.transform.parent.tag);
 				if (gameObject.transform.parent.CompareTag("Stove") && cookCountDown > 0 && !burnt)
 				{
 					CookMeter.fillAmount = ((float) (cooktime - cookCountDown)) / cooktime;
@@ -180,23 +198,32 @@ public class ContainerInventory : MonoBehaviour {
 					CookMeter.fillAmount = 0;
 					waitForBurn++;
 				}
-
 				if (gameObject.transform.parent.CompareTag("Stove") && waitForBurn >= 60 && burnTimer < 120)
 				{
 					burnTimer++;
 				}
-
 				if (gameObject.transform.parent.CompareTag("Stove") && burnTimer >= 120)
 				{
 					burnt = true;
 					//instantiate fire
+<<<<<<< HEAD
+					Debug.Log("instantiate fire");
+					GameObject temp = Instantiate(fire,GetComponent<Transform>());
+					temp.transform.localPosition = Vector3.zero;
+=======
 
-					Instantiate(fire,transform);
+					Debug.Log("instantiate fire");
+<<<<<<< HEAD
+					Instantiate(fire,GetComponent<Transform>());
+>>>>>>> 68bd770c45b53b349b1f77b8e4ab633ac45052f2
+=======
+					GameObject temp = Instantiate(fire,GetComponent<Transform>());
+					temp.transform.localPosition = Vector3.zero;
+					temp.transform.localScale = Vector3.one;
+>>>>>>> origin/Mary
 				}
 			}
-
 			yield return wait;
-               
              
 		}
 	}

@@ -1,10 +1,145 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class fireBehavior : MonoBehaviour
 {
+    //1. Set itself as a child of the table
+    //2. snap to table's position
+    //3. raycast all 4 directions to see if there's a table (if rayhit.tag == table/stove/counter or something)
+    public bool alive;
+    public bool beingExtinguished;
+    public int burnLifeCounter = 0;
+    public int extinguishTimer = 0;
+    public GameObject firePrefab;
+    
+    // Use this for initialization
+    void Start ()
+    {
+        alive = true;
+        StartCoroutine(FireSpread());
+        transform.GetComponentInParent<BoxCollider>().enabled = false;
+    }
+    public IEnumerator FireSpread()
+    {
+         Ray ray = new Ray();
+         RaycastHit rayHit = new RaycastHit();
+        bool left = false, right = false, up = false, down = false;
+        
+        WaitForSeconds wait = new WaitForSeconds(1);
+        while (alive)
+        {
+            if (burnLifeCounter < 30 && !beingExtinguished)
+            {
+                //raycast left and right to see if there is fire, if not, instantiate fire in 1 random direction
+                burnLifeCounter++;
+            }
+            else if (burnLifeCounter == 30 && !beingExtinguished)
+            {
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit,
+                    2.2f))
+                {
+                    if (rayHit.transform.CompareTag("Table"))
+                    {
+                        Debug.Log("forward");
+                        up = true;
+                    }
+                }
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out rayHit, 2.2f))
+                {
+                    if (rayHit.transform.CompareTag("Table"))
+                    {
+                        Debug.Log("backwards");
+                        down = true;
+                    }
+                }
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out rayHit, 2.2f))
+                {
+                    if (rayHit.transform.CompareTag("Table"))
+                    {
+                        Debug.Log("left");
+                        left = true;
+                    }
+                }
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out rayHit, 2.2f))
+                {
+                    if (rayHit.transform.CompareTag("Table"))
+                    {
+                        Debug.Log("Right");
+                        right = true;
+                    }
+                }
+                burnLifeCounter = 0;
+                int randomDirection = Random.Range(0, 4);
+                Vector3 position = transform.position;
+                
+                if (randomDirection == 0 && down)
+                {
+                    GameObject temp = Instantiate(firePrefab);
+                    Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out rayHit, 2.2f);
+                    temp.transform.position += Vector3.back;
+                    Debug.Log(rayHit.transform.name);
+                    temp.transform.SetParent(rayHit.transform);
+                }
+                else if (randomDirection == 1 && up)
+                {
+                    GameObject temp = Instantiate(firePrefab);
+                    Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out rayHit, 2.2f);
+                    
+                    temp.transform.position += Vector3.forward;
+                    temp.transform.SetParent(rayHit.transform);
+                    Debug.Log(rayHit.transform.name);
+                }
+                else if (randomDirection == 2 && left)
+                {
+                    GameObject temp = Instantiate(firePrefab);
+                    Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out rayHit, 2.2f);
+                    temp.transform.position += Vector3.left;
+                    temp.transform.SetParent(rayHit.transform);
+                    Debug.Log(rayHit.transform.name);
+                }
+                else if (randomDirection == 3 && right)
+                {
+                    GameObject temp = Instantiate(firePrefab);
+                    Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out rayHit, 2.2f);
+                    temp.transform.position += Vector3.right;
+                    Debug.Log(rayHit.transform.name);
+                    temp.transform.SetParent(rayHit.transform);
+                }
+            }
+            yield return wait;
+        }
+    }
+    public void extinguish()
+    {
+        StartCoroutine(extinguishing());
+    }
+    IEnumerator extinguishing()
+    {
+        WaitForSeconds wait = new WaitForSeconds(1f);
+        while (extinguishTimer < 10)
+        {
+            
+            if (!beingExtinguished)
+            {
+                yield break;
+            }
+            extinguishTimer++;
+            yield return wait;
+        }
+        beingExtinguished = false;
+        Debug.Log("EXTINGUISHED FIRE!");
+        transform.GetComponentInParent<BoxCollider>().enabled = true;
+        Destroy(this);
+    }
+}
 
+<<<<<<< HEAD
+
+
+=======
+	//1. Set itself as a child of the table
+	//2. snap to table's position
+	//3. raycast all 4 directions to see if there's a table (if rayhit.tag == table/stove/counter or something)
 	public bool alive;
 	public bool beingExtinguished;
 
@@ -19,6 +154,7 @@ public class fireBehavior : MonoBehaviour
 	{
 		alive = true;
 		StartCoroutine(FireSpread());
+		transform.GetComponentInParent<BoxCollider>().enabled = false;
 	}
 
 
@@ -27,75 +163,123 @@ public class fireBehavior : MonoBehaviour
 		 Ray ray = new Ray();
 		 RaycastHit rayHit = new RaycastHit();
 
-		bool left, right, up, down;
+		bool left = false, right = false, up = false, down = false;
 		
 		WaitForSeconds wait = new WaitForSeconds(1);
-		if (burnLifeCounter < 30)
+		while (alive)
 		{
-			//raycast left and right to see if there is fire, if not, instantiate fire in 1 random direction
-			burnLifeCounter++;
-		}
-		else
-		{
-			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, 2.2f))
+			if (burnLifeCounter < 30 && !beingExtinguished)
 			{
-				up = true;
+				//raycast left and right to see if there is fire, if not, instantiate fire in 1 random direction
+				burnLifeCounter++;
 			}
-
-			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out rayHit, 2.2f))
+			else if (burnLifeCounter == 30 && !beingExtinguished)
 			{
-				down = true;
-			}
+				if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit,
+					2.2f))
+				{
+					if (rayHit.transform.CompareTag("Table"))
+					{
+						Debug.Log("forward");
+						up = true;
+					}
+				}
 
-			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out rayHit, 2.2f))
-			{
+				if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out rayHit, 2.2f))
+				{
+					if (rayHit.transform.CompareTag("Table"))
+					{
+						Debug.Log("backwards");
+						down = true;
+					}
+				}
+
+				if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out rayHit, 2.2f))
+				{
+					if (rayHit.transform.CompareTag("Table"))
+					{
+						Debug.Log("left");
+						left = true;
+					}
+				}
+
+				if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out rayHit, 2.2f))
+				{
+					if (rayHit.transform.CompareTag("Table"))
+					{
+						Debug.Log("Right");
+						right = true;
+					}
+				}
+
+				burnLifeCounter = 0;
+				int randomDirection = Random.Range(0, 4);
+				Vector3 position = transform.position;
+
 				
+				if (randomDirection == 0 && down)
+				{
+					GameObject temp = Instantiate(firePrefab);
+					Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out rayHit, 2.2f);
+					temp.transform.position += Vector3.back;
+					Debug.Log(rayHit.transform.name);
+					temp.transform.SetParent(rayHit.transform);
+				}
+				else if (randomDirection == 1 && up)
+				{
+					GameObject temp = Instantiate(firePrefab);
+					Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out rayHit, 2.2f);
+					
+					temp.transform.position += Vector3.forward;
+					temp.transform.SetParent(rayHit.transform);
+					Debug.Log(rayHit.transform.name);
+				}
+				else if (randomDirection == 2 && left)
+				{
+					GameObject temp = Instantiate(firePrefab);
+					Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out rayHit, 2.2f);
+					temp.transform.position += Vector3.left;
+					temp.transform.SetParent(rayHit.transform);
+					Debug.Log(rayHit.transform.name);
+				}
+				else if (randomDirection == 3 && right)
+				{
+					GameObject temp = Instantiate(firePrefab);
+					Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out rayHit, 2.2f);
+					temp.transform.position += Vector3.right;
+					Debug.Log(rayHit.transform.name);
+					temp.transform.SetParent(rayHit.transform);
+				}
 			}
-
-			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out rayHit, 2.2f))
-			{
-				
-			}
-
-			burnLifeCounter = 0;
-			int randomDirection = Random.Range(0, 4);
-			Vector3 position = transform.position;
-			
-			GameObject temp = Instantiate(firePrefab, transform);
-			if (randomDirection == 0)
-			{
-				temp.transform.position += Vector3.down;
-			}else if (randomDirection == 1)
-			{
-				temp.transform.position += Vector3.forward;
-			}else if (randomDirection == 2)
-			{
-				temp.transform.position += Vector3.left;
-			}else if (randomDirection == 3)
-			{
-				temp.transform.position += Vector3.right;
-			}
-			
-
-		}
-
-		if (alive)
-		{
 			yield return wait;
 		}
 	}
 
-	public bool extinguish()
+	public void extinguish()
 	{
-		bool isExtinguished = false;
+		StartCoroutine(extinguishing());
+	}
 
-		extinguishTimer++;
+	IEnumerator extinguishing()
+	{
+		WaitForSeconds wait = new WaitForSeconds(1f);
 
-		if (extinguishTimer < 10)
+		while (extinguishTimer < 10)
 		{
-			isExtinguished = true;
+			
+			if (!beingExtinguished)
+			{
+				yield break;
+			}
+			extinguishTimer++;
+			yield return wait;
 		}
 
-		return isExtinguished;
+		beingExtinguished = false;
+		Debug.Log("EXTINGUISHED FIRE!");
+		transform.GetComponentInParent<BoxCollider>().enabled = true;
+		Destroy(this);
+
 	}
 }
+>>>>>>> 68bd770c45b53b349b1f77b8e4ab633ac45052f2
