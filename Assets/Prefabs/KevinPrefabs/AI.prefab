@@ -59,6 +59,15 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,6 +107,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerMax: 20
   timer: 0
+  Model:
+  - {fileID: 4300000, guid: 07c89481bbb81b741ac8b6391215e637, type: 3}
+  - {fileID: 4300000, guid: 320c979f6398efb459acfc36eb414475, type: 3}
+  - {fileID: 4300000, guid: dc9d610f21e1ce145ae56f5bb866dcf1, type: 3}
+  mats:
+  - {fileID: 2100000, guid: 07c89481bbb81b741ac8b6391215e637, type: 3}
+  - {fileID: 2100002, guid: 07c89481bbb81b741ac8b6391215e637, type: 3}
+  - {fileID: 2100004, guid: 07c89481bbb81b741ac8b6391215e637, type: 3}
+  - {fileID: 2100006, guid: 07c89481bbb81b741ac8b6391215e637, type: 3}
+  - {fileID: 2100000, guid: 320c979f6398efb459acfc36eb414475, type: 3}
+  - {fileID: 2100002, guid: 320c979f6398efb459acfc36eb414475, type: 3}
+  - {fileID: 2100004, guid: 320c979f6398efb459acfc36eb414475, type: 3}
+  - {fileID: 2100006, guid: 320c979f6398efb459acfc36eb414475, type: 3}
+  - {fileID: 2100008, guid: 320c979f6398efb459acfc36eb414475, type: 3}
+  - {fileID: 2100010, guid: 320c979f6398efb459acfc36eb414475, type: 3}
+  - {fileID: 2100000, guid: dc9d610f21e1ce145ae56f5bb866dcf1, type: 3}
+  - {fileID: 2100008, guid: dc9d610f21e1ce145ae56f5bb866dcf1, type: 3}
+  - {fileID: 2100010, guid: dc9d610f21e1ce145ae56f5bb866dcf1, type: 3}
+  - {fileID: 2100006, guid: dc9d610f21e1ce145ae56f5bb866dcf1, type: 3}
+  - {fileID: 2100002, guid: dc9d610f21e1ce145ae56f5bb866dcf1, type: 3}
+  - {fileID: 2100004, guid: dc9d610f21e1ce145ae56f5bb866dcf1, type: 3}
 --- !u!136 &136047017077193540
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DishTimers : MonoBehaviour
 {
 	public Image Timer;
-
+	public static int failedRecipes;
 
 	// Use this for initialization
 	void Start ()
@@ -26,6 +26,7 @@ public class DishTimers : MonoBehaviour
 
 	public void DestroyAndScore()
 	{
+		failedRecipes++;
 		Destroy(transform.parent.gameObject);
 	}
 }

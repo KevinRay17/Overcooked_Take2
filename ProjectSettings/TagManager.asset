@@ -24,6 +24,7 @@ TagManager:
   - TomatoTimer
   - Fire
   - Extinguisher
+  - Pot2
   layers:
   - Default
   - TransparentFX
