@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class PotUIFollow : MonoBehaviour
 {
 	public ContainerInventory pot;
+	
 	public Image[] vegIcons;
 	public Image statusIcon;
 	public Sprite onion, tomato, greenCheck, redAlert;

@@ -29,6 +29,7 @@ public class PlayerInventory : MonoBehaviour
 	public GameObject TomatoClone;
 	public GameObject OnionClone;
 	public ContainerInventory potInventory;
+	public ContainerInventory potInventory2;
 	
 
 	public GameObject plate;
@@ -154,120 +155,248 @@ public class PlayerInventory : MonoBehaviour
 			if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot") ||
 			    rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot2") ||
 			    (rayHit.collider.gameObject.transform.childCount > 0 &&
-			     (rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot") || rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot2")
-		)))
+			     (rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot") ||
+			      rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot2")
+			     )))
 
-		{
-			
-				if (CurrentlyHeldObject != null)
+			{
+				if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot") || rayHit.collider.gameObject
+					    .transform.GetChild(0).gameObject.CompareTag("Pot"))
 				{
-					Debug.Log("holding smth");
-					//Check tag against array of tags
-					string[] tempTag = potInventory.acceptedTag;
-					for (int i = 0; i < tempTag.Length; i++)
+					if (CurrentlyHeldObject != null)
 					{
-						//if tag is accepted, check container if can be added
-						
-						if (CurrentlyHeldObject.tag == tempTag[i])
+						Debug.Log("holding smth");
+						//Check tag against array of tags
+						string[] tempTag = potInventory.acceptedTag;
+						for (int i = 0; i < tempTag.Length; i++)
 						{
-							Debug.Log("acceptable tag");
-							//if accepted, destroy gameobject and reset currentlyheldobject and code
-							if (potInventory.addVegetable(i) && !potInventory.burnt)
+							//if tag is accepted, check container if can be added
+
+							if (CurrentlyHeldObject.tag == tempTag[i])
 							{
-								Debug.Log("pot can take");
-								GameObject temp = CurrentlyHeldObject;
-								CurrentlyHeldObject = null;
-								HoldingThing = false;
-								Destroy(temp);
-								break;
+								Debug.Log("acceptable tag");
+								//if accepted, destroy gameobject and reset currentlyheldobject and code
+								if (potInventory.addVegetable(i) && !potInventory.burnt)
+								{
+									Debug.Log("pot can take");
+									GameObject temp = CurrentlyHeldObject;
+									CurrentlyHeldObject = null;
+									HoldingThing = false;
+									Destroy(temp);
+									break;
+								}
+							}
+						}
+					}
+				}
+
+				else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Pot2") ||
+				         rayHit.collider.gameObject.transform.GetChild(0).gameObject.CompareTag("Pot2"))
+				{
+					if (CurrentlyHeldObject != null)
+					{
+						Debug.Log("holding smth");
+						//Check tag against array of tags
+						string[] tempTag = potInventory2.acceptedTag;
+						for (int i = 0; i < tempTag.Length; i++)
+						{
+							//if tag is accepted, check container if can be added
+
+							if (CurrentlyHeldObject.tag == tempTag[i])
+							{
+								Debug.Log("acceptable tag");
+								//if accepted, destroy gameobject and reset currentlyheldobject and code
+								if (potInventory2.addVegetable(i) && !potInventory2.burnt)
+								{
+									Debug.Log("pot can take");
+									GameObject temp = CurrentlyHeldObject;
+									CurrentlyHeldObject = null;
+									HoldingThing = false;
+									Destroy(temp);
+									break;
+								}
 							}
 						}
 					}
 				}
 			}
-			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Plate") )
-			{
-				Debug.Log("Platehit");
-				if ((CurrentlyHeldObject.CompareTag("Pot") ||CurrentlyHeldObject.CompareTag("Pot2")) && CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull && potInventory.cookCountDown <= 0)
+			else if (rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Plate"))
 				{
-					Debug.Log("plat hit step 2");
-					if (rayHit.transform.GetComponent<PlateInventory>().full)
-					{
-						Debug.Log("Plate is full");
-					}
-					else
-					{
-						//set plate to the type of soup put in
-						rayHit.transform.GetComponent<PlateInventory>().full = true;
-						if (potInventory.objectsInContainerIntVersion[0] == 0 &&
-						    potInventory.objectsInContainerIntVersion[1] == 0 &&
-						    potInventory.objectsInContainerIntVersion[2] == 0 && !potInventory.burnt)
-						{
-							rayHit.transform.GetComponent<PlateInventory>().TomatoSoup = true;
-						}
-						else if (potInventory.objectsInContainerIntVersion[0] == 1 &&
-						    potInventory.objectsInContainerIntVersion[1] == 1 &&
-						    potInventory.objectsInContainerIntVersion[2] == 1 && !potInventory.burnt)
-						{
-							rayHit.transform.GetComponent<PlateInventory>().OnionSoup = true;
-						}
-						else
-						{
-							rayHit.transform.GetComponent<PlateInventory>().isRuined = true;	
-						}
-
-						for (int i = 0; i < 3; i++)
-						{
-							CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
-							//Debug.Log("plat full pot empty");
-						}
-					}
-				}
-			}
-			//If plate is on a table and you want to put soup in it
-			else if (rayHit.collider.gameObject.transform.childCount > 0)
-			{
-				if (rayHit.collider.gameObject.transform.GetChild(0).gameObject.transform.CompareTag("Plate"))
-				{
+					Debug.Log("Platehit");
 					if ((CurrentlyHeldObject.CompareTag("Pot") || CurrentlyHeldObject.CompareTag("Pot2")) &&
 					    CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull &&
 					    potInventory.cookCountDown <= 0)
 					{
-						Debug.Log("plat hit step 2");
-						if (rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>().full)
+						if (CurrentlyHeldObject.CompareTag("Pot"))
 						{
-							Debug.Log("Plate is full");
-						}
-						else
-						{
-							//set plate to the type of soup put in
-							rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>().full= true;
-							if (potInventory.objectsInContainerIntVersion[0] == 0 &&
-							    potInventory.objectsInContainerIntVersion[1] == 0 &&
-							    potInventory.objectsInContainerIntVersion[2] == 0 && !potInventory.burnt)
+							Debug.Log("plat hit step 2");
+							if (rayHit.transform.GetComponent<PlateInventory>().full)
 							{
-								rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>().TomatoSoup = true;
-							}
-							else if (potInventory.objectsInContainerIntVersion[0] == 1 &&
-							         potInventory.objectsInContainerIntVersion[1] == 1 &&
-							         potInventory.objectsInContainerIntVersion[2] == 1 && !potInventory.burnt)
-							{
-								rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>().OnionSoup= true;
+								Debug.Log("Plate is full");
 							}
 							else
 							{
-								rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>().isRuined = true;
-							}
+								//set plate to the type of soup put in
+								rayHit.transform.GetComponent<PlateInventory>().full = true;
+								if (potInventory.objectsInContainerIntVersion[0] == 0 &&
+								    potInventory.objectsInContainerIntVersion[1] == 0 &&
+								    potInventory.objectsInContainerIntVersion[2] == 0 && !potInventory.burnt)
+								{
+									rayHit.transform.GetComponent<PlateInventory>().TomatoSoup = true;
+								}
+								else if (potInventory.objectsInContainerIntVersion[0] == 1 &&
+								         potInventory.objectsInContainerIntVersion[1] == 1 &&
+								         potInventory.objectsInContainerIntVersion[2] == 1 && !potInventory.burnt)
+								{
+									rayHit.transform.GetComponent<PlateInventory>().OnionSoup = true;
+								}
+								else
+								{
+									rayHit.transform.GetComponent<PlateInventory>().isRuined = true;
+								}
 
-							for (int i = 0; i < 3; i++)
+								for (int i = 0; i < 3; i++)
+								{
+									CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
+									//Debug.Log("plat full pot empty");
+								}
+							}
+						}
+						else if (CurrentlyHeldObject.CompareTag("Pot2"))
+						{
+							if (rayHit.transform.GetComponent<PlateInventory>().full)
 							{
-								CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
-								//Debug.Log("plat full pot empty");
+								Debug.Log("Plate is full");
+							}
+							else
+							{
+								//set plate to the type of soup put in
+								rayHit.transform.GetComponent<PlateInventory>().full = true;
+								if (potInventory2.objectsInContainerIntVersion[0] == 0 &&
+								    potInventory2.objectsInContainerIntVersion[1] == 0 &&
+								    potInventory2.objectsInContainerIntVersion[2] == 0 && !potInventory.burnt)
+								{
+									rayHit.transform.GetComponent<PlateInventory>().TomatoSoup = true;
+								}
+								else if (potInventory2.objectsInContainerIntVersion[0] == 1 &&
+								         potInventory2.objectsInContainerIntVersion[1] == 1 &&
+								         potInventory2.objectsInContainerIntVersion[2] == 1 && !potInventory.burnt)
+								{
+									rayHit.transform.GetComponent<PlateInventory>().OnionSoup = true;
+								}
+								else
+								{
+									rayHit.transform.GetComponent<PlateInventory>().isRuined = true;
+								}
+
+								for (int i = 0; i < 3; i++)
+								{
+									CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
+									//Debug.Log("plat full pot empty");
+								}
+							}
+						}
+
+
+
+
+					}
+				}
+				//If plate is on a table and you want to put soup in it
+				else if (rayHit.collider.gameObject.transform.childCount > 0)
+				{
+					if (rayHit.collider.gameObject.transform.GetChild(0).gameObject.transform.CompareTag("Plate"))
+					{
+						if ((CurrentlyHeldObject.CompareTag("Pot") || CurrentlyHeldObject.CompareTag("Pot2")) &&
+						    CurrentlyHeldObject.GetComponent<ContainerInventory>().completelyFull &&
+						    potInventory.cookCountDown <= 0)
+						{
+							if (CurrentlyHeldObject.CompareTag("Pot"))
+							{
+								Debug.Log("plat hit step 2");
+								if (rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>()
+									.full)
+								{
+									Debug.Log("Plate is full");
+								}
+								else
+								{
+									//set plate to the type of soup put in
+									rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>()
+											.full =
+										true;
+									if (potInventory.objectsInContainerIntVersion[0] == 0 &&
+									    potInventory.objectsInContainerIntVersion[1] == 0 &&
+									    potInventory.objectsInContainerIntVersion[2] == 0 && !potInventory.burnt)
+									{
+										rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>()
+											.TomatoSoup = true;
+									}
+									else if (potInventory.objectsInContainerIntVersion[0] == 1 &&
+									         potInventory.objectsInContainerIntVersion[1] == 1 &&
+									         potInventory.objectsInContainerIntVersion[2] == 1 && !potInventory.burnt)
+									{
+										rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>()
+											.OnionSoup = true;
+									}
+									else
+									{
+										rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>()
+											.isRuined = true;
+									}
+
+									for (int i = 0; i < 3; i++)
+									{
+										CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
+										//Debug.Log("plat full pot empty");
+									}
+								}
+							}
+							else if (CurrentlyHeldObject.CompareTag("Pot2"))
+							{
+								Debug.Log("plat hit step 2");
+								if (rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>()
+									.full)
+								{
+									Debug.Log("Plate is full");
+								}
+								else
+								{
+									//set plate to the type of soup put in
+									rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>()
+											.full =
+										true;
+									if (potInventory2.objectsInContainerIntVersion[0] == 0 &&
+									    potInventory2.objectsInContainerIntVersion[1] == 0 &&
+									    potInventory2.objectsInContainerIntVersion[2] == 0 && !potInventory2.burnt)
+									{
+										rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>()
+											.TomatoSoup = true;
+									}
+									else if (potInventory2.objectsInContainerIntVersion[0] == 1 &&
+									         potInventory2.objectsInContainerIntVersion[1] == 1 &&
+									         potInventory2.objectsInContainerIntVersion[2] == 1 && !potInventory2.burnt)
+									{
+										rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>()
+											.OnionSoup = true;
+									}
+									else
+									{
+										rayHit.collider.transform.GetChild(0).gameObject.GetComponent<PlateInventory>()
+											.isRuined = true;
+									}
+
+									for (int i = 0; i < 3; i++)
+									{
+										CurrentlyHeldObject.GetComponent<ContainerInventory>().emptyPot();
+										//Debug.Log("plat full pot empty");
+									}
+								}
 							}
 						}
 					}
 				}
-			}
+			
 			else if(rayHit.transform.GetComponent<MeshRenderer>().CompareTag("Trash"))
 			{
 				Debug.Log("hit trash");

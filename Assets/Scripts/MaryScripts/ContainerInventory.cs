@@ -7,7 +7,9 @@ public class ContainerInventory : MonoBehaviour {
 
 	//Maybe shouldn't use list of gameobejcts bc you cant take something out of the pot
 
-
+	private AudioSource myAudio;
+	public AudioClip Soup;
+	
 	public int cooktime = 45;
 	public int cookCountDown = 900;
 	
@@ -53,6 +55,8 @@ public class ContainerInventory : MonoBehaviour {
 		objectsInContainerIntVersion[1] = -1;
 		objectsInContainerIntVersion[2] = -1;
 		objectsInContainer = new List<GameObject>();
+
+		myAudio = GetComponent<AudioSource>();
 	}
 
 	//tries to add the veggie to the pot and returns true if successful; if pot is full, returns false;
@@ -70,8 +74,10 @@ public class ContainerInventory : MonoBehaviour {
 				
 				objectsInContainerIntVersion[i] = vegetable;
 				
+				myAudio.PlayOneShot(Soup);
 				if (enumRunning)
 				{
+			
 					
 					if (cooktime == 120)
 					{
@@ -100,6 +106,7 @@ public class ContainerInventory : MonoBehaviour {
 				}
 				else
 				{
+					
 					Debug.Log("started cooking");
 					StartCoroutine(Cooking());
 					Mesh pot1 = Instantiate(pot1of3);
@@ -186,7 +193,14 @@ public class ContainerInventory : MonoBehaviour {
 
 				if (gameObject.transform.parent.CompareTag("Stove") && waitForBurn >= 60 && burnTimer < 120)
 				{
+					myAudio.loop = true;
+					myAudio.Play();
 					burnTimer++;
+				}
+				else
+				{
+					myAudio.loop = false;
+					myAudio.Stop();
 				}
 
 				if (gameObject.transform.parent.CompareTag("Stove") && burnTimer >= 120 && !burnt)

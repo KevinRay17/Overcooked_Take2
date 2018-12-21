@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class OrderGeneration : MonoBehaviour {
+public class OrderGeneration : MonoBehaviour
+{
 
+	private AudioSource myAudio;
+	public AudioClip Ding;
 	public Text score;
 	public static int pointCount;
 	public int recipePrice;
@@ -31,6 +34,7 @@ public class OrderGeneration : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+		myAudio = GetComponent<AudioSource>();
 		DontDestroyOnLoad(this);
 		_orderList = new List<GameObject>();
 		pointCount = 0;
@@ -162,6 +166,7 @@ public class OrderGeneration : MonoBehaviour {
 		{
 			if (i.CompareTag("OnionTimer"))
 			{
+				myAudio.PlayOneShot(Ding);
 				pointCount += 20;
 				Destroy(i);
 				break;
@@ -174,7 +179,7 @@ public class OrderGeneration : MonoBehaviour {
 		{
 			if (i.CompareTag("TomatoTimer"))
 			{
-				
+				myAudio.PlayOneShot(Ding);
 				pointCount += 20;
 				Destroy(i);
 				break;
