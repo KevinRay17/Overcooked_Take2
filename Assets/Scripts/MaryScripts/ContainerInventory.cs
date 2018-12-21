@@ -7,7 +7,9 @@ public class ContainerInventory : MonoBehaviour {
 
 	//Maybe shouldn't use list of gameobejcts bc you cant take something out of the pot
 
-
+	private AudioSource myAudio;
+	public AudioClip Soup;
+	
 	public int cooktime = 45;
 	public int cookCountDown = 900;
 	
@@ -53,6 +55,8 @@ public class ContainerInventory : MonoBehaviour {
 		objectsInContainerIntVersion[1] = -1;
 		objectsInContainerIntVersion[2] = -1;
 		objectsInContainer = new List<GameObject>();
+
+		myAudio = GetComponent<AudioSource>();
 	}
 
 	//tries to add the veggie to the pot and returns true if successful; if pot is full, returns false;
@@ -68,31 +72,19 @@ public class ContainerInventory : MonoBehaviour {
 					potFull = true;
 				}
 				
-				Debug.Log(i);
-
-				if (i == 0)
-				{
-					Debug.Log("new model");
-					Destroy(transform.GetChild(0).gameObject);
-					GameObject temp = Instantiate(potVariations[1], transform);
-					temp.transform.localPosition = Vector3.zero;
-				}else if (i == 2)
-				{
-					Debug.Log("new mode2l");
-					Destroy(transform.GetChild(0).gameObject);
-					GameObject temp = Instantiate(potVariations[2], transform);
-					temp.transform.localPosition = Vector3.zero;
-				}
 				objectsInContainerIntVersion[i] = vegetable;
 				
+				myAudio.PlayOneShot(Soup);
 				if (enumRunning)
 				{
+			
 					
 					if (cooktime == 120)
 					{
 						Mesh pot2 = Instantiate(pot2of3);
 						GetComponent<MeshFilter>().sharedMesh = pot2;
 						Material[] mats = GetComponent<MeshRenderer>().materials;
+						mats[2] = Phong;
 						mats[1] = Phong;
 						mats[0] = Metal;
 						GetComponent<MeshRenderer>().materials = mats;
@@ -104,6 +96,7 @@ public class ContainerInventory : MonoBehaviour {
 						Material[] mats = GetComponent<MeshRenderer>().materials;
 						mats[0] = Phong;
 						mats[1] = Metal;
+						mats[2] = Metal;
 						GetComponent<MeshRenderer>().materials = mats;
 					}
 					Debug.Log("more time");
@@ -113,6 +106,7 @@ public class ContainerInventory : MonoBehaviour {
 				}
 				else
 				{
+					
 					Debug.Log("started cooking");
 					StartCoroutine(Cooking());
 					Mesh pot1 = Instantiate(pot1of3);
@@ -149,6 +143,7 @@ public class ContainerInventory : MonoBehaviour {
 			Material[] mats = GetComponent<MeshRenderer>().materials;
 			mats[1] = Metal;
 			mats[0] = Metal;
+			mats[2] = Metal;
 			GetComponent<MeshRenderer>().materials = mats;
 		}
 	}
@@ -174,18 +169,15 @@ public class ContainerInventory : MonoBehaviour {
 			cookCountDown = cooktime;
 			enumRunning = true;
 		}
+
         
+		Debug.Log("cooking time" + cookCountDown);
 		while (potFull)
 		{
-<<<<<<< HEAD
-            
-=======
-			
->>>>>>> origin/Mary
                 
 			if (gameObject.transform.parent != null)
 			{
-				Debug.Log(gameObject.transform.parent.tag);
+
 				if (gameObject.transform.parent.CompareTag("Stove") && cookCountDown > 0 && !burnt)
 				{
 					CookMeter.fillAmount = ((float) (cooktime - cookCountDown)) / cooktime;
@@ -198,32 +190,30 @@ public class ContainerInventory : MonoBehaviour {
 					CookMeter.fillAmount = 0;
 					waitForBurn++;
 				}
+
 				if (gameObject.transform.parent.CompareTag("Stove") && waitForBurn >= 60 && burnTimer < 120)
 				{
+					myAudio.loop = true;
+					myAudio.Play();
 					burnTimer++;
 				}
-				if (gameObject.transform.parent.CompareTag("Stove") && burnTimer >= 120)
+				else
+				{
+					myAudio.loop = false;
+					myAudio.Stop();
+				}
+
+				if (gameObject.transform.parent.CompareTag("Stove") && burnTimer >= 120 && !burnt)
 				{
 					burnt = true;
 					//instantiate fire
-<<<<<<< HEAD
-					Debug.Log("instantiate fire");
-					GameObject temp = Instantiate(fire,GetComponent<Transform>());
-					temp.transform.localPosition = Vector3.zero;
-=======
 
-					Debug.Log("instantiate fire");
-<<<<<<< HEAD
-					Instantiate(fire,GetComponent<Transform>());
->>>>>>> 68bd770c45b53b349b1f77b8e4ab633ac45052f2
-=======
-					GameObject temp = Instantiate(fire,GetComponent<Transform>());
-					temp.transform.localPosition = Vector3.zero;
-					temp.transform.localScale = Vector3.one;
->>>>>>> origin/Mary
+					Instantiate(fire,transform.position, Quaternion.identity);
 				}
 			}
+
 			yield return wait;
+               
              
 		}
 	}

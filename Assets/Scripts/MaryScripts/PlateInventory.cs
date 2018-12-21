@@ -12,8 +12,10 @@ public class PlateInventory : MonoBehaviour
 	public bool isDirty;
 	public Mesh mesh;
 	public Mesh emptyPlate;
+	public Mesh dirtyPlate;
 	public Material Phong;
 	public Material Metal;
+	public Material Rust;
 	private void Update()
 	{
 		if (full)
@@ -22,6 +24,7 @@ public class PlateInventory : MonoBehaviour
 			GetComponent<MeshFilter>().sharedMesh = PlateFull;
 			Material[] mats = GetComponent<MeshRenderer>().materials;
 			mats[1] = Phong;
+			mats[0] = Metal;
 			GetComponent<MeshRenderer>().materials = mats;
 		}
 		else if (!full && !isDirty)
@@ -30,9 +33,18 @@ public class PlateInventory : MonoBehaviour
 			GetComponent<MeshFilter>().sharedMesh = PlateEmpty;
 			Material[] mats = GetComponent<MeshRenderer>().materials;
 			mats[1] = Metal;
+			mats[0] = Metal;
 			GetComponent<MeshRenderer>().materials = mats;
 		}
-		
+		else if (isDirty)
+		{
+			Mesh Rusty = Instantiate(dirtyPlate);
+			GetComponent<MeshFilter>().sharedMesh = Rusty;
+			Material[] mats = GetComponent<MeshRenderer>().materials;
+			mats[0] = Rust;
+			mats[1] = Metal;
+			GetComponent<MeshRenderer>().materials = mats;
+		}
 			
 		
 	}

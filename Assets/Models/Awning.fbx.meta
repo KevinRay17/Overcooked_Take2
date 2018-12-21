@@ -1,16 +1,45 @@
 fileFormatVersion: 2
-guid: 2cb5718b567fc0e48a5663d5ad9462fd
+guid: 6813257da11e81a4aadb8f58f99971e6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: group
+    100004: group1
+    100006: group2
+    100008: group_pasted__pCube5
+    100010: pasted__group1
+    100012: pasted__pasted__pCube5
+    100014: pasted__pCube5
+    100016: pasted__pCube5 1
+    100018: pCube4
+    100020: pCube5
+    100022: transform3
+    100024: transform4
+    100026: transform5
+    100028: transform6
+    100030: transform7
     400000: //RootNode
-    2100000: lambert2
-    2100002: phong1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCylinder3
-    9500000: //RootNode
+    400002: group
+    400004: group1
+    400006: group2
+    400008: group_pasted__pCube5
+    400010: pasted__group1
+    400012: pasted__pasted__pCube5
+    400014: pasted__pCube5
+    400016: pasted__pCube5 1
+    400018: pCube4
+    400020: pCube5
+    400022: transform3
+    400024: transform4
+    400026: transform5
+    400028: transform6
+    400030: transform7
+    2100000: lambert1
+    2300000: group_pasted__pCube5
+    3300000: group_pasted__pCube5
+    4300000: group_pasted__pCube5
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -42,7 +71,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.0175
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -63,7 +92,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -87,7 +116,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

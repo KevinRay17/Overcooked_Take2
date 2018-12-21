@@ -13,10 +13,10 @@ public class EndSceneShow : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		success.text = OrderGeneration.OG.successRecipes + " x 20 = " + OrderGeneration.OG.successRecipes*20;
-		fail.text = OrderGeneration.OG.failedRecipes + " x 10 = " + OrderGeneration.OG.failedRecipes * 10;
+		success.text = OrderGeneration.pointCount/20 + " x 20= " + OrderGeneration.pointCount*2;
+		fail.text = DishTimers.failedRecipes + " x 10 = " + DishTimers.failedRecipes * 10;
 
-		total.text = OrderGeneration.OG.successRecipes * 20 - OrderGeneration.OG.failedRecipes * 10 + "";
+		total.text = OrderGeneration.pointCount * 2 - DishTimers.failedRecipes * 10 + "";
 		StartCoroutine(starShow());
 	}
 
@@ -25,9 +25,9 @@ public class EndSceneShow : MonoBehaviour
 		WaitForSeconds wait = new WaitForSeconds(1);
 
 		int starCount = 0;
-		if (OrderGeneration.OG.successRecipes > 7)
+		if (OrderGeneration.pointCount > 60)
 		{
-			if (OrderGeneration.OG.failedRecipes < 1)
+			if (DishTimers.failedRecipes < 1)
 			{
 				starCount = 3;
 			}
@@ -36,9 +36,9 @@ public class EndSceneShow : MonoBehaviour
 				starCount = 2;
 			}
 		}
-		else if (OrderGeneration.OG.successRecipes <=7)
+		else if (OrderGeneration.pointCount <=60 && OrderGeneration.pointCount >0)
 		{
-			if (OrderGeneration.OG.failedRecipes < 5)
+			if (DishTimers.failedRecipes < 3)
 			{
 				starCount = 2;
 			}
@@ -47,15 +47,15 @@ public class EndSceneShow : MonoBehaviour
 				starCount = 1;
 			}
 		}
-		else
+		else if (OrderGeneration.pointCount <= 0)
 		{
-			starCount = 0;
+			starCount = 1;
 		}
 		
 		Color dark = stars[0].color;
 		for (int i = 0; i < starCount; i++)
 		{
-			stars[i].color = Color.Lerp(dark,Color.white, Mathf.PingPong(Time.time,1));
+			stars[i].color = Color.white;
 		}
 		yield return wait;
 	}
